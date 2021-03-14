@@ -6,6 +6,7 @@ const Dealer = (props) => {
 
   return (
     <div id='dealer'>
+
     </div>
   );
 };
