@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 
@@ -32,7 +32,7 @@ const ContextProvider = (props) => {
       name: 'Dealer',
       hand: {
         cards: [
-          { rank: 'Ace', suit: 'Hearts' },
+          { rank: 'ace', suit: 'hearts' },
           { rank: '?', suit: '?' }
         ]
       }
