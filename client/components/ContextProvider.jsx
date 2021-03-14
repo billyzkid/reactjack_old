@@ -38,9 +38,15 @@ const ContextProvider = (props) => {
       }
     },
     players: [
-      { id: 'Player1', name: 'Will', hands: [] },
-      { id: 'Player2', name: 'Lisa', hands: [] },
-      { id: 'Player3', name: 'Tyler', hands: [] }
+      { name: 'Will', primary: true, active: false, chips: 1000, hands: [
+        { bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]},
+        { bet: 20, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]},
+        { bet: 30, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]}
+      ]}
+    ],
+    messages: [
+      'This is a message.',
+      'This is a longer message.'
     ]
   });
 
