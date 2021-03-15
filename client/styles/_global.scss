@@ -1,0 +1,25 @@
+html {
+  font: $html-font;
+  color: $html-color;
+  text-shadow: $html-text-shadow;
+  background: $html-background;
+}
+
+@media (orientation: landscape) {
+  html {
+      font-size: 2.5vh;
+  }
+}
+
+@media (orientation: portrait) {
+  html {
+      font-size: 2.5vw;
+  }
+}
+
+// html,
+// body,
+// #root,
+// #app {
+//   height: 100%;
+// }
