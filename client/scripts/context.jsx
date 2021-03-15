@@ -52,20 +52,20 @@ const ContextProvider = (props) => {
     ]
   });
 
-  const socket = io();
+  // const socket = io();
 
-  useEffect(() => {
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
-        <SocketContext.Provider value={socket}>
+        {/* <SocketContext.Provider value={socket}> */}
           {props.children}
-        </SocketContext.Provider>
+        {/* </SocketContext.Provider> */}
       </DispatchContext.Provider>
     </StateContext.Provider>
   );

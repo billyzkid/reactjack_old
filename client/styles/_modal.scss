@@ -1,0 +1,52 @@
+.modal {
+
+  > .modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 300ms ease 0s;
+
+    &.after-open {
+      opacity: 1;
+    }
+
+    &.before-close {
+      opacity: 0;
+    }
+
+    > .modal-content {
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      color: black;
+      background-color: white;
+      outline: none;
+      transform: scale3d(0.8,0.8,0.8);
+      transition: transform 300ms ease 0s;
+
+      &.after-open {
+        transform: scale3d(1,1,1);
+      }
+
+      &.before-close {
+        transform: scale3d(0.8,0.8,0.8);
+      }
+
+    }
+
+  }
+
+}
+
+.modal1-open .menu > button:nth-child(1),
+.modal2-open .menu > button:nth-child(2),
+.modal3-open .menu > button:nth-child(3) {
+  color: goldenrod;
+}

@@ -19,8 +19,8 @@ const Modal = React.memo((props) => {
       closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
       className={{ base: 'modal-content', afterOpen: 'after-open', beforeClose: 'before-close' }}
       overlayClassName={{ base: 'modal-overlay', afterOpen: 'after-open', beforeClose: 'before-close' }}
-      portalClassName={`${className} modal-portal`}
-      htmlOpenClassName='modal-open'
+      portalClassName={`modal ${className}`}
+      htmlOpenClassName={`modal-open ${className}-open`}
       bodyOpenClassName={null}
       {...rest}>
       <p>{children}</p>
