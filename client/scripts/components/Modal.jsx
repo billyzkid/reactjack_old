@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 const MODAL_CLOSE_TIMEOUT_MS = 150;
 
-// See usage: http://reactcommunity.org/react-modal/
+// See ReactModal usage: http://reactcommunity.org/react-modal/
 ReactModal.setAppElement('#root');
 
-// See https://linguinecode.com/post/prevent-re-renders-react-functional-components-react-memo
+// See React.memo info: https://linguinecode.com/post/prevent-re-renders-react-functional-components-react-memo
 const Modal = React.memo((props) => {
   console.log('Modal render', props);
 
