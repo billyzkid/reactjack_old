@@ -11,10 +11,10 @@ const Table = (props) => {
   return (
     <div className='table'>
       <h1>Reactjack</h1>
-      <Dealer />
-      <Banner />
-      <Controls />
-      <Players />
+      {/* <Dealer /> */}
+      {/* <Banner /> */}
+      {/* <Controls /> */}
+      {/* <Players /> */}
     </div>
   );
 };
