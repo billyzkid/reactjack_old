@@ -14,7 +14,13 @@ const reducer = (state, action) => {
       return { ...state, isModal2Open: action.isOpen };
     case 'toggleModal3':
       return { ...state, isModal3Open: action.isOpen };
-    case 'addPlayer':
+    case 'toggleModal4':
+      return { ...state, isModal4Open: action.isOpen };
+    case 'toggleModal5':
+      return { ...state, isModal5Open: action.isOpen };
+    case 'toggleModal6':
+      return { ...state, isModal6Open: action.isOpen };
+  case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':
       return { ...state, players: state.players.filter(p => p.id !== action.id) };
@@ -30,6 +36,9 @@ const ContextProvider = (props) => {
     isModal1Open: false,
     isModal2Open: false,
     isModal3Open: false,
+    isModal4Open: false,
+    isModal5Open: false,
+    isModal6Open: false,
     dealer: {
       name: 'Dealer',
       hand: {
