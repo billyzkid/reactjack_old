@@ -11,7 +11,7 @@ ReactModal.setAppElement('#root');
 const Modal = React.memo((props) => {
   console.log('Modal render', props);
 
-  const { className, onRequestClose, children, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <ReactModal
@@ -20,7 +20,6 @@ const Modal = React.memo((props) => {
       portalClassName={`modal ${className}`}
       htmlOpenClassName={`modal-open ${className}-open`}
       bodyOpenClassName={null}
-      onRequestClose={onRequestClose}
       closeTimeoutMS={MODAL_CLOSE_TIMEOUT_MS}
       {...rest}>
       {children}
