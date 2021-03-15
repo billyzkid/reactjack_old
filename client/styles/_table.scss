@@ -1,6 +1,16 @@
 .table {
-  background-color: green;
-  width: 500px;
-  height: 500px;
+  position: relative; // Relative position used for absolute-positioned cards on mobile
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
   overflow: hidden;
+  background: $table-background;
+
+  > h1 {
+    font: $table-title-font;
+    text-align: center;
+    margin: 0;
+  }
 }

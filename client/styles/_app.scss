@@ -7,12 +7,12 @@
 }
 
 .app {
-  position: relative;
+  position: relative; // Relative position used for absolute-positioned menu
   width: 800px;
   height: 600px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // align-items: center;
   background-color: red;
 }

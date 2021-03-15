@@ -49,7 +49,7 @@
 }
 
 .modal-open {
-  overflow: hidden;
+  overflow: hidden; // Prevent page from scrolling when modal is open
 }
 
 .modal1-open .menu > button:nth-child(1),
