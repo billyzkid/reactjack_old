@@ -3,10 +3,6 @@ html {
   color: $base-color;
   text-shadow: $base-text-shadow;
   background: $base-background;
-
-  &.modal-open {
-    overflow: hidden;
-  }
 }
 
 // @media (orientation: landscape) {
