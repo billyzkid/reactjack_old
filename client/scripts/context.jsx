@@ -24,6 +24,8 @@ const reducer = (state, action) => {
 };
 
 const ContextProvider = (props) => {
+  console.log('ContextProvider render', props);
+
   const [state, dispatch] = useReducer(reducer, {
     isModal1Open: false,
     isModal2Open: false,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStateContext } from './ContextProvider.jsx';
+import { useStateContext } from '../context.jsx';
 import Hand from './Hand.jsx';
 
 const Dealer = (props) => {

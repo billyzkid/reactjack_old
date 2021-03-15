@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ContextProvider } from './components/ContextProvider.jsx';
+import { ContextProvider } from './context.jsx';
 import App from './components/App.jsx';
-import './styles/index.scss';
+import '../styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>

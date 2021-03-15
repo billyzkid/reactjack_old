@@ -11,9 +11,9 @@ const Table = (props) => {
   return (
     <div id='table'>
       <h1>Reactjack</h1>
-      <Dealer />
-      <Banner />
-      <Controls />
+      {/* <Dealer /> */}
+      {/* <Banner /> */}
+      {/* <Controls /> */}
       <Players />
     </div>
   );

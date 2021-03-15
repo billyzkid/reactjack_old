@@ -5,3 +5,10 @@
 @import './banner';
 @import './controls';
 @import './players';
+@import './player';
+@import './hand';
+@import './card';
+
+html {
+  height: 100%;
+}
