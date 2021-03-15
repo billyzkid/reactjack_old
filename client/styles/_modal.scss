@@ -7,36 +7,39 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transition: opacity 300ms ease 0s;
+    background: $modal-overlay-background;
+    backdrop-filter: $modal-overlay-backdrop-filter;
+    opacity: $modal-overlay-opacity;
 
     &.after-open {
-      opacity: 1;
+      opacity: $modal-overlay-opacity-after-open;
+      transition: $modal-overlay-transition-after-open;
     }
 
     &.before-close {
-      opacity: 0;
+      opacity: $modal-overlay-opacity-before-close;
+      transition: $modal-overlay-transition-before-close;
     }
 
     > .modal-content {
-      padding: 20px;
-      border: 1px solid black;
-      border-radius: 5px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      color: black;
-      background-color: white;
+      // padding: 20px;
+      // border: 1px solid black;
+      // border-radius: 5px;
+      // box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      // color: black;
+      // background-color: white;
       outline: none;
-      transform: scale3d(0.8,0.8,0.8);
-      transition: transform 300ms ease 0s;
+      transform: $modal-content-transform;
+
 
       &.after-open {
-        transform: scale3d(1,1,1);
+        transform: $modal-content-transform-after-open;
+        transition: $modal-content-transition-after-open;
       }
 
       &.before-close {
-        transform: scale3d(0.8,0.8,0.8);
+        transform: $modal-content-transform-before-close;
+        transition: $modal-content-transition-before-close;
       }
 
     }

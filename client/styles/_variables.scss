@@ -2,3 +2,17 @@ $base-font: 400 1em/1.2 'Montserrat', sans-serif;
 $base-color: white;
 $base-text-shadow: 1px 1px 1px black;
 $base-background: black;
+
+$modal-overlay-background: rgba(0,0,0,0.5);
+$modal-overlay-backdrop-filter: blur(5px);
+$modal-overlay-opacity: 0;
+$modal-overlay-opacity-after-open: 1;
+$modal-overlay-opacity-before-close: 0;
+$modal-overlay-transition-after-open: opacity 300ms ease 0s;
+$modal-overlay-transition-before-close: opacity 150ms ease 0s; // MODAL_CLOSE_TIMEOUT_MS in Modal.jsx must match the duration used here
+
+$modal-content-transform: scale3d(0.8,0.8,0.8);
+$modal-content-transform-after-open: scale3d(1,1,1);
+$modal-content-transform-before-close: scale3d(0.8,0.8,0.8);
+$modal-content-transition-after-open: transform 300ms ease 0s;
+$modal-content-transition-before-close: transform 150ms ease 0s; // MODAL_CLOSE_TIMEOUT_MS in Modal.jsx must match the duration used here

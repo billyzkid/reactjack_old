@@ -19,22 +19,23 @@ const Modals = (props) => {
   return (
     <Fragment>
       <Modal contentLabel="Modal 1" className="modal1" isOpen={isModal1Open} onRequestClose={closeModal1}>
-        Modal 1 Content
+        <p>Modal 1 Content</p>
       </Modal>
       <Modal contentLabel="Modal 2" className="modal2" isOpen={isModal2Open} onRequestClose={closeModal2}>
-        Modal 2 Content
+        <p>Modal 2 Content</p>
       </Modal>
       <Modal contentLabel="Modal 3" className="modal3" isOpen={isModal3Open} onRequestClose={closeModal3}>
-        Modal 3 Content
+        <p>Modal 3 Content</p>
       </Modal>
       <Modal contentLabel="Modal 4" className="modal4" isOpen={isModal4Open} onRequestClose={closeModal4}>
-        Modal 4 Content
+        <p>Modal 4 Content</p>
       </Modal>
       <Modal contentLabel="Modal 5" className="modal5" isOpen={isModal5Open} onRequestClose={closeModal5}>
-        Modal 5 Content
+        <p>Modal 5 Content</p>
       </Modal>
       <Modal contentLabel="Modal 6" className="modal6" isOpen={isModal6Open} onRequestClose={closeModal6} shouldCloseOnEsc={false} shouldCloseOnOverlayClick={false}>
-        Modal 6 Content
+        <p>Modal 6 Content</p>
+        <button onClick={closeModal6}>Close</button>
       </Modal>
     </Fragment>
   );
