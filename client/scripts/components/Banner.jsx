@@ -18,28 +18,28 @@ const Banner = (props) => {
   const message = messages;//.reduce(brTagCallback);
 
   return (
-    <div id='banner'>
+    <div class='banner'>
       <div>
-        <div id='primary-player-chips'>
+        <div class='primary-player-chips'>
           <p>Chips</p>
           <p>{primaryPlayerChips}</p>
         </div>
-        <div id='primary-player-bet'>
+        <div class='primary-player-bet'>
           <p>Bet</p>
           <p>{primaryPlayerBet}</p>
         </div>
       </div>
       <div>
-        <div id='message'>
+        <div class='message'>
           <p>{message}</p>
         </div>
       </div>
       <div>
-        <div id='primary-player-hand-total'>
+        <div class='primary-player-hand-total'>
           <p>{primaryPlayerName}</p>
           <p>{primaryPlayerHandTotal}</p>
         </div>
-        <div id='dealer-hand-total'>
+        <div class='dealer-hand-total'>
           <p>{dealerName}</p>
           <p>{dealerHandTotal}</p>
         </div>

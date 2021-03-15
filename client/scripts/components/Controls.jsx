@@ -5,7 +5,7 @@ const Controls = (props) => {
   console.log('Controls render', props);
 
   return (
-    <div id='controls'>
+    <div class='controls'>
     </div>
   );
 };

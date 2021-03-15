@@ -6,16 +6,16 @@ const Card = (props) => {
 
   const { rank, suit } = props.card;
 
-  let className;
+  let classes;
 
   if (rank === '?' || suit === '?') {
-    className = 'card hidden';
+    classes = 'card hidden';
   } else {
-    className = `card ${rank}-of-${suit}`;
+    classes = `card ${rank}-of-${suit}`;
   }
 
   return (
-    <div className={className} />
+    <div class={classes} />
   );
 };
 
