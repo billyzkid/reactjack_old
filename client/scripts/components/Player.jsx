@@ -7,25 +7,25 @@ const Player = (props) => {
   console.log('Player render', props);
 
   return (
-    <div class='player'>
-      <div class='info'>
-        <span>{props.player.name}</span>
-        <span>{formatMoney(props.player.chips)}</span>
-        <span>
-          {props.player.hands.map((hand, index) => (
-            <p key={index}>{formatMoney(hand.bet)}</p>
-          ))}
-        </span>
-        <span>
-          {props.player.hands.map((hand, index) => (
-            <p key={index}>{getHandTotal(hand)}</p>
-          ))}
-        </span>
+    <div className='player'>
+      <div className='info'>
+        <p>{props.player.name}</p>
+        <p>{formatMoney(props.player.chips)}</p>
+        <p>
+          {props.player.hands.map((hand, index) =>
+            <span key={index}>{formatMoney(hand.bet)}</span>
+          )}
+        </p>
+        <p>
+          {props.player.hands.map((hand, index) =>
+            <span key={index}>{getHandTotal(hand)}</span>
+          )}
+        </p>
       </div>
-      <div class='hands'>
-        {props.player.hands.map((hand, index) => (
+      <div className='hands'>
+        {props.player.hands.map((hand, index) =>
           <Hand key={index} hand={hand} />
-        ))}
+        )}
       </div>
     </div>
   );

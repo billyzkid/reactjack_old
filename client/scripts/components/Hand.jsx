@@ -6,10 +6,10 @@ const Hand = (props) => {
   console.log('Hand render', props);
 
   return (
-    <div class='hand'>
-      {props.hand.cards.map((card, index) => (
+    <div className='hand'>
+      {props.hand.cards.map((card, index) =>
         <Card key={index} card={card} />
-      ))}
+      )}
     </div>
   );
 };

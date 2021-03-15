@@ -8,7 +8,7 @@ const App = (props) => {
   console.log('App render', props);
 
   return (
-    <div class='app'>
+    <div className='app'>
       <Table />
       <Menu />
       <Modals />

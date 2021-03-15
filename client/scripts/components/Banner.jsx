@@ -7,41 +7,43 @@ const Banner = (props) => {
   console.log('Banner render', props);
 
   const { dealer, players, messages } = useStateContext();
-  //const brTagCallback = (previous, current) => [previous, <br />, current];
-  const primaryPlayer = players.find((p) => p.primary);
-  const primaryPlayerChips = formatMoney(primaryPlayer.chips);
-  const primaryPlayerBet = primaryPlayer.hands.map((h) => formatMoney(h.bet));//.reduce(brTagCallback);
-  const primaryPlayerName = primaryPlayer.name;
-  const primaryPlayerHandTotal = primaryPlayer.hands.map((h) => getHandTotal(h));//.reduce(brTagCallback);
-  const dealerName = dealer.name;
-  const dealerHandTotal = getHandTotal(dealer.hand);
-  const message = messages;//.reduce(brTagCallback);
+  const primaryPlayer = players.find((player) => player.primary);
 
   return (
-    <div class='banner'>
+    <div className='banner'>
       <div>
-        <div class='primary-player-chips'>
+        <div className='primary-player-chips'>
           <p>Chips</p>
-          <p>{primaryPlayerChips}</p>
+          <p>{formatMoney(primaryPlayer.chips)}</p>
         </div>
-        <div class='primary-player-bet'>
+        <div className='primary-player-bet'>
           <p>Bet</p>
-          <p>{primaryPlayerBet}</p>
+          <p>
+            {primaryPlayer.hands.map((hand, index) =>
+              <span key={index}>{formatMoney(hand.bet)}</span>
+            )}
+          </p>
         </div>
       </div>
       <div>
-        <div class='message'>
-          <p>{message}</p>
+        <div className='message'>
+          <p>
+            {messages.map((message, index) =>
+              <span key={index}>{message}</span>
+            )}</p>
         </div>
       </div>
       <div>
-        <div class='primary-player-hand-total'>
-          <p>{primaryPlayerName}</p>
-          <p>{primaryPlayerHandTotal}</p>
+        <div className='primary-player-hand-total'>
+          <p>{primaryPlayer.name}</p>
+          <p>
+            {primaryPlayer.hands.map((hand, index) =>
+              <span key={index}>{getHandTotal(hand)}</span>
+            )}</p>
         </div>
-        <div class='dealer-hand-total'>
-          <p>{dealerName}</p>
-          <p>{dealerHandTotal}</p>
+        <div className='dealer-hand-total'>
+          <p>{dealer.name}</p>
+          <p>{getHandTotal(dealer.hand)}</p>
         </div>
       </div>
     </div>

@@ -15,13 +15,13 @@ const Menu = (props) => {
   const openQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: true }) }, []);
 
   return (
-    <div class="menu">
-      <button class="modal-button info-modal-button" aria-label="Information" onClick={openInfoModal}></button>
-      <button class="modal-button profile-modal-button" aria-label="Profile" onClick={openProfileModal}></button>
-      <button class="modal-button chat-modal-button" aria-label="Chat" onClick={openChatModal}></button>
-      <button class="modal-button music-modal-button" aria-label="Music" onClick={openMusicModal}></button>
-      <button class="modal-button settings-modal-button" aria-label="Settings" onClick={openSettingsModal}></button>
-      <button class="modal-button quit-modal-button" aria-label="Quit" onClick={openQuitModal}></button>
+    <div className="menu">
+      <button className="modal-button info-modal-button" aria-label="Information" onClick={openInfoModal}></button>
+      <button className="modal-button profile-modal-button" aria-label="Profile" onClick={openProfileModal}></button>
+      <button className="modal-button chat-modal-button" aria-label="Chat" onClick={openChatModal}></button>
+      <button className="modal-button music-modal-button" aria-label="Music" onClick={openMusicModal}></button>
+      <button className="modal-button settings-modal-button" aria-label="Settings" onClick={openSettingsModal}></button>
+      <button className="modal-button quit-modal-button" aria-label="Quit" onClick={openQuitModal}></button>
     </div>
   );
 };

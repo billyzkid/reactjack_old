@@ -9,10 +9,10 @@ const Players = (props) => {
   const { players } = useStateContext();
 
   return (
-    <div class='players'>
-      {players.map((player, index) => (
+    <div className='players'>
+      {players.map((player, index) =>
         <Player key={index} player={player} />
-      ))}
+      )}
     </div>
   );
 };

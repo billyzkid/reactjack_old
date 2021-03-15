@@ -18,22 +18,22 @@ const Modals = (props) => {
 
   return (
     <Fragment>
-      <Modal contentLabel="Information" class="info-modal" isOpen={isInfoModalOpen} onRequestClose={closeInfoModal}>
+      <Modal contentLabel="Information" className="info-modal" isOpen={isInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
       </Modal>
-      <Modal contentLabel="Profile" class="profile-modal" isOpen={isProfileModalOpen} onRequestClose={closeProfileModal}>
+      <Modal contentLabel="Profile" className="profile-modal" isOpen={isProfileModalOpen} onRequestClose={closeProfileModal}>
         <p>Profile</p>
       </Modal>
-      <Modal contentLabel="Chat" class="chat-modal" isOpen={isChatModalOpen} onRequestClose={closeChatModal}>
+      <Modal contentLabel="Chat" className="chat-modal" isOpen={isChatModalOpen} onRequestClose={closeChatModal}>
         <p>Chat</p>
       </Modal>
-      <Modal contentLabel="Music" class="music-modal" isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
+      <Modal contentLabel="Music" className="music-modal" isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
         <p>Music</p>
       </Modal>
-      <Modal contentLabel="Settings" class="settings-modal" isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
+      <Modal contentLabel="Settings" className="settings-modal" isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
       </Modal>
-      <Modal contentLabel="Quit" class="quit-modal" isOpen={isQuitModalOpen} onRequestClose={closeQuitModal} shouldCloseOnEsc={false} shouldCloseOnOverlayClick={false}>
+      <Modal contentLabel="Quit" className="quit-modal" isOpen={isQuitModalOpen} onRequestClose={closeQuitModal} shouldCloseOnEsc={false} shouldCloseOnOverlayClick={false}>
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
