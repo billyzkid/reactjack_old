@@ -52,11 +52,11 @@
   overflow: hidden; // Prevent page from scrolling when modal is open
 }
 
-.modal1-open .menu > button:nth-child(1),
-.modal2-open .menu > button:nth-child(2),
-.modal3-open .menu > button:nth-child(3),
-.modal4-open .menu > button:nth-child(4),
-.modal5-open .menu > button:nth-child(5),
-.modal6-open .menu > button:nth-child(6) {
+.info-modal-open .menu > button:nth-child(1),
+.profile-modal-open .menu > button:nth-child(2),
+.chatmodal-open .menu > button:nth-child(3),
+.music-modal-open .menu > button:nth-child(4),
+.settings-modal-open .menu > button:nth-child(5),
+.quit-modal-open .menu > button:nth-child(6) {
   color: $menu-button-color-alt;
 }

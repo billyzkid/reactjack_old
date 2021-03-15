@@ -8,18 +8,18 @@ const SocketContext = createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'toggleModal1':
-      return { ...state, isModal1Open: action.isOpen };
-    case 'toggleModal2':
-      return { ...state, isModal2Open: action.isOpen };
-    case 'toggleModal3':
-      return { ...state, isModal3Open: action.isOpen };
-    case 'toggleModal4':
-      return { ...state, isModal4Open: action.isOpen };
-    case 'toggleModal5':
-      return { ...state, isModal5Open: action.isOpen };
-    case 'toggleModal6':
-      return { ...state, isModal6Open: action.isOpen };
+    case 'toggleInfoModal':
+      return { ...state, isInfoModalOpen: action.isOpen };
+    case 'toggleProfileModal':
+      return { ...state, isProfileModalOpen: action.isOpen };
+    case 'toggleChatModal':
+      return { ...state, isChatModalOpen: action.isOpen };
+    case 'toggleMusicModal':
+      return { ...state, isMusicModalOpen: action.isOpen };
+    case 'toggleSettingsModal':
+      return { ...state, isSettingsModalOpen: action.isOpen };
+    case 'toggleQuitModal':
+      return { ...state, isQuitModalOpen: action.isOpen };
   case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':
@@ -33,12 +33,12 @@ const ContextProvider = (props) => {
   console.log('ContextProvider render', props);
 
   const [state, dispatch] = useReducer(reducer, {
-    isModal1Open: false,
-    isModal2Open: false,
-    isModal3Open: false,
-    isModal4Open: false,
-    isModal5Open: false,
-    isModal6Open: false,
+    isInfoModalOpen: false,
+    isProfileModalOpen: false,
+    isChatModalOpen: false,
+    isMusicModalOpen: false,
+    isSettingsModalOpen: false,
+    isQuitModalOpen: false,
     dealer: {
       name: 'Dealer',
       hand: {

@@ -7,21 +7,21 @@ const Menu = (props) => {
 
   const dispatch = useDispatchContext();
 
-  const openModal1 = useCallback(()=> { dispatch({ type: 'toggleModal1', isOpen: true }) }, []);
-  const openModal2 = useCallback(()=> { dispatch({ type: 'toggleModal2', isOpen: true }) }, []);
-  const openModal3 = useCallback(()=> { dispatch({ type: 'toggleModal3', isOpen: true }) }, []);
-  const openModal4 = useCallback(()=> { dispatch({ type: 'toggleModal4', isOpen: true }) }, []);
-  const openModal5 = useCallback(()=> { dispatch({ type: 'toggleModal5', isOpen: true }) }, []);
-  const openModal6 = useCallback(()=> { dispatch({ type: 'toggleModal6', isOpen: true }) }, []);
+  const openInfoModal = useCallback(()=> { dispatch({ type: 'toggleInfoModal', isOpen: true }) }, []);
+  const openProfileModal = useCallback(()=> { dispatch({ type: 'toggleProfileModal', isOpen: true }) }, []);
+  const openChatModal = useCallback(()=> { dispatch({ type: 'toggleChatModal', isOpen: true }) }, []);
+  const openMusicModal = useCallback(()=> { dispatch({ type: 'toggleMusicModal', isOpen: true }) }, []);
+  const openSettingsModal = useCallback(()=> { dispatch({ type: 'toggleSettingsModal', isOpen: true }) }, []);
+  const openQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: true }) }, []);
 
   return (
     <div class="menu">
-      <button class="las la-info-circle" aria-label="Information" onClick={openModal1}></button>
-      <button class="las la-user-circle" aria-label="Profile" onClick={openModal2}></button>
-      <button class="las la-comments" aria-label="Chat" onClick={openModal3}></button>
-      <button class="las la-music" aria-label="Music" onClick={openModal4}></button>
-      <button class="las la-cog" aria-label="Settings" onClick={openModal5}></button>
-      <button class="las la-sign-out-alt" aria-label="Quit" onClick={openModal6}></button>
+      <button class="las la-info-circle" aria-label="Information" onClick={openInfoModal}></button>
+      <button class="las la-user-circle" aria-label="Profile" onClick={openProfileModal}></button>
+      <button class="las la-comments" aria-label="Chat" onClick={openChatModal}></button>
+      <button class="las la-music" aria-label="Music" onClick={openMusicModal}></button>
+      <button class="las la-cog" aria-label="Settings" onClick={openSettingsModal}></button>
+      <button class="las la-sign-out-alt" aria-label="Quit" onClick={openQuitModal}></button>
     </div>
   );
 };
