@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
 
-  > button {
-    font-size: $menu-button-font-size;
+  > .modal-button {
+    font: $menu-button-font;
     width: $menu-button-width;
     height: $menu-button-height;
     padding: 0;
@@ -17,12 +17,38 @@
     outline: none;
     cursor: pointer;
     transition: $menu-button-transition;
+    @include font-smoothing(on);
+
+    &:focus,
+    &:hover:enabled,
+    &:active:enabled {
+        color: $menu-button-color-alt;
+    }
+
   }
 
-  > button:focus,
-  > button:hover:enabled,
-  > button:active:enabled {
-      color: $menu-button-color-alt;
+  > .info-modal-button::before {
+    content: '\f05a'; // la-info-circle
+  }
+
+  > .profile-modal-button::before {
+    content: '\f2bd'; // la-user-circle
+  }
+
+  > .chat-modal-button::before {
+    content: '\f086'; // la-comments
+  }
+
+  > .music-modal-button::before {
+    content: '\f001'; // la-music
+  }
+
+  > .settings-modal-button::before {
+    content: '\f013'; // la-cog
+  }
+
+  > .quit-modal-button::before {
+    content: '\f2f5'; // la-sign-out-alt
   }
 
 }

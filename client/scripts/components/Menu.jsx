@@ -16,12 +16,12 @@ const Menu = (props) => {
 
   return (
     <div class="menu">
-      <button class="info-modal-button las la-info-circle" aria-label="Information" onClick={openInfoModal}></button>
-      <button class="profile-modal-button las la-user-circle" aria-label="Profile" onClick={openProfileModal}></button>
-      <button class="chat-modal-button las la-comments" aria-label="Chat" onClick={openChatModal}></button>
-      <button class="music-modal-button las la-music" aria-label="Music" onClick={openMusicModal}></button>
-      <button class="settings-modal-button las la-cog" aria-label="Settings" onClick={openSettingsModal}></button>
-      <button class="quit-modal-button las la-sign-out-alt" aria-label="Quit" onClick={openQuitModal}></button>
+      <button class="modal-button info-modal-button" aria-label="Information" onClick={openInfoModal}></button>
+      <button class="modal-button profile-modal-button" aria-label="Profile" onClick={openProfileModal}></button>
+      <button class="modal-button chat-modal-button" aria-label="Chat" onClick={openChatModal}></button>
+      <button class="modal-button music-modal-button" aria-label="Music" onClick={openMusicModal}></button>
+      <button class="modal-button settings-modal-button" aria-label="Settings" onClick={openSettingsModal}></button>
+      <button class="modal-button quit-modal-button" aria-label="Quit" onClick={openQuitModal}></button>
     </div>
   );
 };
