@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './Table.jsx';
+import Menu from './Menu.jsx';
+import Modals from './Modals.jsx';
 
 const App = (props) => {
   console.log('App render', props);
 
   return (
-    <div id='app'>
+    <div class='app'>
       <Table />
+      <Menu />
+      <Modals />
     </div>
   );
 };

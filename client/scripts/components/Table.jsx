@@ -9,12 +9,12 @@ const Table = (props) => {
   console.log('Table render', props);
 
   return (
-    <div id='table'>
+    <div class='table'>
       <h1>Reactjack</h1>
       {/* <Dealer /> */}
       {/* <Banner /> */}
       {/* <Controls /> */}
-      <Players />
+      {/* <Players /> */}
     </div>
   );
 };

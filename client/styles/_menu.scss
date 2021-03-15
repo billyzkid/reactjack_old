@@ -1,0 +1,29 @@
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+
+  > button {
+    font-size: 2em;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    text-shadow: inherit;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.2s ease 0s;
+  }
+
+  > button:focus,
+  > button:hover:enabled,
+  > button:active:enabled,
+  > button.open:enabled {
+      color: goldenrod;
+  }
+
+}
