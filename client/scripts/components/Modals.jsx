@@ -28,7 +28,7 @@ const Modals = (props) => {
         <p>Chat</p>
       </Modal>
       <Modal contentLabel="Music" className="music-modal" isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
-        <p>Music</p>
+        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Modal>
       <Modal contentLabel="Settings" className="settings-modal" isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
