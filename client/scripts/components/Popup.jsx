@@ -17,8 +17,10 @@ const animations = {
 const Popup = (props) => {
   console.log('Popup render', props);
 
-  const firstRenderRef = useRef(false);
   const { visible } = props;
+  const nodeRef1 = useRef(null);
+  const nodeRef2 = useRef(null);
+  const firstRenderRef = useRef(false);
 
   if (!firstRenderRef.current && !visible) {
     return null;
@@ -48,16 +50,16 @@ const Popup = (props) => {
   const rootCls = classnames(prefixCls, wrapClassName, `${prefixCls}__${position}`);
   const maskCls = classnames(`${prefixCls}-mask`, { [`${prefixCls}-mask__visible`]: mask });
   const contentCls = classnames(`${prefixCls}-content`, `${prefixCls}-content__${position}`);
-  const contentAnimation = animations[position];
+  const contentAnimationCls = animations[position];
 
   return (
     <Portal node={node}>
       <div className={rootCls}>
-        <CSSTransition in={visible} timeout={duration} classNames={`${prefixCls}-fade`} appear>
-          <div className={maskCls} onClick={onMaskClick} />
+        <CSSTransition nodeRef={nodeRef1} in={visible} timeout={duration} classNames={`${prefixCls}-fade`} appear>
+          <div ref={nodeRef1} className={maskCls} onClick={onMaskClick} />
         </CSSTransition>
-        <CSSTransition in={visible} timeout={duration} classNames={contentAnimation} unmountOnExit={destroyOnClose} appear>
-          <div className={contentCls}>{children}</div>
+        <CSSTransition nodeRef={nodeRef2} in={visible} timeout={duration} classNames={contentAnimationCls} unmountOnExit={destroyOnClose} appear>
+          <div ref={nodeRef2} className={contentCls}>{children}</div>
         </CSSTransition>
       </div>
     </Portal>
