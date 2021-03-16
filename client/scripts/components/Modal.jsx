@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactModal from './react-modal';
+import ReactModal from './ReactModal';
 import PropTypes from 'prop-types';
 
 const MODAL_CLOSE_TIMEOUT_MS = 150;
