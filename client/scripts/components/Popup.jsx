@@ -15,6 +15,8 @@ const animations = {
 };
 
 const Popup = (props) => {
+  console.log('Popup render', props);
+
   const firstRenderRef = useRef(false);
   const { visible } = props;
 
