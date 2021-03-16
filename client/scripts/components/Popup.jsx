@@ -36,7 +36,7 @@ const Popup = (props) => {
     wrapClassName,
     position,
     destroyOnClose,
-    children,
+    children
   } = props;
 
   const onMaskClick = () => {
@@ -70,9 +70,8 @@ Popup.propTypes = {
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
   onClose: PropTypes.func,
-  stopScrollUnderMask: PropTypes.bool,
   destroyOnClose: PropTypes.bool,
-  wrapClassName: PropTypes.string,
+  wrapClassName: PropTypes.string
 };
 
 Popup.defaultProps = {
@@ -81,9 +80,8 @@ Popup.defaultProps = {
   mask: true,
   maskClosable: false,
   onClose: () => {},
-  // stopScrollUnderMask: true,
   destroyOnClose: false,
-  wrapClassName: '',
+  wrapClassName: ''
 };
 
 export default Popup;

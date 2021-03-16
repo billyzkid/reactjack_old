@@ -26,7 +26,7 @@ const Portal = (props) => {
 
 Portal.propTypes = {
   node: PropTypes.instanceOf(HTMLElement),
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default Portal;
