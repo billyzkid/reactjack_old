@@ -85,22 +85,22 @@ export default class ModalPortal extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (process.env.NODE_ENV !== "production") {
-      if (prevProps.bodyOpenClassName !== this.props.bodyOpenClassName) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'React-Modal: "bodyOpenClassName" prop has been modified. ' +
-            "This may cause unexpected behavior when multiple modals are open."
-        );
-      }
-      if (prevProps.htmlOpenClassName !== this.props.htmlOpenClassName) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          'React-Modal: "htmlOpenClassName" prop has been modified. ' +
-            "This may cause unexpected behavior when multiple modals are open."
-        );
-      }
-    }
+    // if (process.env.NODE_ENV !== "production") {
+    //   if (prevProps.bodyOpenClassName !== this.props.bodyOpenClassName) {
+    //     // eslint-disable-next-line no-console
+    //     console.warn(
+    //       'React-Modal: "bodyOpenClassName" prop has been modified. ' +
+    //         "This may cause unexpected behavior when multiple modals are open."
+    //     );
+    //   }
+    //   if (prevProps.htmlOpenClassName !== this.props.htmlOpenClassName) {
+    //     // eslint-disable-next-line no-console
+    //     console.warn(
+    //       'React-Modal: "htmlOpenClassName" prop has been modified. ' +
+    //         "This may cause unexpected behavior when multiple modals are open."
+    //     );
+    //   }
+    // }
 
     if (this.props.isOpen && !prevProps.isOpen) {
       this.open();
