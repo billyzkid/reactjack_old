@@ -2,6 +2,7 @@ import React, { Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useStateContext, useDispatchContext } from '../context.jsx';
 import Modal from './Modal.jsx';
+import Popup from './Popup.jsx';
 
 const Modals = (props) => {
   console.log('Modals render', props);
@@ -18,9 +19,9 @@ const Modals = (props) => {
 
   return (
     <Fragment>
-      <Modal contentLabel="Information" className="info-modal" isOpen={isInfoModalOpen} onRequestClose={closeInfoModal}>
+      {/* <Modal contentLabel="Information" className="info-modal" isOpen={isInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
-      </Modal>
+      </Modal> */}
       <Modal contentLabel="Profile" className="profile-modal" isOpen={isProfileModalOpen} onRequestClose={closeProfileModal}>
         <p>Profile</p>
       </Modal>
@@ -28,7 +29,7 @@ const Modals = (props) => {
         <p>Chat</p>
       </Modal>
       <Modal contentLabel="Music" className="music-modal" isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
-        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
+        <p>Music</p>
       </Modal>
       <Modal contentLabel="Settings" className="settings-modal" isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
@@ -37,6 +38,9 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
+      <Popup visible={isInfoModalOpen} maskClosable={true} onClose={closeInfoModal}>
+        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
+      </Popup>
     </Fragment>
   );
 };

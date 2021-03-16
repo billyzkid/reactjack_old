@@ -1,0 +1,210 @@
+$animationDuration: 300ms;
+
+.react-easy-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1999;
+  pointer-events: none;
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-easy-popup-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.72);
+    pointer-events: auto;
+
+    &__visible {
+      display: block;
+    }
+
+    // Fixes an android webview opacity render bug
+    // &::before {
+    //   content: '.';
+    //   display: block;
+    //   width: 1px;
+    //   height: 1px;
+    //   margin-left: -10px;
+    //   background-color: rgba(0, 0, 0, 0.1);
+    // }
+  }
+
+  .react-easy-popup-content {
+    position: relative;
+    width: 100%;
+    color: rgba(113, 113, 113, 1);
+    pointer-events: auto;
+    -webkit-overflow-scrolling: touch; /* ios5+ */
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__top {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    &__bottom {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    &__left {
+      position: absolute;
+      width: auto;
+      max-width: 100%;
+      height: 100%;
+    }
+
+    &__right {
+      position: absolute;
+      right: 0;
+      width: auto;
+      max-width: 100%;
+      height: 100%;
+    }
+
+    &__center {
+      width: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+.react-easy-popup {
+
+  /* Fade */
+  &-fade-enter,
+  &-fade-appear,
+  &-fade-exit-done {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &-fade-appear-active,
+  &-fade-enter-active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $animationDuration, visibility $animationDuration;
+  }
+
+  &-fade-exit,
+  &-fade-enter-done {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &-fade-exit-active {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $animationDuration, visibility $animationDuration;
+  }
+
+  /* SlideUp */
+  &-slide-up-enter,
+  &-slide-up-appear,
+  &-slide-up-exit-done {
+    transform: translate(0, 100%);
+  }
+
+  &-slide-up-enter-active,
+  &-slide-up-appear-active {
+    transform: translate(0, 0);
+    transition: transform $animationDuration;
+  }
+
+  &-slide-up-exit,
+  &-slide-up-enter-done {
+    transform: translate(0, 0);
+  }
+
+  &-slide-up-exit-active {
+    transform: translate(0, 100%);
+    transition: transform $animationDuration;
+  }
+
+  /* SlideDown */
+  &-slide-down-enter,
+  &-slide-down-appear,
+  &-slide-down-exit-done {
+    transform: translate(0, -100%);
+  }
+
+  &-slide-down-enter-active,
+  &-slide-down-appear-active {
+    transform: translate(0, 0);
+    transition: transform $animationDuration;
+  }
+
+  &-slide-down-exit,
+  &-slide-down-enter-done {
+    transform: translate(0, 0);
+  }
+
+  &-slide-down-exit-active {
+    transform: translate(0, -100%);
+    transition: transform $animationDuration;
+  }
+
+  /* SlideLeft */
+  &-slide-left-enter,
+  &-slide-left-appear,
+  &-slide-left-exit-done {
+    transform: translate(100%, 0);
+  }
+
+  &-slide-left-enter-active,
+  &-slide-left-appear-active {
+    transform: translate(0, 0);
+    transition: transform $animationDuration;
+  }
+
+  &-slide-left-exit,
+  &-slide-left-enter-done {
+    transform: translate(0, 0);
+  }
+
+  &-slide-left-exit-active {
+    transform: translate(100%, 0);
+    transition: transform $animationDuration;
+  }
+
+  /* SlideRight */
+  &-slide-right-enter,
+  &-slide-right-appear,
+  &-slide-right-exit-done {
+    transform: translate(-100%, 0);
+  }
+
+  &-slide-right-enter-active,
+  &-slide-right-appear-active {
+    transform: translate(0, 0);
+    transition: transform $animationDuration;
+  }
+
+  &-slide-right-exit,
+  &-slide-right-enter-done {
+    transform: translate(0, 0);
+  }
+
+  &-slide-right-exit-active {
+    transform: translate(-100%, 0);
+    transition: transform $animationDuration;
+  }
+
+}
