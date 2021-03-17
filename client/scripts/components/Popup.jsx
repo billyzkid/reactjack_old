@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Portal from './Portal.jsx';
 
-const prefixCls = 'react-easy-popup';
 const duration = 300;
+
 const animations = {
-  bottom: prefixCls + "-slide-up",
-  right: prefixCls + "-slide-left",
-  left: prefixCls + "-slide-right",
-  top: prefixCls + "-slide-down",
-  center: prefixCls + "-fade"
+  bottom: 'popup-slide-up',
+  right: 'popup-slide-left',
+  left: 'popup-slide-right',
+  top: 'popup-slide-down',
+  center: 'popup-fade'
 };
 
 const Popup = (props) => {
@@ -47,15 +47,15 @@ const Popup = (props) => {
     }
   };
 
-  const rootCls = classnames(prefixCls, wrapClassName, `${prefixCls}__${position}`);
-  const maskCls = classnames(`${prefixCls}-mask`, { [`${prefixCls}-mask__visible`]: mask });
-  const contentCls = classnames(`${prefixCls}-content`, `${prefixCls}-content__${position}`);
+  const rootCls = classnames('popup', wrapClassName, `popup__${position}`);
+  const maskCls = classnames(`popup-mask`, { [`popup-mask__visible`]: mask });
+  const contentCls = classnames(`popup-content`, `popup-content__${position}`);
   const contentAnimationCls = animations[position];
 
   return (
     <Portal node={node}>
       <div className={rootCls}>
-        <CSSTransition nodeRef={nodeRef1} in={visible} timeout={duration} classNames={`${prefixCls}-fade`} appear>
+        <CSSTransition nodeRef={nodeRef1} in={visible} timeout={duration} classNames={`popup-fade`} appear>
           <div ref={nodeRef1} className={maskCls} onClick={onMaskClick} />
         </CSSTransition>
         <CSSTransition nodeRef={nodeRef2} in={visible} timeout={duration} classNames={contentAnimationCls} unmountOnExit={destroyOnClose} appear>

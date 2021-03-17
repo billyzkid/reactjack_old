@@ -16,7 +16,7 @@ const Portal = (props) => {
 
   if (!node && !defaultNodeRef.current) {
     const defaultNode = document.createElement('div');
-    defaultNode.className = 'react-easy-popup__portal';
+    defaultNode.className = 'popup-portal';
     defaultNodeRef.current = defaultNode;
     document.body.appendChild(defaultNode);
   }

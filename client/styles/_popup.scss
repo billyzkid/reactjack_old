@@ -1,12 +1,9 @@
 $animationDuration: 300ms;
 
-.react-easy-popup {
+.popup {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1999;
+  inset: 0;
+  // z-index: 1999;
   pointer-events: none;
 
   &__center {
@@ -15,15 +12,12 @@ $animationDuration: 300ms;
     justify-content: center;
   }
 
-  .react-easy-popup-mask {
+  .popup-mask {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     display: none;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.72);
+    background-color: rgba(0,0,0,0.5);
     pointer-events: auto;
 
     &__visible {
@@ -41,16 +35,16 @@ $animationDuration: 300ms;
     // }
   }
 
-  .react-easy-popup-content {
+  .popup-content {
     position: relative;
     width: 100%;
-    color: rgba(113, 113, 113, 1);
+    // color: rgba(113,113,113,1);
     pointer-events: auto;
-    -webkit-overflow-scrolling: touch; /* ios5+ */
+    // -webkit-overflow-scrolling: touch;
 
-    ::-webkit-scrollbar {
-      display: none;
-    }
+    // ::-webkit-scrollbar {
+    //   display: none;
+    // }
 
     &__top {
       position: absolute;
@@ -83,12 +77,10 @@ $animationDuration: 300ms;
       width: auto;
       max-width: 100%;
     }
+
   }
-}
 
-.react-easy-popup {
-
-  /* Fade */
+  /* fade */
   &-fade-enter,
   &-fade-appear,
   &-fade-exit-done {
@@ -115,7 +107,7 @@ $animationDuration: 300ms;
     transition: opacity $animationDuration, visibility $animationDuration;
   }
 
-  /* SlideUp */
+  /* slide-up */
   &-slide-up-enter,
   &-slide-up-appear,
   &-slide-up-exit-done {
@@ -138,7 +130,7 @@ $animationDuration: 300ms;
     transition: transform $animationDuration;
   }
 
-  /* SlideDown */
+  /* slide-down */
   &-slide-down-enter,
   &-slide-down-appear,
   &-slide-down-exit-done {
@@ -161,7 +153,7 @@ $animationDuration: 300ms;
     transition: transform $animationDuration;
   }
 
-  /* SlideLeft */
+  /* slide-left */
   &-slide-left-enter,
   &-slide-left-appear,
   &-slide-left-exit-done {
@@ -184,7 +176,7 @@ $animationDuration: 300ms;
     transition: transform $animationDuration;
   }
 
-  /* SlideRight */
+  /* slide-right */
   &-slide-right-enter,
   &-slide-right-appear,
   &-slide-right-exit-done {
@@ -207,4 +199,12 @@ $animationDuration: 300ms;
     transition: transform $animationDuration;
   }
 
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  min-width: 150px; /* Prevent iframe content from breaking */
+  height: 100%;
+  border: none;
 }
