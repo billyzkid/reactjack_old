@@ -3,49 +3,46 @@ $animationDuration: 300ms;
 .popup {
   position: fixed;
   inset: 0;
-  pointer-events: none;
 
-  &__center {
+  &-center {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
 
-  &__top {
+  &-top {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
 
-  &__bottom {
+  &-bottom {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
 
-  &__left {
+  &-left {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
   }
 
-  &__right {
+  &-right {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-  }
-
-  > .popup-content {
-    position: relative;
-    pointer-events: auto;
   }
 
   > .popup-mask {
     position: absolute;
     inset: 0;
     background-color: rgba(0,0,0,0.5);
-    pointer-events: auto;
+  }
+
+  > .popup-content {
+    position: relative;
   }
 
   /* fade */

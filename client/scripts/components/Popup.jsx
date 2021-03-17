@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import Portal from './Portal.jsx';
 
-const duration = 300;
+const timeouts = {
+  appear: 300,
+  enter: 300,
+  exit: 300
+};
 
 const animations = {
   center: 'popup-fade',
@@ -16,27 +19,35 @@ const animations = {
 const Popup = (props) => {
   console.log('Popup render', props);
 
-  const { isOpen } = props;
-  const maskNodeRef = useRef(null);
-  const contentNodeRef = useRef(null);
-  const firstRenderRef = useRef(false);
-
-  if (!firstRenderRef.current && !isOpen) {
-    return null;
-  }
-
-  if (!firstRenderRef.current) {
-    firstRenderRef.current = true;
-  }
-
   const {
-    children,
+    isOpen,
     position,
     mask,
     maskClosable,
     unmountOnClose,
-    onClose
+    onClose,
+    children
   } = props;
+
+  const popupRef = useRef(null);
+  const maskRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    let timeout;
+
+    if (isOpen) {
+      popupRef.current.hidden = false;
+    } else {
+      timeout = setTimeout(() => popupRef.current.hidden = true, timeouts.exit);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    }
+  }, [isOpen]);
 
   const onMaskClick = () => {
     if (maskClosable) {
@@ -45,16 +56,16 @@ const Popup = (props) => {
   };
 
   return (
-    <Portal className={`popup popup__${position}`}>
+    <div ref={popupRef} className={`popup popup-${position}`} hidden>
       {mask && (
-        <CSSTransition nodeRef={maskNodeRef} in={isOpen} timeout={duration} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
-          <div ref={maskNodeRef} className='popup-mask' onClick={onMaskClick} />
+        <CSSTransition nodeRef={maskRef} in={isOpen} timeout={timeouts} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
+          <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
         </CSSTransition>
       )}
-      <CSSTransition nodeRef={contentNodeRef} in={isOpen} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
-        <div ref={contentNodeRef} className='popup-content'>{children}</div>
+      <CSSTransition nodeRef={contentRef} in={isOpen} timeout={timeouts} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
+        <div ref={contentRef} className='popup-content'>{children}</div>
       </CSSTransition>
-    </Portal>
+    </div>
   );
 };
 
@@ -64,7 +75,8 @@ Popup.propTypes = {
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
   unmountOnClose: PropTypes.bool,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  children: PropTypes.node
 };
 
 Popup.defaultProps = {
@@ -73,7 +85,8 @@ Popup.defaultProps = {
   mask: true,
   maskClosable: false,
   unmountOnClose: false,
-  onClose: () => {}
+  onClose: () => {},
+  children: null
 };
 
 export default Popup;
