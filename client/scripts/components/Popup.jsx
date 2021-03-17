@@ -30,7 +30,6 @@ const Popup = (props) => {
   }
 
   const {
-    node,
     children,
     position,
     mask,
@@ -46,17 +45,15 @@ const Popup = (props) => {
   };
 
   return (
-    <Portal node={node}>
-      <div className={`popup popup__${position}`}>
-        {mask && (
-          <CSSTransition nodeRef={maskNodeRef} in={isOpen} timeout={duration} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
-            <div ref={maskNodeRef} className='popup-mask' onClick={onMaskClick} />
-          </CSSTransition>
-        )}
-        <CSSTransition nodeRef={contentNodeRef} in={isOpen} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
-          <div ref={contentNodeRef} className='popup-content'>{children}</div>
+    <Portal className={`popup popup__${position}`}>
+      {mask && (
+        <CSSTransition nodeRef={maskNodeRef} in={isOpen} timeout={duration} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
+          <div ref={maskNodeRef} className='popup-mask' onClick={onMaskClick} />
         </CSSTransition>
-      </div>
+      )}
+      <CSSTransition nodeRef={contentNodeRef} in={isOpen} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
+        <div ref={contentNodeRef} className='popup-content'>{children}</div>
+      </CSSTransition>
     </Portal>
   );
 };
