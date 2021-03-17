@@ -6,22 +6,22 @@ import Portal from './Portal.jsx';
 const duration = 300;
 
 const animations = {
-  bottom: 'popup-slide-up',
-  right: 'popup-slide-left',
-  left: 'popup-slide-right',
+  center: 'popup-fade',
   top: 'popup-slide-down',
-  center: 'popup-fade'
+  bottom: 'popup-slide-up',
+  left: 'popup-slide-right',
+  right: 'popup-slide-left'
 };
 
 const Popup = (props) => {
   console.log('Popup render', props);
 
-  const { visible } = props;
+  const { isOpen } = props;
   const maskNodeRef = useRef(null);
   const contentNodeRef = useRef(null);
   const firstRenderRef = useRef(false);
 
-  if (!firstRenderRef.current && !visible) {
+  if (!firstRenderRef.current && !isOpen) {
     return null;
   }
 
@@ -45,18 +45,16 @@ const Popup = (props) => {
     }
   };
 
-  const rootClassNames = `popup popup__${position}`;
-  const maskClassNames = `popup-mask ${mask ? 'popup-mask__visible' : ''}`;
-  const contentClassNames = `popup-content popup-content__${position}`;
-
   return (
     <Portal node={node}>
-      <div className={rootClassNames}>
-        <CSSTransition nodeRef={maskNodeRef} in={visible} timeout={duration} classNames={`popup-fade`} unmountOnExit={unmountOnClose} appear>
-          <div ref={maskNodeRef} className={maskClassNames} onClick={onMaskClick} />
-        </CSSTransition>
-        <CSSTransition nodeRef={contentNodeRef} in={visible} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
-          <div ref={contentNodeRef} className={contentClassNames}>{children}</div>
+      <div className={`popup popup__${position}`}>
+        {mask && (
+          <CSSTransition nodeRef={maskNodeRef} in={isOpen} timeout={duration} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
+            <div ref={maskNodeRef} className='popup-mask' onClick={onMaskClick} />
+          </CSSTransition>
+        )}
+        <CSSTransition nodeRef={contentNodeRef} in={isOpen} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
+          <div ref={contentNodeRef} className='popup-content'>{children}</div>
         </CSSTransition>
       </div>
     </Portal>
@@ -64,8 +62,8 @@ const Popup = (props) => {
 };
 
 Popup.propTypes = {
-  visible: PropTypes.bool,
-  position: PropTypes.oneOf(['top', 'right', 'bottom', 'left', 'center']),
+  isOpen: PropTypes.bool,
+  position: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
   unmountOnClose: PropTypes.bool,
@@ -73,7 +71,7 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
-  visible: false,
+  isOpen: false,
   position: 'center',
   mask: true,
   maskClosable: false,
