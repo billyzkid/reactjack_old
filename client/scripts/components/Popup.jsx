@@ -31,12 +31,12 @@ const Popup = (props) => {
 
   const {
     node,
+    children,
+    position,
     mask,
     maskClosable,
-    onClose,
-    position,
-    destroyOnClose,
-    children
+    unmountOnClose,
+    onClose
   } = props;
 
   const onMaskClick = () => {
@@ -52,10 +52,10 @@ const Popup = (props) => {
   return (
     <Portal node={node}>
       <div className={rootClassNames}>
-        <CSSTransition nodeRef={maskNodeRef} in={visible} timeout={duration} classNames={`popup-fade`} appear>
+        <CSSTransition nodeRef={maskNodeRef} in={visible} timeout={duration} classNames={`popup-fade`} unmountOnExit={unmountOnClose} appear>
           <div ref={maskNodeRef} className={maskClassNames} onClick={onMaskClick} />
         </CSSTransition>
-        <CSSTransition nodeRef={contentNodeRef} in={visible} timeout={duration} classNames={animations[position]} unmountOnExit={destroyOnClose} appear>
+        <CSSTransition nodeRef={contentNodeRef} in={visible} timeout={duration} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
           <div ref={contentNodeRef} className={contentClassNames}>{children}</div>
         </CSSTransition>
       </div>
@@ -68,8 +68,8 @@ Popup.propTypes = {
   position: PropTypes.oneOf(['top', 'right', 'bottom', 'left', 'center']),
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
-  onClose: PropTypes.func,
-  destroyOnClose: PropTypes.bool
+  unmountOnClose: PropTypes.bool,
+  onClose: PropTypes.func
 };
 
 Popup.defaultProps = {
@@ -77,8 +77,8 @@ Popup.defaultProps = {
   position: 'center',
   mask: true,
   maskClosable: false,
-  onClose: () => {},
-  destroyOnClose: false
+  unmountOnClose: false,
+  onClose: () => {}
 };
 
 export default Popup;
