@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Portal from './Portal.jsx';
 
 const duration = 300;
@@ -35,7 +34,6 @@ const Popup = (props) => {
     mask,
     maskClosable,
     onClose,
-    wrapClassName,
     position,
     destroyOnClose,
     children
@@ -47,9 +45,9 @@ const Popup = (props) => {
     }
   };
 
-  const rootClassNames = classnames('popup', wrapClassName, `popup__${position}`);
-  const maskClassNames = classnames(`popup-mask`, { [`popup-mask__visible`]: mask });
-  const contentClassNames = classnames(`popup-content`, `popup-content__${position}`);
+  const rootClassNames = `popup popup__${position}`;
+  const maskClassNames = `popup-mask ${mask ? 'popup-mask__visible' : ''}`;
+  const contentClassNames = `popup-content popup-content__${position}`;
 
   return (
     <Portal node={node}>
@@ -71,8 +69,7 @@ Popup.propTypes = {
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
   onClose: PropTypes.func,
-  destroyOnClose: PropTypes.bool,
-  wrapClassName: PropTypes.string
+  destroyOnClose: PropTypes.bool
 };
 
 Popup.defaultProps = {
@@ -81,8 +78,7 @@ Popup.defaultProps = {
   mask: true,
   maskClosable: false,
   onClose: () => {},
-  destroyOnClose: false,
-  wrapClassName: ''
+  destroyOnClose: false
 };
 
 export default Popup;

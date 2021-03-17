@@ -9,7 +9,6 @@
     "test": "uvu tests"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
     "express": "^4.17.1",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
