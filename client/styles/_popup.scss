@@ -1,4 +1,8 @@
-$animationDuration: 300ms;
+$enterAnimationDuration: 300ms;
+$enterAnimationFunction: ease;
+
+$exitAnimationDuration: 200ms;
+$exitAnimationFunction: ease;
 
 .popup {
   position: fixed;
@@ -39,6 +43,7 @@ $animationDuration: 300ms;
     position: absolute;
     inset: 0;
     background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
   }
 
   > .popup-content {
@@ -46,108 +51,121 @@ $animationDuration: 300ms;
   }
 
   /* fade */
-  &-fade-enter,
-  &-fade-exit-done {
+  &-fade-enter {
     opacity: 0;
   }
 
   &-fade-enter-active {
     opacity: 1;
-    transition: opacity $animationDuration;
+    transition: opacity $enterAnimationDuration $enterAnimationFunction;
   }
 
-  &-fade-exit,
-  &-fade-enter-done {
+  &-fade-exit {
     opacity: 1;
   }
 
   &-fade-exit-active {
     opacity: 0;
-    transition: opacity $animationDuration;
+    transition: opacity $exitAnimationDuration $exitAnimationFunction;
+  }
+
+  /* zoom */
+  &-zoom-enter {
+    opacity: 0;
+    transform: scale3d(0.8,0.8,0.8);
+  }
+
+  &-zoom-enter-active {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+    transition: opacity $enterAnimationDuration $enterAnimationFunction, transform $enterAnimationDuration $enterAnimationFunction;
+  }
+
+  &-zoom-exit {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+  }
+
+  &-zoom-exit-active {
+    opacity: 0;
+    transform: scale3d(0.8,0.8,0.8);
+    transition: opacity $exitAnimationDuration $exitAnimationFunction, transform $exitAnimationDuration $exitAnimationFunction;
   }
 
   /* slide-up */
-  &-slide-up-enter,
-  &-slide-up-exit-done {
-    transform: translate(0, 100%);
+  &-slide-up-enter {
+    transform: translate(0,100%);
   }
 
   &-slide-up-enter-active {
-    transform: translate(0, 0);
-    transition: transform $animationDuration;
+    transform: translate(0,0);
+    transition: transform $enterAnimationDuration $enterAnimationFunction;
   }
 
-  &-slide-up-exit,
-  &-slide-up-enter-done {
-    transform: translate(0, 0);
+  &-slide-up-exit {
+    transform: translate(0,0);
   }
 
   &-slide-up-exit-active {
-    transform: translate(0, 100%);
-    transition: transform $animationDuration;
+    transform: translate(0,100%);
+    transition: transform $exitAnimationDuration $exitAnimationFunction;
   }
 
   /* slide-down */
-  &-slide-down-enter,
-  &-slide-down-exit-done {
-    transform: translate(0, -100%);
+  &-slide-down-enter {
+    transform: translate(0,-100%);
   }
 
   &-slide-down-enter-active {
-    transform: translate(0, 0);
-    transition: transform $animationDuration;
+    transform: translate(0,0);
+    transition: transform $enterAnimationDuration $enterAnimationFunction;
   }
 
-  &-slide-down-exit,
-  &-slide-down-enter-done {
-    transform: translate(0, 0);
+  &-slide-down-exit {
+    transform: translate(0,0);
   }
 
   &-slide-down-exit-active {
-    transform: translate(0, -100%);
-    transition: transform $animationDuration;
+    transform: translate(0,-100%);
+    transition: transform $exitAnimationDuration $exitAnimationFunction;
   }
 
   /* slide-left */
-  &-slide-left-enter,
-  &-slide-left-exit-done {
-    transform: translate(100%, 0);
+  &-slide-left-enter {
+    transform: translate(100%,0);
   }
 
   &-slide-left-enter-active {
-    transform: translate(0, 0);
-    transition: transform $animationDuration;
+    transform: translate(0,0);
+    transition: transform $enterAnimationDuration $enterAnimationFunction;
   }
 
-  &-slide-left-exit,
-  &-slide-left-enter-done {
-    transform: translate(0, 0);
+  &-slide-left-exit {
+    transform: translate(0,0);
   }
 
   &-slide-left-exit-active {
-    transform: translate(100%, 0);
-    transition: transform $animationDuration;
+    transform: translate(100%,0);
+    transition: transform $exitAnimationDuration $exitAnimationFunction;
   }
 
   /* slide-right */
-  &-slide-right-enter,
-  &-slide-right-exit-done {
-    transform: translate(-100%, 0);
+  &-slide-right-enter {
+    transform: translate(-100%,0);
   }
 
   &-slide-right-enter-active {
-    transform: translate(0, 0);
-    transition: transform $animationDuration;
+    transform: translate(0,0);
+    transition: transform $enterAnimationDuration $enterAnimationFunction;
   }
 
-  &-slide-right-exit,
-  &-slide-right-enter-done {
-    transform: translate(0, 0);
+  &-slide-right-exit {
+    transform: translate(0,0);
   }
 
   &-slide-right-exit-active {
-    transform: translate(-100%, 0);
-    transition: transform $animationDuration;
+    transform: translate(-100%,0);
+    transition: transform $exitAnimationDuration $exitAnimationFunction;
   }
 
 }

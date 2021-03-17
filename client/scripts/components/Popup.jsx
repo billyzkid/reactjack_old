@@ -3,13 +3,12 @@ import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 const timeouts = {
-  appear: 300,
   enter: 300,
-  exit: 300
+  exit: 200
 };
 
 const animations = {
-  center: 'popup-fade',
+  center: 'popup-zoom',
   top: 'popup-slide-down',
   bottom: 'popup-slide-up',
   left: 'popup-slide-right',
