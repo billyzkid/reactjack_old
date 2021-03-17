@@ -1,21 +1,21 @@
 import { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { canUseDOM } from '../utils.js';
 
 const Portal = (props) => {
   console.log('Portal render', props);
 
-  if (!canUseDOM) {
-    return null;
-  }
-
   const { node, children } = props;
   const defaultNodeRef = useRef(null);
 
-  useEffect(() => () => {
+  useEffect(() => {
     if (defaultNodeRef.current) {
-      document.body.removeChild(defaultNodeRef.current);
+      document.body.appendChild(defaultNodeRef.current);
+    }
+    return () => {
+      if (defaultNodeRef.current) {
+        document.body.removeChild(defaultNodeRef.current);
+      }
     }
   }, []);
 
@@ -23,15 +23,14 @@ const Portal = (props) => {
     const defaultNode = document.createElement('div');
     defaultNode.className = 'popup-portal';
     defaultNodeRef.current = defaultNode;
-    document.body.appendChild(defaultNode);
   }
 
   return ReactDOM.createPortal(children, node || defaultNodeRef.current);
 };
 
 Portal.propTypes = {
-  node: PropTypes.instanceOf(HTMLElement),
-  children: PropTypes.node
+  node: PropTypes.instanceOf(Element),
+  children: PropTypes.node.isRequired
 };
 
 export default Portal;

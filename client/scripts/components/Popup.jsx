@@ -18,8 +18,8 @@ const Popup = (props) => {
   console.log('Popup render', props);
 
   const { visible } = props;
-  const nodeRef1 = useRef(null);
-  const nodeRef2 = useRef(null);
+  const maskNodeRef = useRef(null);
+  const contentNodeRef = useRef(null);
   const firstRenderRef = useRef(false);
 
   if (!firstRenderRef.current && !visible) {
@@ -47,19 +47,18 @@ const Popup = (props) => {
     }
   };
 
-  const rootCls = classnames('popup', wrapClassName, `popup__${position}`);
-  const maskCls = classnames(`popup-mask`, { [`popup-mask__visible`]: mask });
-  const contentCls = classnames(`popup-content`, `popup-content__${position}`);
-  const contentAnimationCls = animations[position];
+  const rootClassNames = classnames('popup', wrapClassName, `popup__${position}`);
+  const maskClassNames = classnames(`popup-mask`, { [`popup-mask__visible`]: mask });
+  const contentClassNames = classnames(`popup-content`, `popup-content__${position}`);
 
   return (
     <Portal node={node}>
-      <div className={rootCls}>
-        <CSSTransition nodeRef={nodeRef1} in={visible} timeout={duration} classNames={`popup-fade`} appear>
-          <div ref={nodeRef1} className={maskCls} onClick={onMaskClick} />
+      <div className={rootClassNames}>
+        <CSSTransition nodeRef={maskNodeRef} in={visible} timeout={duration} classNames={`popup-fade`} appear>
+          <div ref={maskNodeRef} className={maskClassNames} onClick={onMaskClick} />
         </CSSTransition>
-        <CSSTransition nodeRef={nodeRef2} in={visible} timeout={duration} classNames={contentAnimationCls} unmountOnExit={destroyOnClose} appear>
-          <div ref={nodeRef2} className={contentCls}>{children}</div>
+        <CSSTransition nodeRef={contentNodeRef} in={visible} timeout={duration} classNames={animations[position]} unmountOnExit={destroyOnClose} appear>
+          <div ref={contentNodeRef} className={contentClassNames}>{children}</div>
         </CSSTransition>
       </div>
     </Portal>
