@@ -52,26 +52,26 @@ $animationDuration: 300ms;
   &-fade-enter,
   &-fade-appear,
   &-fade-exit-done {
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
   }
 
   &-fade-appear-active,
   &-fade-enter-active {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
     transition: opacity $animationDuration, visibility $animationDuration;
   }
 
   &-fade-exit,
   &-fade-enter-done {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
   }
 
   &-fade-exit-active {
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
     transition: opacity $animationDuration, visibility $animationDuration;
   }
 
