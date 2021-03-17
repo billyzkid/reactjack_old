@@ -58,11 +58,11 @@ const Popup = (props) => {
   return (
     <div ref={popupRef} className={`popup popup-${position}`} hidden>
       {mask && (
-        <CSSTransition nodeRef={maskRef} in={isOpen} timeout={timeouts} classNames='popup-fade' unmountOnExit={unmountOnClose} appear>
+        <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>
           <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
         </CSSTransition>
       )}
-      <CSSTransition nodeRef={contentRef} in={isOpen} timeout={timeouts} classNames={animations[position]} unmountOnExit={unmountOnClose} appear>
+      <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
         <div ref={contentRef} className='popup-content'>{children}</div>
       </CSSTransition>
     </div>

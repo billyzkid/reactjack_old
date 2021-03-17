@@ -38,7 +38,7 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup isOpen={isInfoModalOpen} maskClosable={true} onClose={closeInfoModal} position='left'>
+      <Popup isOpen={isInfoModalOpen} maskClosable={true} onClose={closeInfoModal}>
         <iframe src='https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI' allowtransparency='true' allow='encrypted-media' />
       </Popup>
     </Fragment>
