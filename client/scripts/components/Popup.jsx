@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
@@ -23,8 +23,11 @@ const Popup = (props) => {
     position,
     mask,
     maskClosable,
+    escKeyClosable,
     unmountOnClose,
-    onClose,
+    onAfterOpen,
+    onAfterClose,
+    onRequestClose,
     children
   } = props;
 
@@ -36,9 +39,17 @@ const Popup = (props) => {
     let timeout;
 
     if (isOpen) {
-      popupRef.current.hidden = false;
+      if (popupRef.current.hidden) {
+        popupRef.current.hidden = false;
+        onAfterOpen();
+      }
     } else {
-      timeout = setTimeout(() => popupRef.current.hidden = true, timeouts.exit);
+      if (!popupRef.current.hidden) {
+        timeout = setTimeout(() => {
+          popupRef.current.hidden = true;
+          onAfterClose();
+        }, timeouts.exit);
+      }
     }
 
     return () => {
@@ -48,14 +59,21 @@ const Popup = (props) => {
     }
   }, [isOpen]);
 
-  const onMaskClick = () => {
-    if (maskClosable) {
-      onClose();
+  const onKeyDown = useCallback((event)=> {
+    if (event.key === 'Escape' && escKeyClosable) {
+      event.stopPropagation();
+      onRequestClose();
     }
-  };
+  }, [escKeyClosable]);
+
+  const onMaskClick = useCallback(()=> {
+    if (maskClosable) {
+      onRequestClose();
+    }
+  }, [maskClosable]);
 
   return (
-    <div ref={popupRef} className={`popup popup-${position}`} hidden>
+    <div ref={popupRef} className={`popup popup-${position}`} onKeyDown={onKeyDown} hidden>
       {mask && (
         <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>
           <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
@@ -73,8 +91,11 @@ Popup.propTypes = {
   position: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
+  escKeyClosable: PropTypes.bool,
   unmountOnClose: PropTypes.bool,
-  onClose: PropTypes.func,
+  onAfterOpen: PropTypes.func,
+  onAfterClose: PropTypes.func,
+  onRequestClose: PropTypes.func,
   children: PropTypes.node
 };
 
@@ -82,9 +103,12 @@ Popup.defaultProps = {
   isOpen: false,
   position: 'center',
   mask: true,
-  maskClosable: false,
+  maskClosable: true,
+  escKeyClosable: true,
   unmountOnClose: false,
-  onClose: () => {},
+  onAfterOpen: () => {},
+  onAfterClose: () => {},
+  onRequestClose: () => {},
   children: null
 };
 
