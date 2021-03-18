@@ -18,7 +18,6 @@ const Modals = (props) => {
   const closeQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: false }); }, []);
 
   const inputRef = useRef(null);
-
   const onAfterInfoModalOpen = useCallback(()=> { console.log('Info modal opened'); inputRef.current.focus(); }, []);
   const onAfterInfoModalClose = useCallback(()=> { console.log('Info modal closed'); }, []);
 
@@ -35,7 +34,7 @@ const Modals = (props) => {
         <p>Chat</p>
       </Modal>
       <Modal contentLabel='Music' className='music-modal' isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
-        <p>Music</p>
+        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Modal>
       <Modal contentLabel='Settings' className='settings-modal' isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
@@ -44,7 +43,7 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onAfterClose={onAfterInfoModalClose} onRequestClose={closeInfoModal}>
+      <Popup className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onAfterClose={onAfterInfoModalClose} onRequestClose={closeInfoModal}>
         <p>Information</p>
         <input ref={inputRef} />
       </Popup>

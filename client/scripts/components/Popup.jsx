@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useReducer } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,7 @@ const Popup = (props) => {
   console.log('Popup render', props);
 
   const {
+    className,
     isOpen,
     position,
     mask,
@@ -34,6 +35,7 @@ const Popup = (props) => {
   const popupRef = useRef(null);
   const maskRef = useRef(null);
   const contentRef = useRef(null);
+  const focusedElementRef = useRef(null);
 
   useEffect(() => {
     let timeout;
@@ -41,12 +43,24 @@ const Popup = (props) => {
     if (isOpen) {
       if (popupRef.current.hidden) {
         popupRef.current.hidden = false;
+        document.documentElement.classList.add('popup-open');
+        document.documentElement.classList.add(`${className}-open`);
+        focusedElementRef.current = document.activeElement;
         onAfterOpen();
       }
     } else {
       if (!popupRef.current.hidden) {
         timeout = setTimeout(() => {
           popupRef.current.hidden = true;
+          document.documentElement.classList.remove('popup-open');
+          document.documentElement.classList.remove(`${className}-open`);
+
+          try {
+            focusedElementRef.current.focus();
+          } catch (x) {
+            console.warn('Failed to restore focus', x);
+          }
+
           onAfterClose();
         }, timeouts.exit);
       }
@@ -73,7 +87,7 @@ const Popup = (props) => {
   }, [maskClosable]);
 
   return (
-    <div ref={popupRef} className={`popup popup-${position}`} onKeyDown={onKeyDown} hidden>
+    <div ref={popupRef} className={`popup popup-${position} ${className}`} onKeyDown={onKeyDown} hidden>
       {mask && (
         <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>
           <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
@@ -87,6 +101,7 @@ const Popup = (props) => {
 };
 
 Popup.propTypes = {
+  className: PropTypes.string,
   isOpen: PropTypes.bool,
   position: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
   mask: PropTypes.bool,
@@ -100,6 +115,7 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
+  className: '',
   isOpen: false,
   position: 'center',
   mask: true,
