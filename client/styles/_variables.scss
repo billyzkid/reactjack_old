@@ -27,3 +27,20 @@ $modal-content-transform-after-open: scale3d(1,1,1);
 $modal-content-transform-before-close: scale3d(0.8,0.8,0.8);
 $modal-content-transition-after-open: transform 300ms ease 0ms;
 $modal-content-transition-before-close: transform 150ms ease 0ms; // MODAL_CLOSE_TIMEOUT_MS in Modal.jsx must match the duration used here
+
+$popup-enter-transition-duration: 500ms; // 'enter' timeout in Popup.jsx must match the duration used here
+$popup-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
+
+$popup-exit-transition-duration: 500ms; // 'exit' timeout in Popup.jsx must match the duration used here
+$popup-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
+
+$popup-mask-background: rgba(0,0,0,0.5);
+$popup-mask-backdrop-filter: blur(5px);
+
+$music-popup-width: 50%;
+$music-popup-height: 50%;
+$music-popup-padding: 0;
+$music-popup-border: 0;
+$music-popup-border-radius: 0.5em;
+$music-popup-background: black;
+$music-popup-box-shadow: 0 0 2em black;

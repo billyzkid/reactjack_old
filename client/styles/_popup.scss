@@ -1,9 +1,3 @@
-$enterAnimationDuration: 500ms;
-$enterAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
-
-$exitAnimationDuration: 500ms;
-$exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
-
 .popup {
   position: fixed;
   inset: 0;
@@ -43,7 +37,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   // fade transitions
   &-fade-enter {
     opacity: 0;
-    transition: opacity $enterAnimationDuration $enterAnimationFunction;
+    transition: opacity $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-fade-enter-active {
@@ -52,7 +46,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &-fade-exit {
     opacity: 1;
-    transition: opacity $exitAnimationDuration $exitAnimationFunction;
+    transition: opacity $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-fade-exit-active {
@@ -63,7 +57,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   &-zoom-enter {
     opacity: 0;
     transform: scale3d(0.8,0.8,0.8);
-    transition: opacity $enterAnimationDuration $enterAnimationFunction, transform $enterAnimationDuration $enterAnimationFunction;
+    transition: opacity $popup-enter-transition-duration $popup-enter-transition-function, transform $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-zoom-enter-active {
@@ -74,7 +68,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   &-zoom-exit {
     opacity: 1;
     transform: scale3d(1,1,1);
-    transition: opacity $exitAnimationDuration $exitAnimationFunction, transform $exitAnimationDuration $exitAnimationFunction;
+    transition: opacity $popup-exit-transition-duration $popup-exit-transition-function, transform $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-zoom-exit-active {
@@ -85,7 +79,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   // slide up transitions
   &-slide-up-enter {
     transform: translate(0,100%);
-    transition: transform $enterAnimationDuration $enterAnimationFunction;
+    transition: transform $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-slide-up-enter-active {
@@ -94,7 +88,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &-slide-up-exit {
     transform: translate(0,0);
-    transition: transform $exitAnimationDuration $exitAnimationFunction;
+    transition: transform $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-slide-up-exit-active {
@@ -104,7 +98,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   // slide down transitions
   &-slide-down-enter {
     transform: translate(0,-100%);
-    transition: transform $enterAnimationDuration $enterAnimationFunction;
+    transition: transform $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-slide-down-enter-active {
@@ -113,7 +107,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &-slide-down-exit {
     transform: translate(0,0);
-    transition: transform $exitAnimationDuration $exitAnimationFunction;
+    transition: transform $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-slide-down-exit-active {
@@ -123,7 +117,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   // slide left transitions
   &-slide-left-enter {
     transform: translate(100%,0);
-    transition: transform $enterAnimationDuration $enterAnimationFunction;
+    transition: transform $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-slide-left-enter-active {
@@ -132,7 +126,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &-slide-left-exit {
     transform: translate(0,0);
-    transition: transform $exitAnimationDuration $exitAnimationFunction;
+    transition: transform $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-slide-left-exit-active {
@@ -142,7 +136,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   // slide right transitions
   &-slide-right-enter {
     transform: translate(-100%,0);
-    transition: transform $enterAnimationDuration $enterAnimationFunction;
+    transition: transform $popup-enter-transition-duration $popup-enter-transition-function;
   }
 
   &-slide-right-enter-active {
@@ -151,7 +145,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &-slide-right-exit {
     transform: translate(0,0);
-    transition: transform $exitAnimationDuration $exitAnimationFunction;
+    transition: transform $popup-exit-transition-duration $popup-exit-transition-function;
   }
 
   &-slide-right-exit-active {
@@ -161,8 +155,8 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
   > .popup-mask {
     position: absolute;
     inset: 0;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
+    background: $popup-mask-background;
+    backdrop-filter: $popup-mask-backdrop-filter;
   }
 
   > .popup-content {
@@ -173,7 +167,7 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .popup-open {
-  overflow: hidden; // Prevent page from scrolling when modal is open
+  overflow: hidden; // prevent page from scrolling while popup is open
 }
 
 .info-popup-open .info-modal-button,
@@ -182,11 +176,13 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .music-popup > .popup-content {
-  width: 50%;
-  height: 50%;
-  border-radius: 0.5em;
-  background-color: black;
-  box-shadow: 0 0 2em black;
+  width: $music-popup-width;
+  height: $music-popup-height;
+  padding: $music-popup-padding;
+  border: $music-popup-border;
+  border-radius: $music-popup-border-radius;
+  background: $music-popup-background;
+  box-shadow: $music-popup-box-shadow;
   box-sizing: border-box;
   overflow: hidden;
 
@@ -194,8 +190,8 @@ $exitAnimationFunction: cubic-bezier(0.165, 0.84, 0.44, 1);
     display: block;
     width: 100%;
     height: 100%;
-    min-width: 150px; // Prevent iframe content from breaking
-    border: none;
+    min-width: 150px; // prevent iframe content from breaking at narrow widths
+    border: 0;
   }
 
 }
