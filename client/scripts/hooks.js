@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StateContext, DispatchContext, SocketContext } from './components/ContextProvider.jsx';
+import { StateContext, DispatchContext, SocketContext } from './components/Context.jsx';
 
 function useStateContext() {
   const context = useContext(StateContext);
