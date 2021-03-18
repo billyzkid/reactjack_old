@@ -13,7 +13,7 @@ const animations = {
 
 const timeouts = {
   enter: 300,
-  exit: 200
+  exit: 300
 };
 
 const Popup = (props) => {

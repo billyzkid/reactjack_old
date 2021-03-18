@@ -18,7 +18,10 @@ const Modals = (props) => {
   const closeQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: false }); }, []);
 
   const inputRef = useRef(null);
+  const iframeRef = useRef(null);
+
   const onAfterInfoModalOpen = useCallback(()=> { inputRef.current.focus(); }, []);
+  const onAfterMusicModalOpen = useCallback(()=> { iframeRef.current.focus(); }, []);
 
   return (
     <Fragment>
@@ -32,9 +35,9 @@ const Modals = (props) => {
       <Modal contentLabel='Chat' className='chat-modal' isOpen={isChatModalOpen} onRequestClose={closeChatModal}>
         <p>Chat</p>
       </Modal>
-      <Modal contentLabel='Music' className='music-modal' isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
+      {/* <Modal contentLabel='Music' className='music-modal' isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
         <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
-      </Modal>
+      </Modal> */}
       <Modal contentLabel='Settings' className='settings-modal' isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
       </Modal>
@@ -45,8 +48,9 @@ const Modals = (props) => {
       <Popup label='Information' className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
         <input ref={inputRef} />
-        <button>Click</button>
-        <button>Click</button>
+      </Popup>
+      <Popup label='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
+        <iframe ref={iframeRef} src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Popup>
     </Fragment>
   );
