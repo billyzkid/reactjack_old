@@ -18,10 +18,9 @@ const Modals = (props) => {
   const closeQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: false }); }, []);
 
   const inputRef = useRef(null);
-  const iframeRef = useRef(null);
 
   const onAfterInfoModalOpen = useCallback(()=> { inputRef.current.focus(); }, []);
-  const onAfterMusicModalOpen = useCallback(()=> { iframeRef.current.focus(); }, []);
+  const onAfterMusicModalOpen = useCallback(()=> { /* iframeRef.current.focus(); */ }, []);
 
   return (
     <Fragment>
@@ -50,7 +49,7 @@ const Modals = (props) => {
         <input ref={inputRef} />
       </Popup>
       <Popup label='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
-        <iframe ref={iframeRef} src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
+        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Popup>
     </Fragment>
   );
