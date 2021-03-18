@@ -114,7 +114,7 @@ const Popup = (props) => {
   }, [maskClosable]);
 
   return (
-    <Portal rootId='root' className='popup-portal'>
+    <Portal>
       <div ref={popupRef} className={`popup popup-${position} ${className}`} onKeyDown={onKeyDown} hidden>
         {mask && (
           <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>

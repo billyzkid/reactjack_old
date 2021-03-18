@@ -21,9 +21,9 @@ const Portal = (props) => {
     return () => {
       containerRef.current.remove();
 
-      // if (!rootElement.childElementCount) {
-      //   rootElement.remove();
-      // }
+      if (!existingRootElement && !rootElement.childElementCount) {
+        rootElement.remove();
+      }
     };
   }, [rootId]);
 
@@ -38,6 +38,12 @@ Portal.propTypes = {
   rootId: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
+};
+
+Portal.defaultProps = {
+  rootId: 'root',
+  className: 'portal',
+  children: null
 };
 
 export default Portal;
