@@ -26,6 +26,14 @@ function isTabFocusable(node) {
   return node.getAttribute('tabindex') >= 0;
 }
 
+function setAriaHidden(node) {
+  node.setAttribute('aria-hidden', 'true');
+}
+
+function setAriaVisible(node) {
+  node.removeAttribute('aria-hidden');
+}
+
 function getHandTotal(hand) {
   return '6 or 16';
 }
@@ -38,4 +46,4 @@ function formatMoney(value) {
   }
 }
 
-export { getFocusableChildren, getTabFocusableChildren, isTabFocusable, getHandTotal, formatMoney };
+export { getFocusableChildren, getTabFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getHandTotal, formatMoney };

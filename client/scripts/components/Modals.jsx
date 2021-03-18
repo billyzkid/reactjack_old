@@ -44,11 +44,11 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup label='Information' className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
+      <Popup ariaLabel='Information' className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
         <input ref={inputRef} />
       </Popup>
-      <Popup label='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
+      <Popup ariaLabel='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
         <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Popup>
     </Fragment>

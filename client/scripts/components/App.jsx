@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Table from './Table.jsx';
 import Menu from './Menu.jsx';
 import Modals from './Modals.jsx';
+import Popup from './Popup.jsx';
+
+Popup.ariaHiddenSelector = '.app';
 
 const App = (props) => {
   console.log('App render', props);

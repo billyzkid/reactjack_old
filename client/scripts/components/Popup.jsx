@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Portal from './Portal.jsx';
 import { CSSTransition } from 'react-transition-group';
-import { getTabFocusableChildren } from '../utils.js';
+import { getTabFocusableChildren, setAriaHidden, setAriaVisible } from '../utils.js';
 
 const animations = {
   center: 'popup-zoom',
@@ -21,8 +21,8 @@ const Popup = (props) => {
   console.log('Popup render', props);
 
   const {
-    role,
-    label,
+    ariaRole,
+    ariaLabel,
     className,
     position,
     isOpen,
@@ -100,7 +100,7 @@ const Popup = (props) => {
       if (popupRef.current.hidden) {
         popupRef.current.hidden = false;
         document.documentElement.classList.add('popup-open', `${className}-open`);
-        contentRef.current.focus();
+        document.querySelectorAll(Popup.ariaHiddenSelector).forEach(setAriaHidden);
         onAfterOpen();
       }
     } else {
@@ -108,6 +108,7 @@ const Popup = (props) => {
         timeout = setTimeout(() => {
           popupRef.current.hidden = true;
           document.documentElement.classList.remove('popup-open', `${className}-open`);
+          document.querySelectorAll(Popup.ariaHiddenSelector).forEach(setAriaVisible);
           onAfterClose();
         }, timeouts.exit);
       }
@@ -133,16 +134,18 @@ const Popup = (props) => {
           <div ref={maskRef} className='popup-mask' onMouseDown={onMaskMouseDown} />
         </CSSTransition>
         <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
-          <div ref={contentRef} className='popup-content' tabIndex='-1' role={role} aria-label={label}>{children}</div>
+          <div ref={contentRef} className='popup-content' tabIndex='-1' role={ariaRole} aria-label={ariaLabel}>{children}</div>
         </CSSTransition>
       </div>
     </Portal>
   );
 };
 
+Popup.ariaHiddenSelector = '#app';
+
 Popup.propTypes = {
-  role: PropTypes.string,
-  label: PropTypes.string,
+  ariaRole: PropTypes.string,
+  ariaLabel: PropTypes.string,
   className: PropTypes.string.isRequired,
   position: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
   isOpen: PropTypes.bool.isRequired,
@@ -156,8 +159,8 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
-  role: 'dialog',
-  label: null,
+  ariaRole: 'dialog',
+  ariaLabel: null,
   className: null,
   position: 'center',
   isOpen: false,
