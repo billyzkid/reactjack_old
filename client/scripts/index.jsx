@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ContextProvider } from './context.jsx';
+import { ContextProvider } from './components/ContextProvider.jsx';
 import App from './components/App.jsx';
 import '../styles/index.scss';
 

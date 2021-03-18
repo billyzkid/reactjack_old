@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useStateContext, useDispatchContext } from '../context.jsx';
+import { useStateContext, useDispatchContext } from '../hooks.js';
 import Modal from './Modal.jsx';
 import Popup from './Popup.jsx';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStateContext } from '../context.jsx';
+import { useStateContext } from '../hooks.js';
 import Player from './Player.jsx';
 
 const Players = (props) => {

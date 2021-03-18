@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatchContext } from '../context.jsx';
+import { useDispatchContext } from '../hooks.js';
 
 const Menu = (props) => {
   console.log('Menu render', props);

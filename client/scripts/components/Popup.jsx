@@ -142,7 +142,7 @@ Popup.propTypes = {
   onAfterOpen: PropTypes.func,
   onAfterClose: PropTypes.func,
   onRequestClose: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node.isRequired
 };
 
 Popup.defaultProps = {
