@@ -18,10 +18,6 @@ function getFocusableChildren(node) {
   return Array.from(focusableNodes);
 }
 
-function getTabFocusableChildren(node) {
-  return getFocusableChildren(node).filter(isTabFocusable);
-}
-
 function isTabFocusable(node) {
   return node.getAttribute('tabindex') >= 0;
 }
@@ -46,4 +42,4 @@ function formatMoney(value) {
   }
 }
 
-export { getFocusableChildren, getTabFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getHandTotal, formatMoney };
+export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getHandTotal, formatMoney };
