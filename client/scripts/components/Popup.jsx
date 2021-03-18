@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import Portal from './Portal.jsx';
 import { CSSTransition } from 'react-transition-group';
 import { getTabFocusableChildren } from '../utils.js';
 
@@ -113,16 +114,18 @@ const Popup = (props) => {
   }, [maskClosable]);
 
   return (
-    <div ref={popupRef} className={`popup popup-${position} ${className}`} onKeyDown={onKeyDown} hidden>
-      {mask && (
-        <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>
-          <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
+    <Portal rootId='root' className='popup-portal'>
+      <div ref={popupRef} className={`popup popup-${position} ${className}`} onKeyDown={onKeyDown} hidden>
+        {mask && (
+          <CSSTransition nodeRef={maskRef} in={isOpen} classNames='popup-fade' timeout={timeouts} unmountOnExit={unmountOnClose}>
+            <div ref={maskRef} className='popup-mask' onClick={onMaskClick} />
+          </CSSTransition>
+        )}
+        <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
+          <div ref={contentRef} className='popup-content' tabIndex='-1' role={role} aria-label={label}>{children}</div>
         </CSSTransition>
-      )}
-      <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
-        <div ref={contentRef} className='popup-content' tabIndex='-1' role={role} aria-label={label}>{children}</div>
-      </CSSTransition>
-    </div>
+      </div>
+    </Portal>
   );
 };
 
