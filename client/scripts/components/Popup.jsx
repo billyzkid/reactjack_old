@@ -41,7 +41,7 @@ const Popup = (props) => {
 
   useEffect(() => {
     const prevFocusedElement = document.activeElement;
-    const tabFocusableChildren = getTabFocusableChildren(contentRef.current);
+    const tabFocusableChildren = getTabFocusableChildren(popupRef.current);
     const firstTabFocusableChild = tabFocusableChildren[0];
     const lastTabFocusableChild = tabFocusableChildren[tabFocusableChildren.length - 1];
 
