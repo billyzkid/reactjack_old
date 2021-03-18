@@ -1,11 +1,7 @@
-import React, { useRef, useEffect, useCallback, useReducer } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-
-const timeouts = {
-  enter: 300,
-  exit: 200
-};
+import { CSSTransition } from 'react-transition-group';
+import { getTabFocusableChildren } from '../utils.js';
 
 const animations = {
   center: 'popup-zoom',
@@ -15,10 +11,17 @@ const animations = {
   right: 'popup-slide-left'
 };
 
+const timeouts = {
+  enter: 300,
+  exit: 200
+};
+
 const Popup = (props) => {
   console.log('Popup render', props);
 
   const {
+    role,
+    label,
     className,
     isOpen,
     position,
@@ -35,9 +38,39 @@ const Popup = (props) => {
   const popupRef = useRef(null);
   const maskRef = useRef(null);
   const contentRef = useRef(null);
-  const focusedElementRef = useRef(null);
 
-  useFocusLock(popupRef);
+  useEffect(() => {
+    const prevFocusedElement = document.activeElement;
+    const tabFocusableChildren = getTabFocusableChildren(contentRef.current);
+    const firstTabFocusableChild = tabFocusableChildren[0];
+    const lastTabFocusableChild = tabFocusableChildren[tabFocusableChildren.length - 1];
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        const focusedElement = document.activeElement;
+
+        if (focusedElement === firstTabFocusableChild && event.shiftKey) {
+          lastTabFocusableChild.focus();
+          event.preventDefault();
+          event.stopPropagation();
+        } else if (focusedElement === lastTabFocusableChild && !event.shiftKey) {
+          firstTabFocusableChild.focus();
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+
+      if (prevFocusedElement) {
+        prevFocusedElement.focus();
+      }
+    };
+  });
 
   useEffect(() => {
     let timeout;
@@ -45,24 +78,15 @@ const Popup = (props) => {
     if (isOpen) {
       if (popupRef.current.hidden) {
         popupRef.current.hidden = false;
-        document.documentElement.classList.add('popup-open');
-        document.documentElement.classList.add(`${className}-open`);
-        focusedElementRef.current = document.activeElement;
+        document.documentElement.classList.add('popup-open', `${className}-open`);
+        contentRef.current.focus();
         onAfterOpen();
       }
     } else {
       if (!popupRef.current.hidden) {
         timeout = setTimeout(() => {
           popupRef.current.hidden = true;
-          document.documentElement.classList.remove('popup-open');
-          document.documentElement.classList.remove(`${className}-open`);
-
-          try {
-            focusedElementRef.current.focus();
-          } catch (x) {
-            console.warn('Failed to restore focus', x);
-          }
-
+          document.documentElement.classList.remove('popup-open', `${className}-open`);
           onAfterClose();
         }, timeouts.exit);
       }
@@ -72,7 +96,7 @@ const Popup = (props) => {
       if (timeout) {
         clearTimeout(timeout);
       }
-    }
+    };
   }, [isOpen]);
 
   const onKeyDown = useCallback((event)=> {
@@ -96,84 +120,17 @@ const Popup = (props) => {
         </CSSTransition>
       )}
       <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
-        <div ref={contentRef} className='popup-content'>{children}</div>
+        <div ref={contentRef} className='popup-content' tabIndex='-1' role={role} aria-label={label}>{children}</div>
       </CSSTransition>
     </div>
   );
 };
 
-// Focus lock hook
-const FOCUSABLE_SELECTORS = [
-  '[contenteditable]:not([contenteditable="false"])',
-  "[tabindex]",
-  "a[href]",
-  "audio[controls]",
-  "button",
-  "iframe",
-  "input",
-  "select",
-  "textarea",
-  "video[controls]"
-];
-
-const hasNegativeTabIndex = el =>
-  el.getAttribute("tabindex") && el.getAttribute("tabindex") < 0;
-
-const getFocusableChildNodes = el => {
-  const selectAll = FOCUSABLE_SELECTORS.join(",");
-  const nodelist = el.querySelectorAll(selectAll);
-
-  return Array.from(nodelist || []).filter(node => !hasNegativeTabIndex(node));
-};
-
-function useFocusLock(ref) {
-  useEffect(() => {
-    const prevFocusedElement = document.activeElement;
-
-    let focusableNodes = [];
-
-    if (ref && ref.current) {
-      focusableNodes = getFocusableChildNodes(ref.current);
-
-      const firstNode = focusableNodes[0];
-      if (firstNode) firstNode.focus();
-    }
-
-    const onKeyDown = event => {
-      const isTab = event.key === "Tab";
-      const withShiftKey = event.shiftKey;
-
-      if (!isTab) return;
-
-      const { activeElement } = document;
-
-      const first = focusableNodes[0];
-      const last = focusableNodes[focusableNodes.length - 1];
-
-      if (activeElement === first && withShiftKey) {
-        last.focus();
-        event.preventDefault();
-        event.stopPropagation();
-      } else if (activeElement === last && !withShiftKey) {
-        first.focus();
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return function cleanup() {
-      window.removeEventListener("keydown", onKeyDown);
-      if (prevFocusedElement) prevFocusedElement.focus();
-    };
-  });
-}
-
-
 Popup.propTypes = {
-  className: PropTypes.string,
-  isOpen: PropTypes.bool,
+  role: PropTypes.string,
+  label: PropTypes.string,
+  className: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   position: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
   mask: PropTypes.bool,
   maskClosable: PropTypes.bool,
@@ -186,7 +143,9 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
-  className: '',
+  role: 'dialog',
+  label: null,
+  className: null,
   isOpen: false,
   position: 'center',
   mask: true,

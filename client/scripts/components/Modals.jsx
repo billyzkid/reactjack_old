@@ -42,9 +42,11 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
+      <Popup label='Information' className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
-        <input ref={inputRef} /> <button>Click</button> <button>Click</button>
+        <input ref={inputRef} />
+        <button>Click</button>
+        <button>Click</button>
       </Popup>
     </Fragment>
   );
