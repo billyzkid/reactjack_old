@@ -18,12 +18,11 @@ const Modals = (props) => {
   const closeQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: false }); }, []);
 
   const inputRef = useRef(null);
-  const onAfterInfoModalOpen = useCallback(()=> { console.log('Info modal opened'); inputRef.current.focus(); }, []);
-  const onAfterInfoModalClose = useCallback(()=> { console.log('Info modal closed'); }, []);
+  const onAfterInfoModalOpen = useCallback(()=> { inputRef.current.focus(); }, []);
 
   return (
     <Fragment>
-      {/* <Modal contentLabel='Information' className='info-modal' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onAfterClose={onAfterInfoModalClose} onRequestClose={closeInfoModal}>
+      {/* <Modal contentLabel='Information' className='info-modal' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
         <input ref={inputRef} />
       </Modal> */}
@@ -43,9 +42,9 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onAfterClose={onAfterInfoModalClose} onRequestClose={closeInfoModal}>
+      <Popup className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
-        <input ref={inputRef} />
+        <input ref={inputRef} /> <button>Click</button> <button>Click</button>
       </Popup>
     </Fragment>
   );
