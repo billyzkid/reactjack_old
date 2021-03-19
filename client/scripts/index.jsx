@@ -33,10 +33,7 @@ const state = {
   dealer: {
     name: 'Dealer',
     hand: {
-      cards: [
-        { rank: 'ace', suit: 'hearts' },
-        { rank: '?', suit: '?' }
-      ]
+      cards: []
     }
   },
   players: [
@@ -77,22 +74,43 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'toggleInfoPopup':
       return { ...state, isInfoPopupOpen: action.isOpen };
+
     case 'toggleProfilePopup':
       return { ...state, isProfilePopupOpen: action.isOpen };
+
     case 'toggleChatPopup':
       return { ...state, isChatPopupOpen: action.isOpen };
+
     case 'toggleMusicPopup':
       return { ...state, isMusicPopupOpen: action.isOpen };
+
     case 'toggleSettingsPopup':
       return { ...state, isSettingsPopupOpen: action.isOpen };
+
     case 'toggleQuitPopup':
       return { ...state, isQuitPopupOpen: action.isOpen };
+
+    case 'dealCardToDealer':
+      return {
+        ...state,
+        dealer: {
+          ...state.dealer,
+          hand: {
+            ...state.dealer.hand,
+            cards: state.dealer.hand.cards.concat(action.card)
+          }
+        }
+      };
+
     case 'updateSettings':
       return { ...state, settings: action.settings };
+
     case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
+
     case 'removePlayer':
       return { ...state, players: state.players.filter((player) => player.id !== action.id) };
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
