@@ -7,24 +7,12 @@ const Menu = (props) => {
 
   const dispatch = useDispatchContext();
 
-  const openInfoModal = useCallback(() => {
-    dispatch({ type: 'toggleInfoModal', isOpen: true });
-  }, []);
-  const openProfileModal = useCallback(() => {
-    dispatch({ type: 'toggleProfileModal', isOpen: true });
-  }, []);
-  const openChatModal = useCallback(() => {
-    dispatch({ type: 'toggleChatModal', isOpen: true });
-  }, []);
-  const openMusicModal = useCallback(() => {
-    dispatch({ type: 'toggleMusicModal', isOpen: true });
-  }, []);
-  const openSettingsModal = useCallback(() => {
-    dispatch({ type: 'toggleSettingsModal', isOpen: true });
-  }, []);
-  const openQuitModal = useCallback(() => {
-    dispatch({ type: 'toggleQuitModal', isOpen: true });
-  }, []);
+  const openInfoModal = useCallback(() => { dispatch({ type: 'toggleInfoModal', isOpen: true }); }, []);
+  const openProfileModal = useCallback(() => { dispatch({ type: 'toggleProfileModal', isOpen: true }); }, []);
+  const openChatModal = useCallback(() => { dispatch({ type: 'toggleChatModal', isOpen: true }); }, []);
+  const openMusicModal = useCallback(() => { dispatch({ type: 'toggleMusicModal', isOpen: true }); }, []);
+  const openSettingsModal = useCallback(() => { dispatch({ type: 'toggleSettingsModal', isOpen: true }); }, []);
+  const openQuitModal = useCallback(() => { dispatch({ type: 'toggleQuitModal', isOpen: true }); }, []);
 
   return (
     <div className="menu">
