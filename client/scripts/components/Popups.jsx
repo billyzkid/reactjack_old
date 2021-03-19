@@ -304,17 +304,17 @@ const Popups = (props) => {
         <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Popup>
       <Popup ariaLabel="Settings" className="settings-popup" isOpen={isSettingsPopupOpen} onRequestClose={closeSettingsPopup}>
-        <div>
-          <label for="sound-effects-input">Sound effects</label>
-          <input id="sound-effects-input" type="checkbox" />
-        </div>
-        <div>
-          <label for="shuffle-after-every-round-input">Shuffle after every round</label>
-          <input id="shuffle-after-every-round-input" type="checkbox" />
-        </div>
-        <div>
-          <label for="num-decks-input">Number of decks</label>
-          <select id="num-decks-input">
+        <label>
+          <span>Sound effects</span>
+          <input type="checkbox" />
+        </label>
+        <label>
+          <span>Shuffle after every round</span>
+          <input type="checkbox" />
+        </label>
+        <label>
+          <span>Number of decks</span>
+          <select>
             <option>1</option>
             <option>2</option>
             <option>4</option>
@@ -322,100 +322,100 @@ const Popups = (props) => {
             <option selected>6</option>
             <option>8</option>
           </select>
-        </div>
-        <div>
-          <label for="blackjack-payout-input">Blackjack payout</label>
-          <select id="blackjack-payout-input">
+        </label>
+        <label>
+          <span>Blackjack payout</span>
+          <select>
             <option>2:1</option>
             <option selected>3:2</option>
             <option>6:5</option>
             <option>1:1</option>
           </select>
-        </div>
-        <div>
-          <label for="insurance-payout-input">Insurance payout</label>
-          <select id="insurance-payout-input">
+        </label>
+        <label>
+          <span>Insurance payout</span>
+          <select>
             <option selected>2:1</option>
           </select>
-        </div>
-        <div>
-          <label for="dealer-stands-on-input">Dealer stands on</label>
-          <select id="dealer-stands-on-input">
+        </label>
+        <label>
+          <span>Dealer stands on</span>
+          <select>
             <option selected>Soft 17</option>
             <option>Hard 17</option>
           </select>
-        </div>
-        <div>
-          <label for="dealer-peeks-on-input">Dealer peeks for blackjack on</label>
-          <select id="dealer-peeks-on-input">
+        </label>
+        <label>
+          <span>Dealer peeks for blackjack on</span>
+          <select>
             <option selected>Ace/Ten</option>
             <option>Ace</option>
             <option>Ten</option>
             <option>No Peek</option>
           </select>
-        </div>
-        <div>
-          <label for="players-can-double-on-input">Players can double on</label>
-          <select id="players-can-double-on-input">
+        </label>
+        <label>
+          <span>Players can double on</span>
+          <select>
             <option selected>Any Two Cards</option>
             <option>Hard/Soft 9-11</option>
             <option>Hard 9-11</option>
             <option>Hard 10-11</option>
           </select>
-        </div>
-        <div>
-          <label for="players-can-double-after-split-input">Players can double after split</label>
-          <input id="players-can-double-after-split-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="players-can-split-fours-fives-tens-input">Players can split fours, fives, and tens</label>
-          <input id="players-can-split-fours-fives-tens-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="players-can-split-any-tens-input">Players can split any tens</label>
-          <input id="players-can-split-any-tens-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="players-can-split-aces-input">Players can split aces</label>
-          <input id="players-can-split-aces-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="players-can-resplit-aces-input">Players can resplit aces</label>
-          <input id="players-can-resplit-aces-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="players-can-hit-split-aces-input">Players can hit split aces</label>
-          <input id="players-can-hit-split-aces-input" type="checkbox" checked />
-        </div>
-        <div>
-          <label for="max-num-splits-input">Maximum number of splits</label>
-          <select id="max-num-splits-input">
+        </label>
+        <label>
+          <span>Players can double after split</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Players can split fours, fives, and tens</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Players can split any tens</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Players can split aces</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Players can resplit aces</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Players can hit split aces</span>
+          <input type="checkbox" checked />
+        </label>
+        <label>
+          <span>Maximum number of splits</span>
+          <select>
             <option>0</option>
             <option>1</option>
             <option>2</option>
             <option selected>3</option>
             <option>Unlimited</option>
           </select>
-        </div>
-        <div>
-          <label for="card-num-bonus-input">Card number bonus</label>
-          <select id="card-num-bonus-input">
+        </label>
+        <label>
+          <span>Card number bonus</span>
+          <select>
             <option selected>None</option>
             <option>5-Card Charlie</option>
             <option>6-Card Charlie</option>
             <option>7-Card Charlie</option>
           </select>
-        </div>
-        <div>
-          <label for="surrender-input">Surrender</label>
-          <select id="surrender-input">
+        </label>
+        <label>
+          <span>Surrender</span>
+          <select>
             <option>None</option>
             <option selected>Late</option>
             <option>Early</option>
             <option>Full Early</option>
             <option>Anytime</option>
           </select>
-        </div>
+        </label>
       </Popup>
       <Popup ariaLabel="Quit" className="quit-popup" isOpen={isQuitPopupOpen} onRequestClose={closeQuitPopup}>
         <p>Had enough already?</p>

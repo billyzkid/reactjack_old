@@ -418,7 +418,7 @@
   box-sizing: border-box;
   overflow: auto;
 
-  > div {
+  > label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -426,7 +426,7 @@
     min-height: $settings-popup-setting-min-height;
     border-bottom: $settings-popup-setting-border-bottom;
 
-    > label {
+    > span {
       margin-right: $settings-popup-setting-label-margin-right;
     }
 
