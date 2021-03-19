@@ -26,29 +26,17 @@ $menu-button-color-alt: goldenrod;
 $menu-button-text-shadow: inherit;
 $menu-button-transition: color 200ms ease 0ms;
 
-$modal-overlay-background: rgba(0,0,0,0.5);
-$modal-overlay-backdrop-filter: blur(5px);
-$modal-overlay-opacity: 0;
-$modal-overlay-opacity-after-open: 1;
-$modal-overlay-opacity-before-close: 0;
-$modal-overlay-transition-after-open: opacity 300ms ease 0ms;
-$modal-overlay-transition-before-close: opacity 150ms ease 0ms; // MODAL_CLOSE_TIMEOUT_MS in Modal.jsx must match the duration used here
-
-$modal-content-transform: scale3d(0.8,0.8,0.8);
-$modal-content-transform-after-open: scale3d(1,1,1);
-$modal-content-transform-before-close: scale3d(0.8,0.8,0.8);
-$modal-content-transition-after-open: transform 300ms ease 0ms;
-$modal-content-transition-before-close: transform 150ms ease 0ms; // MODAL_CLOSE_TIMEOUT_MS in Modal.jsx must match the duration used here
-
-$popup-enter-transition-duration: 500ms; // 'enter' timeout in Popup.jsx must match the duration used here
+// 'enter' timeout in Popup.jsx must match the durations below
+$popup-enter-transition-duration: 500ms;
 $popup-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
-$popup-exit-transition-duration: 500ms; // 'exit' timeout in Popup.jsx must match the duration used here
+$popup-exit-transition-duration: 500ms;
 $popup-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
 $popup-mask-background: rgba(0,0,0,0.5);
 $popup-mask-backdrop-filter: blur(5px);
 
+// info popup
 $info-popup-font-size: 1em;
 $info-popup-font-weight: 300;
 $info-popup-width: 66.666666%;
@@ -60,6 +48,35 @@ $info-popup-background: black;
 $info-popup-box-shadow: 0 0 2em black;
 $info-popup-source-font-size: 0.8em;
 
+// profile popup
+$profile-popup-font-size: 1em;
+$profile-popup-font-weight: 400;
+$profile-popup-text-margin: 0 0 1em;
+$profile-popup-input-font-size: 1.25em;
+$profile-popup-input-margin: 0.25em;
+$profile-popup-input-width: 12em;
+
+// chat popup
+$chat-popup-font-size: 1em;
+$chat-popup-font-weight: 400;
+$chat-popup-width: 50%;
+$chat-popup-height: 50%;
+$chat-popup-padding: 0;
+$chat-popup-border: 0;
+$chat-popup-border-radius: 0.5em;
+$chat-popup-background: black;
+$chat-popup-box-shadow: 0 0 2em black;
+$chat-popup-window-padding: 0.625em;
+$chat-popup-window-background: black;
+$chat-popup-name-color: dimgray;
+$chat-popup-name-font-size: 0.8em;
+$chat-popup-incoming-message-background: dimgray;
+$chat-popup-outgoing-message-background: linear-gradient(to bottom, #00d0ea 0%, #0085d1 100%) fixed;
+$chat-popup-input-font-size: 1.25em;
+$chat-popup-input-margin: 0.25em;
+$chat-popup-input-width: 100%;
+
+// music popup
 $music-popup-width: 50%;
 $music-popup-height: 50%;
 $music-popup-padding: 0;
@@ -67,3 +84,24 @@ $music-popup-border: 0;
 $music-popup-border-radius: 0.5em;
 $music-popup-background: black;
 $music-popup-box-shadow: 0 0 2em black;
+
+// settings popup
+$settings-popup-font-size: 1em;
+$settings-popup-font-weight: 400;
+$settings-popup-width: auto;
+$settings-popup-height: auto;
+$settings-popup-padding: 2em;
+$settings-popup-border: 0;
+$settings-popup-border-radius: 0.5em;
+$settings-popup-background: black;
+$settings-popup-box-shadow: 0 0 2em black;
+$settings-popup-setting-min-height: 2em;
+$settings-popup-setting-border-bottom: 1px solid rgba(255,255,255,0.2);
+$settings-popup-setting-label-margin-right: 5em;
+
+// quit popup
+$quit-popup-font-size: 1em;
+$quit-popup-font-weight: 400;
+$quit-popup-text-margin: 0 0 1em;
+$quit-popup-button-font-size: 1.25em;
+$quit-popup-button-margin: 0.25em;

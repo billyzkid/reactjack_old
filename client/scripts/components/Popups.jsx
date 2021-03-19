@@ -274,7 +274,7 @@ const Popups = (props) => {
       <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onRequestClose={closeChatPopup}>
         <div>
           <div>
-            <div class="chat-message-container">
+            <div>
               <div class="outgoing messages">
                 <h6>Me</h6>
                 <p>Dude</p>
