@@ -5,29 +5,75 @@ html {
   background: $base-background;
 }
 
+// headers
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+// links
+a {
+  outline: none;
+  text-decoration: none;
+
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:link {
+    color: $link-color;
+  }
+
+  &:hover {
+    color: $link-color-hover;
+  }
+
+  &:active {
+    color: $link-color-active;
+  }
+
+  &:visited {
+    color: $link-color-visited;
+  }
+
+}
+
+// scrollbars
+::-webkit-scrollbar {
+  width: $scrollbar-width;
+  height: $scrollbar-height;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background: $scrollbar-background;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  border: $scrollbar-thumb-border;
+  border-radius: $scrollbar-thumb-border-radius;
+  background: $scrollbar-thumb-background;
+  background-clip: content-box;
+}
+
+// hidden popups, etc.
+[hidden] {
+  display: none !important;
+}
+
 // @media (orientation: landscape) {
 //   html {
-//       font-size: 2.5vh;
+//     font-size: 2.5vh;
 //   }
 // }
 
 // @media (orientation: portrait) {
 //   html {
-//       font-size: 2.5vw;
+//     font-size: 2.5vw;
 //   }
 // }
-
-// html,
-// body,
-// #root,
-// #app {
-//   height: 100%;
-// }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-}
-
-[hidden] {
-  display: none !important;
-}

@@ -3,6 +3,18 @@ $base-color: white;
 $base-text-shadow: 1px 1px 1px black;
 $base-background: black;
 
+$link-color: green;
+$link-color-hover: lightgreen;
+$link-color-active: lightgreen;
+$link-color-visited: green;
+
+$scrollbar-width: 20px;
+$scrollbar-height: 20px;
+$scrollbar-background: transparent;
+$scrollbar-thumb-border: 8px solid transparent;
+$scrollbar-thumb-border-radius: 100px;
+$scrollbar-thumb-background: rgba(170,170,170,0.8);
+
 $table-background: url('../images/table.jpg') bottom/cover no-repeat;
 $table-title-font: 400 5em/1.5 'Monsieur La Doulaise', cursive;
 
