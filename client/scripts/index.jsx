@@ -11,6 +11,7 @@ const state = {
   isMusicPopupOpen: false,
   isSettingsPopupOpen: false,
   isQuitPopupOpen: false,
+  isSoundEffectsEnabled: true,
   dealer: {
     name: 'Dealer',
     hand: {
@@ -68,6 +69,8 @@ const reducer = (state, action) => {
       return { ...state, isSettingsPopupOpen: action.isOpen };
     case 'toggleQuitPopup':
       return { ...state, isQuitPopupOpen: action.isOpen };
+    case 'toggleIsSoundEffectsEnabled':
+      return { ...state, isSoundEffectsEnabled: !state.isSoundEffectsEnabled };
     case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':

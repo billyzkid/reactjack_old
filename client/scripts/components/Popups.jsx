@@ -6,19 +6,23 @@ import Popup from './Popup.jsx';
 const Popups = (props) => {
   console.log('Popups render', props);
 
-  const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen } = useStateContext();
+  const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen, isSoundEffectsEnabled } = useStateContext();
   const dispatch = useDispatchContext();
+
   const profileNameInputRef = useRef(null);
   const chatMessageInputRef = useRef(null);
 
   const onAfterProfilePopupOpen = useCallback(() => { profileNameInputRef.current.focus(); }, []);
   const onAfterChatPopupOpen = useCallback(() => { chatMessageInputRef.current.focus(); }, []);
+
   const closeInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: false }); }, []);
   const closeProfilePopup = useCallback(() => { dispatch({ type: 'toggleProfilePopup', isOpen: false }); }, []);
   const closeChatPopup = useCallback(() => { dispatch({ type: 'toggleChatPopup', isOpen: false }); }, []);
   const closeMusicPopup = useCallback(() => { dispatch({ type: 'toggleMusicPopup', isOpen: false }); }, []);
   const closeSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: false }); }, []);
   const closeQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: false }); }, []);
+
+  const onIsSoundEffectsEnabledChange = useCallback(() => { dispatch({ type: 'toggleIsSoundEffectsEnabled' }); }, []);
 
   return (
     <Fragment>
@@ -306,7 +310,7 @@ const Popups = (props) => {
       <Popup ariaLabel="Settings" className="settings-popup" isOpen={isSettingsPopupOpen} onRequestClose={closeSettingsPopup}>
         <label>
           <span>Sound effects</span>
-          <input type="checkbox" />
+          <input type="checkbox" checked={isSoundEffectsEnabled} onChange={onIsSoundEffectsEnabledChange} />
         </label>
         <label>
           <span>Shuffle after every round</span>
