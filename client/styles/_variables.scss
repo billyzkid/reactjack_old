@@ -4,9 +4,9 @@ $base-text-shadow: 1px 1px 1px black;
 $base-background: black;
 
 $link-color: green;
+$link-color-visited: green;
 $link-color-hover: lightgreen;
 $link-color-active: lightgreen;
-$link-color-visited: green;
 
 $scrollbar-width: 20px;
 $scrollbar-height: 20px;
@@ -48,6 +48,17 @@ $popup-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
 $popup-mask-background: rgba(0,0,0,0.5);
 $popup-mask-backdrop-filter: blur(5px);
+
+$info-popup-font-size: 1em;
+$info-popup-font-weight: 300;
+$info-popup-width: 66.666666%;
+$info-popup-height: 66.666666%;
+$info-popup-padding: 2em;
+$info-popup-border: 0;
+$info-popup-border-radius: 0.5em;
+$info-popup-background: black;
+$info-popup-box-shadow: 0 0 2em black;
+$info-popup-source-font-size: 0.8em;
 
 $music-popup-width: 50%;
 $music-popup-height: 50%;

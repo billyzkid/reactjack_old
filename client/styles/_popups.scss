@@ -180,15 +180,16 @@
 }
 
 .info-popup > .popup-content {
-  font-weight: 300;
+  font-size: $info-popup-font-size;
+  font-weight: $info-popup-font-weight;
   text-shadow: none;
-  width: 66.666666%;
-  height: 66.666666%;
-  padding: 2em;
-  border: 0;
-  border-radius: 0.5em;
-  background: black;
-  box-shadow: 0 0 2em black;
+  width: $info-popup-width;
+  height: $info-popup-height;
+  padding: $info-popup-padding;
+  border: $info-popup-border;
+  border-radius: $info-popup-border-radius;
+  background: $info-popup-background;
+  box-shadow: $info-popup-box-shadow;
   box-sizing: border-box;
   overflow: auto;
 
@@ -197,7 +198,7 @@
   }
 
   > h1 + p {
-    font-size: 0.8em;
+    font-size: $info-popup-source-font-size;
     margin: 0;
   }
 
@@ -208,8 +209,8 @@
   > h4::before {
     content: '';
     display: block;
-    height: 1em;
-    margin-top: -1em;
+    height: $info-popup-font-size;
+    margin-top: $info-popup-font-size * -1;
     visibility: hidden;
     pointer-events: none;
   }

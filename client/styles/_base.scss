@@ -23,16 +23,16 @@ a {
     color: $link-color;
   }
 
+  &:visited {
+    color: $link-color-visited;
+  }
+
   &:hover {
     color: $link-color-hover;
   }
 
   &:active {
     color: $link-color-active;
-  }
-
-  &:visited {
-    color: $link-color-visited;
   }
 
 }
