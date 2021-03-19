@@ -8,9 +8,11 @@ const Popups = (props) => {
 
   const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
-  const nameInputRef = useRef(null);
+  const profileNameInputRef = useRef(null);
+  const chatMessageInputRef = useRef(null);
 
-  const onAfterProfilePopupOpen = useCallback(() => { nameInputRef.current.focus(); }, []);
+  const onAfterProfilePopupOpen = useCallback(() => { profileNameInputRef.current.focus(); }, []);
+  const onAfterChatPopupOpen = useCallback(() => { chatMessageInputRef.current.focus(); }, []);
   const closeInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: false }); }, []);
   const closeProfilePopup = useCallback(() => { dispatch({ type: 'toggleProfilePopup', isOpen: false }); }, []);
   const closeChatPopup = useCallback(() => { dispatch({ type: 'toggleChatPopup', isOpen: false }); }, []);
@@ -267,11 +269,11 @@ const Popups = (props) => {
       <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterProfilePopupOpen} onRequestClose={closeProfilePopup}>
         <p>Don't like being called Will?</p>
         <div>
-          <input ref={nameInputRef} type="text" minlength="1" maxlength="20" placeholder="Name" spellcheck="false" />
+          <input ref={profileNameInputRef} type="text" minlength="1" maxlength="20" placeholder="Name" spellcheck="false" />
           <button class="silver">Change</button>
         </div>
       </Popup>
-      <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onRequestClose={closeChatPopup}>
+      <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterChatPopupOpen} onRequestClose={closeChatPopup}>
         <div>
           <div>
             <div>
@@ -293,7 +295,7 @@ const Popups = (props) => {
             </div>
           </div>
           <div>
-            <input type="text" minlength="1" maxlength="140" placeholder="Message" />
+            <input ref={chatMessageInputRef} type="text" minlength="1" maxlength="140" placeholder="Message" />
             <button class="silver">Send</button>
           </div>
         </div>

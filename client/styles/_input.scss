@@ -1,0 +1,31 @@
+input,
+select {
+  font: inherit;
+  color: inherit;
+  text-shadow: inherit;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.3em;
+  background: rgba(0,0,0,0.1);
+
+  &[type=text],
+  &[type=number] {
+    padding: 0.2em 0.4em;
+    appearance: none; // Remove the inner shadow in iOS
+    outline: none; // Let the blinking cursor indicate focus
+  }
+
+  &::placeholder {
+    color: rgba(255,255,255,0.2);
+    text-shadow: none;
+  }
+
+  &::-webkit-inner-spin-button {
+    margin-right: -0.2em;
+    cursor: pointer;
+  }
+
+  > option {
+    background-color: black;
+  }
+
+}
