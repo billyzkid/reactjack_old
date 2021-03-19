@@ -30,6 +30,12 @@ function setAriaVisible(node) {
   node.removeAttribute('aria-hidden');
 }
 
+function getNumberOrString(value) {
+  const number = Number(value);
+
+  return !isNaN(number) ? number : value;
+}
+
 function getHandTotal(hand) {
   return '6 or 16';
 }
@@ -42,4 +48,4 @@ function formatMoney(value) {
   }
 }
 
-export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getHandTotal, formatMoney };
+export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getHandTotal, formatMoney };

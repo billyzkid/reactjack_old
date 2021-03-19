@@ -11,7 +11,25 @@ const state = {
   isMusicPopupOpen: false,
   isSettingsPopupOpen: false,
   isQuitPopupOpen: false,
-  isSoundEffectsEnabled: true,
+  settings: {
+    soundEffects: false,
+    shuffleAfterEveryRound: false,
+    numDecks: 6,
+    blackjackPayout: 1.5,
+    insurancePayout: 2,
+    dealerStandsOn: 'S17',
+    dealerPeeksOn: 'P',
+    playersCanDoubleOn: 'D2',
+    playersCanDoubleAfterSplit: true,
+    playersCanSplitFoursFivesTens: true,
+    playersCanSplitAnyTens: true,
+    playersCanSplitAces: true,
+    playersCanResplitAces: true,
+    playersCanHitSplitAces: true,
+    maxNumSplits: 3,
+    cardNumBonus: 'NCC',
+    surrender: 'LS'
+  },
   dealer: {
     name: 'Dealer',
     hand: {
@@ -69,8 +87,8 @@ const reducer = (state, action) => {
       return { ...state, isSettingsPopupOpen: action.isOpen };
     case 'toggleQuitPopup':
       return { ...state, isQuitPopupOpen: action.isOpen };
-    case 'toggleIsSoundEffectsEnabled':
-      return { ...state, isSoundEffectsEnabled: !state.isSoundEffectsEnabled };
+    case 'updateSettings':
+      return { ...state, settings: action.settings };
     case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':

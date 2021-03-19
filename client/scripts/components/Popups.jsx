@@ -1,14 +1,16 @@
 import React, { Fragment, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useStateContext, useDispatchContext } from '../hooks.js';
+import { getNumberOrString } from '../utils.js';
 import Popup from './Popup.jsx';
 
 const Popups = (props) => {
   console.log('Popups render', props);
 
-  const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen, isSoundEffectsEnabled } = useStateContext();
-  const dispatch = useDispatchContext();
+  const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen, settings } = useStateContext();
+  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitFoursFivesTens, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender } = settings;
 
+  const dispatch = useDispatchContext();
   const profileNameInputRef = useRef(null);
   const chatMessageInputRef = useRef(null);
 
@@ -22,7 +24,13 @@ const Popups = (props) => {
   const closeSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: false }); }, []);
   const closeQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: false }); }, []);
 
-  const onIsSoundEffectsEnabledChange = useCallback(() => { dispatch({ type: 'toggleIsSoundEffectsEnabled' }); }, []);
+  const onSettingsChange = useCallback((event) => {
+    const target = event.currentTarget;
+    const settingName = target.name;
+    const settingValue = (target.type === 'checkbox') ? target.checked : getNumberOrString(target.value);
+
+    dispatch({ type: 'updateSettings', settings: { ...settings, [settingName]: settingValue } });
+  }, [settings]);
 
   return (
     <Fragment>
@@ -310,114 +318,116 @@ const Popups = (props) => {
       <Popup ariaLabel="Settings" className="settings-popup" isOpen={isSettingsPopupOpen} onRequestClose={closeSettingsPopup}>
         <label>
           <span>Sound effects</span>
-          <input type="checkbox" checked={isSoundEffectsEnabled} onChange={onIsSoundEffectsEnabledChange} />
+          <input type="checkbox" name="soundEffects" checked={soundEffects} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Shuffle after every round</span>
-          <input type="checkbox" defaultChecked={false} />
+          <input type="checkbox" name="shuffleAfterEveryRound" checked={shuffleAfterEveryRound} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Number of decks</span>
-          <select defaultValue="6">
-            <option>1</option>
-            <option>2</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>8</option>
+          <select name="numDecks" value={numDecks} onChange={onSettingsChange}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
           </select>
         </label>
         <label>
           <span>Blackjack payout</span>
-          <select defaultValue="3:2">
-            <option>2:1</option>
-            <option>3:2</option>
-            <option>6:5</option>
-            <option>1:1</option>
+          <select name="blackjackPayout" value={blackjackPayout} onChange={onSettingsChange}>
+            <option value="2">2:1</option>
+            <option value="1.5">3:2</option>
+            <option value="1.2">6:5</option>
+            <option value="1">1:1</option>
           </select>
         </label>
         <label>
           <span>Insurance payout</span>
-          <select defaultValue="2:1">
-            <option>2:1</option>
+          <select name="insurancePayout" value={insurancePayout} onChange={onSettingsChange}>
+            <option value="2">2:1</option>
           </select>
         </label>
         <label>
           <span>Dealer stands on</span>
-          <select defaultValue="Soft 17">
-            <option>Soft 17</option>
-            <option>Hard 17</option>
+          <select name="dealerStandsOn" value={dealerStandsOn} onChange={onSettingsChange}>
+            <option value="S17">Soft 17</option>
+            <option value="H17">Hard 17</option>
           </select>
         </label>
         <label>
           <span>Dealer peeks for blackjack on</span>
-          <select defaultValue="Ace/Ten">
-            <option>Ace/Ten</option>
-            <option>Ace</option>
-            <option>Ten</option>
-            <option>No Peek</option>
+          <select name="dealerPeeksOn" value={dealerPeeksOn} onChange={onSettingsChange}>
+            <option value="NP">No Peek</option>
+            <option value="P">Ace/Ten</option>
+            <option value="PA">Ace</option>
           </select>
         </label>
         <label>
           <span>Players can double on</span>
-          <select defaultValue="Any Two Cards">
-            <option>Any Two Cards</option>
-            <option>Hard/Soft 9-11</option>
-            <option>Hard 9-11</option>
-            <option>Hard 10-11</option>
+          <select name="playersCanDoubleOn" value={playersCanDoubleOn} onChange={onSettingsChange}>
+            <option value="D2">Any Two Cards</option>
+            <option value="D3">Any Three Cards</option>
+            <option value="D4">Any Four Cards</option>
+            <option value="D8">8-11</option>
+            <option value="D9">9-11</option>
+            <option value="D10">10-11</option>
+            <option value="D11">11</option>
           </select>
         </label>
         <label>
           <span>Players can double after split</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanDoubleAfterSplit" checked={playersCanDoubleAfterSplit} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Players can split fours, fives, and tens</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanSplitFoursFivesTens" checked={playersCanSplitFoursFivesTens} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Players can split any tens</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanSplitAnyTens" checked={playersCanSplitAnyTens} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Players can split aces</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanSplitAces" checked={playersCanSplitAces} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Players can resplit aces</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanResplitAces" checked={playersCanResplitAces} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Players can hit split aces</span>
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" name="playersCanHitSplitAces" checked={playersCanHitSplitAces} onChange={onSettingsChange} />
         </label>
         <label>
           <span>Maximum number of splits</span>
-          <select defaultValue="3">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>Unlimited</option>
+          <select name="maxNumSplits" value={maxNumSplits} onChange={onSettingsChange}>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="U">Unlimited</option>
           </select>
         </label>
         <label>
           <span>Card number bonus</span>
-          <select defaultValue="None">
-            <option>None</option>
-            <option>5-Card Charlie</option>
-            <option>6-Card Charlie</option>
-            <option>7-Card Charlie</option>
+          <select name="cardNumBonus" value={cardNumBonus} onChange={onSettingsChange}>
+            <option value="NCC">None</option>
+            <option value="5CC">5-Card Charlie</option>
+            <option value="6CC">6-Card Charlie</option>
+            <option value="7CC">7-Card Charlie</option>
           </select>
         </label>
         <label>
           <span>Surrender</span>
-          <select defaultValue="Late">
-            <option>None</option>
-            <option>Late</option>
-            <option>Early</option>
-            <option>Full Early</option>
-            <option>Anytime</option>
+          <select name="surrender" value={surrender} onChange={onSettingsChange}>
+            <option value="NS">No Surrender</option>
+            <option value="LS">Late</option>
+            <option value="ES">Early</option>
+            <option value="FS">Full Early</option>
+            <option value="AS">Anytime</option>
           </select>
         </label>
       </Popup>
