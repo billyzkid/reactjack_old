@@ -1,2 +1,74 @@
 .banner {
+  font: 300 1em/1.2 'Dosis', sans-serif;
+  letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 33.333333%;
+
+    &:nth-child(1) {
+      border-right: 2px solid white;
+    }
+
+    &:nth-child(2) {
+      justify-content: center;
+    }
+
+    &:nth-child(3) {
+      border-left: 2px solid white;
+    }
+
+  }
+
+  p {
+    margin: 0;
+
+    &:nth-child(2) {
+      font-size: 1.1em;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+    }
+
+    > span {
+      display: block;
+    }
+
+  }
+
+  .primary-player-chips,
+  .primary-player-bet,
+  .primary-player-hand-total,
+  .dealer-hand-total,
+  .message {
+    margin: 0 1.5625em;
+  }
+
+  .primary-player-chips,
+  .primary-player-hand-total {
+    text-align: left;
+  }
+
+  .primary-player-bet,
+  .dealer-hand-total {
+    text-align: right;
+  }
+
+  .message {
+    text-align: center;
+  }
+
+  .primary-player-hand-total {
+    color: lightblue;
+  }
+
+  .dealer-hand-total {
+    color: goldenrod;
+  }
+
 }

@@ -12,7 +12,7 @@ const Table = (props) => {
     <div className="table">
       <h1>Reactjack</h1>
       <Dealer />
-      {/* <Banner /> */}
+      <Banner />
       {/* <Controls /> */}
       {/* <Players /> */}
     </div>
