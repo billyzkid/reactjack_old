@@ -88,44 +88,44 @@ const Popups = (props) => {
           <li>The ten, jack, queen, and king are all valued at 10.</li>
         </ul>
         <p>The suits of the cards do not have any meaning in the game. The value of a hand is simply the sum of the point counts of each card in the hand. Some examples:</p>
-        <div class="hand">
-          <div class="card five-of-clubs"></div>
-          <div class="card seven-of-hearts"></div>
-          <div class="card nine-of-diamonds"></div>
+        <div className="hand">
+          <div className="card five-of-clubs"></div>
+          <div className="card seven-of-hearts"></div>
+          <div className="card nine-of-diamonds"></div>
         </div>
         <p>5 + 7 + 9 = 21, so this hand has a value of 21.</p>
-        <div class="hand">
-          <div class="card jack-of-diamonds"></div>
-          <div class="card ten-of-spades"></div>
+        <div className="hand">
+          <div className="card jack-of-diamonds"></div>
+          <div className="card ten-of-spades"></div>
         </div>
         <p>10 + 10 = 20, so this hand has a value of 20.</p>
-        <div class="hand">
-          <div class="card nine-of-spades"></div>
-          <div class="card three-of-spades"></div>
-          <div class="card queen-of-hearts"></div>
+        <div className="hand">
+          <div className="card nine-of-spades"></div>
+          <div className="card three-of-spades"></div>
+          <div className="card queen-of-hearts"></div>
         </div>
         <p>9 + 3 + 10 = 22, so this hand is a "bust". Any hand that goes over 21 "breaks" or is "busted", and is an automatic loser.</p>
         <p>Pretty easy, eh?</p>
         <p>The ace adds a new twist…</p>
         <p>An ace can be counted as either 1 or 11. You need not specify which value the ace has. It is assumed to have the value that makes the best hand, and that may change as more cards are added to the hand.</p>
-        <div class="hand">
-          <div class="card ace-of-clubs"></div>
-          <div class="card six-of-diamonds"></div>
+        <div className="hand">
+          <div className="card ace-of-clubs"></div>
+          <div className="card six-of-diamonds"></div>
         </div>
         <p>This hand is valued at 7 or 17, also known as a "soft" 17.</p>
         <p>A soft hand is any hand where an ace can be counted as either 1 or 11 without going over 21. The name reflects the fact that the hand can't bust if you draw another card. It's "soft".</p>
         <p>Let's draw another card:</p>
-        <div class="hand">
-          <div class="card ace-of-clubs"></div>
-          <div class="card six-of-diamonds"></div>
-          <div class="card king-of-spades"></div>
+        <div className="hand">
+          <div className="card ace-of-clubs"></div>
+          <div className="card six-of-diamonds"></div>
+          <div className="card king-of-spades"></div>
         </div>
         <p>Now our hand is 17, since 1 + 6 + 10 = 17. We no longer have the option to count the ace as 11, because that would go over 21. (This hand is now a "hard" 17, despite having an ace in it.)</p>
         <p>Let's back up, and draw a different card instead:</p>
-        <div class="hand">
-          <div class="card ace-of-clubs"></div>
-          <div class="card six-of-diamonds"></div>
-          <div class="card three-of-diamonds"></div>
+        <div className="hand">
+          <div className="card ace-of-clubs"></div>
+          <div className="card six-of-diamonds"></div>
+          <div className="card three-of-diamonds"></div>
         </div>
         <p>Now our hand is "10 or 20", a soft 20. Twenty is a great hand, so we would stop there.</p>
         <h3 id="the-deal-of-the-cards">The Deal of the Cards</h3>
@@ -136,11 +136,11 @@ const Popups = (props) => {
         <p>The dealer will first flip over the "hole card" to reveal his two-card starting hand. The dealer is then required to play his hand in a very specific way, with no choices allowed.</p>
         <p>He must draw cards until he has a total of 17 or more. The dealer has no choice in how to play the hand. He must continue taking cards until his total is at least 17. (A slight variation of this rule is discussed below.)</p>
         <p>Let's look at one possible dealer hand:</p>
-        <div class="hand">
-          <div class="card ace-of-clubs"></div>
-          <div class="card five-of-hearts"></div>
-          <div class="card seven-of-diamonds"></div>
-          <div class="card six-of-clubs"></div>
+        <div className="hand">
+          <div className="card ace-of-clubs"></div>
+          <div className="card five-of-hearts"></div>
+          <div className="card seven-of-diamonds"></div>
+          <div className="card six-of-clubs"></div>
         </div>
         <p>After flipping over the hole card, the dealer's hand was (A,5). That makes a hand value of 16, so he must draw another card.</p>
         <p>He drew a seven, making the hand value 13 (the ace can no longer be counted as 11). With a total of 13, he must hit again.</p>
@@ -273,25 +273,25 @@ const Popups = (props) => {
       <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterProfilePopupOpen} onRequestClose={closeProfilePopup}>
         <p>Don't like being called Will?</p>
         <div>
-          <input ref={profileNameInputRef} type="text" minlength="1" maxlength="20" placeholder="Name" spellcheck="false" />
-          <button class="silver">Change</button>
+          <input ref={profileNameInputRef} type="text" minLength="1" maxLength="20" placeholder="Name" spellCheck="false" />
+          <button className="silver">Change</button>
         </div>
       </Popup>
       <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterChatPopupOpen} onRequestClose={closeChatPopup}>
         <div>
           <div>
             <div>
-              <div class="outgoing messages">
+              <div className="outgoing messages">
                 <h6>Me</h6>
                 <p>Dude</p>
               </div>
-              <div class="incoming messages">
+              <div className="incoming messages">
                 <h6>You</h6>
                 <p>Hey!</p>
                 <p>You there?</p>
                 <p>Hello, how's it going?</p>
               </div>
-              <div class="outgoing messages">
+              <div className="outgoing messages">
                 <h6>Me</h6>
                 <p>Great thanks!</p>
                 <p>How about you?</p>
@@ -299,8 +299,8 @@ const Popups = (props) => {
             </div>
           </div>
           <div>
-            <input ref={chatMessageInputRef} type="text" minlength="1" maxlength="140" placeholder="Message" />
-            <button class="silver">Send</button>
+            <input ref={chatMessageInputRef} type="text" minLength="1" maxLength="140" placeholder="Message" />
+            <button className="silver">Send</button>
           </div>
         </div>
       </Popup>
@@ -369,27 +369,27 @@ const Popups = (props) => {
         </label>
         <label>
           <span>Players can double after split</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Players can split fours, fives, and tens</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Players can split any tens</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Players can split aces</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Players can resplit aces</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Players can hit split aces</span>
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         </label>
         <label>
           <span>Maximum number of splits</span>
@@ -424,8 +424,8 @@ const Popups = (props) => {
       <Popup ariaLabel="Quit" className="quit-popup" isOpen={isQuitPopupOpen} onRequestClose={closeQuitPopup}>
         <p>Had enough already?</p>
         <div>
-          <button class="silver">Quit</button>
-          <button class="silver">Cancel</button>
+          <button className="silver">Quit</button>
+          <button className="silver">Cancel</button>
         </div>
       </Popup>
     </Fragment>
