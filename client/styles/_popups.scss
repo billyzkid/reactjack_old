@@ -164,6 +164,29 @@
     outline: none;
   }
 
+  ::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: solid 8px transparent;
+    border-radius: 100px;
+    background-clip: content-box;
+    background-color: rgba(170,170,170,0.8);
+  }
+
 }
 
 .popup-open {
