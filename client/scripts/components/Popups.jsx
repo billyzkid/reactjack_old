@@ -314,45 +314,45 @@ const Popups = (props) => {
         </label>
         <label>
           <span>Shuffle after every round</span>
-          <input type="checkbox" />
+          <input type="checkbox" defaultChecked={false} />
         </label>
         <label>
           <span>Number of decks</span>
-          <select>
+          <select defaultValue="6">
             <option>1</option>
             <option>2</option>
             <option>4</option>
             <option>5</option>
-            <option selected>6</option>
+            <option>6</option>
             <option>8</option>
           </select>
         </label>
         <label>
           <span>Blackjack payout</span>
-          <select>
+          <select defaultValue="3:2">
             <option>2:1</option>
-            <option selected>3:2</option>
+            <option>3:2</option>
             <option>6:5</option>
             <option>1:1</option>
           </select>
         </label>
         <label>
           <span>Insurance payout</span>
-          <select>
-            <option selected>2:1</option>
+          <select defaultValue="2:1">
+            <option>2:1</option>
           </select>
         </label>
         <label>
           <span>Dealer stands on</span>
-          <select>
-            <option selected>Soft 17</option>
+          <select defaultValue="Soft 17">
+            <option>Soft 17</option>
             <option>Hard 17</option>
           </select>
         </label>
         <label>
           <span>Dealer peeks for blackjack on</span>
-          <select>
-            <option selected>Ace/Ten</option>
+          <select defaultValue="Ace/Ten">
+            <option>Ace/Ten</option>
             <option>Ace</option>
             <option>Ten</option>
             <option>No Peek</option>
@@ -360,8 +360,8 @@ const Popups = (props) => {
         </label>
         <label>
           <span>Players can double on</span>
-          <select>
-            <option selected>Any Two Cards</option>
+          <select defaultValue="Any Two Cards">
+            <option>Any Two Cards</option>
             <option>Hard/Soft 9-11</option>
             <option>Hard 9-11</option>
             <option>Hard 10-11</option>
@@ -393,18 +393,18 @@ const Popups = (props) => {
         </label>
         <label>
           <span>Maximum number of splits</span>
-          <select>
+          <select defaultValue="3">
             <option>0</option>
             <option>1</option>
             <option>2</option>
-            <option selected>3</option>
+            <option>3</option>
             <option>Unlimited</option>
           </select>
         </label>
         <label>
           <span>Card number bonus</span>
-          <select>
-            <option selected>None</option>
+          <select defaultValue="None">
+            <option>None</option>
             <option>5-Card Charlie</option>
             <option>6-Card Charlie</option>
             <option>7-Card Charlie</option>
@@ -412,9 +412,9 @@ const Popups = (props) => {
         </label>
         <label>
           <span>Surrender</span>
-          <select>
+          <select defaultValue="Late">
             <option>None</option>
-            <option selected>Late</option>
+            <option>Late</option>
             <option>Early</option>
             <option>Full Early</option>
             <option>Anytime</option>
