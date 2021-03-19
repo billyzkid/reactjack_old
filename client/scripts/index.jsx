@@ -21,16 +21,37 @@ const state = {
     }
   },
   players: [
-    { name: 'Will', primary: true, active: false, chips: 1000, hands: [
-      { bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]},
-      { bet: 20, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]},
-      { bet: 30, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }]}
-    ]}
+    {
+      name: 'Will',
+      primary: true,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        },
+        {
+          bet: 20,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        },
+        {
+          bet: 30,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }
   ],
-  messages: [
-    'This is a message.',
-    'This is a longer message.'
-  ]
+  messages: ['This is a message.', 'This is a longer message.']
 };
 
 const reducer = (state, action) => {
@@ -50,7 +71,7 @@ const reducer = (state, action) => {
     case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':
-      return { ...state, players: state.players.filter(p => p.id !== action.id) };
+      return { ...state, players: state.players.filter((player) => player.id !== action.id) };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

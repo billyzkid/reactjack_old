@@ -10,9 +10,9 @@ const Players = (props) => {
 
   return (
     <div className='players'>
-      {players.map((player, index) =>
+      {players.map((player, index) => (
         <Player key={index} player={player} />
-      )}
+      ))}
     </div>
   );
 };

@@ -79,39 +79,45 @@ const Popup = (props) => {
     };
   }, [isOpen]);
 
-  const onMaskMouseDown = useCallback((event)=> {
-    // close popup on mask mouse/touch interaction
-    if (closeOnMaskMouseDown) {
-      event.preventDefault();
-      onRequestClose();
-    }
-  }, [closeOnMaskMouseDown]);
-
-  const onContentKeyDown = useCallback((event)=> {
-    if (event.key === 'Tab') {
-      // prevent tab focus from escaping popup
-      if (lockFocus) {
-        const focusedElement = document.activeElement;
-        const focusableChildren = getFocusableChildren(event.currentTarget).filter(isTabFocusable);
-        const firstFocusableChild = focusableChildren[0];
-        const lastFocusableChild = focusableChildren[focusableChildren.length - 1];
-
-        if (focusedElement === firstFocusableChild && event.shiftKey) {
-          event.preventDefault();
-          lastFocusableChild.focus();
-        } else if (focusedElement === lastFocusableChild && !event.shiftKey) {
-          event.preventDefault();
-          firstFocusableChild.focus();
-        }
-      }
-    } else if (event.key === 'Escape') {
-      // close popup on escape key
-      if (closeOnEscapeKeyDown) {
+  const onMaskMouseDown = useCallback(
+    (event) => {
+      // close popup on mask mouse/touch interaction
+      if (closeOnMaskMouseDown) {
         event.preventDefault();
         onRequestClose();
       }
-    }
-  }, [lockFocus, closeOnEscapeKeyDown]);
+    },
+    [closeOnMaskMouseDown]
+  );
+
+  const onContentKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Tab') {
+        // prevent tab focus from escaping popup
+        if (lockFocus) {
+          const focusedElement = document.activeElement;
+          const focusableChildren = getFocusableChildren(event.currentTarget).filter(isTabFocusable);
+          const firstFocusableChild = focusableChildren[0];
+          const lastFocusableChild = focusableChildren[focusableChildren.length - 1];
+
+          if (focusedElement === firstFocusableChild && event.shiftKey) {
+            event.preventDefault();
+            lastFocusableChild.focus();
+          } else if (focusedElement === lastFocusableChild && !event.shiftKey) {
+            event.preventDefault();
+            firstFocusableChild.focus();
+          }
+        }
+      } else if (event.key === 'Escape') {
+        // close popup on escape key
+        if (closeOnEscapeKeyDown) {
+          event.preventDefault();
+          onRequestClose();
+        }
+      }
+    },
+    [lockFocus, closeOnEscapeKeyDown]
+  );
 
   return (
     <Portal>
@@ -120,7 +126,9 @@ const Popup = (props) => {
           <div ref={maskRef} className='popup-mask' onMouseDown={onMaskMouseDown} />
         </CSSTransition>
         <CSSTransition nodeRef={contentRef} in={isOpen} classNames={animations[position]} timeout={timeouts} unmountOnExit={unmountOnClose}>
-          <div ref={contentRef} className='popup-content' tabIndex='-1' role={ariaRole} aria-label={ariaLabel} onKeyDown={onContentKeyDown}>{children}</div>
+          <div ref={contentRef} className='popup-content' tabIndex='-1' role={ariaRole} aria-label={ariaLabel} onKeyDown={onContentKeyDown}>
+            {children}
+          </div>
         </CSSTransition>
       </div>
     </Portal>

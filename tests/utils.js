@@ -8,7 +8,7 @@ test('formatMoney formats whole numbers', () => {
 });
 
 test('formatMoney formats decimals', () => {
-  const result = utils.formatMoney(.5);
+  const result = utils.formatMoney(0.5);
   assert.is(result, '$0.50');
 });
 

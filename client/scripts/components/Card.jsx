@@ -14,9 +14,7 @@ const Card = (props) => {
     classNames = `card ${rank}-of-${suit}`;
   }
 
-  return (
-    <div className={classNames} />
-  );
+  return <div className={classNames} />;
 };
 
 Card.propTypes = {

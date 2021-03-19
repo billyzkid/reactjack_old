@@ -10,17 +10,33 @@ const Modals = (props) => {
   const { isInfoModalOpen, isProfileModalOpen, isChatModalOpen, isMusicModalOpen, isSettingsModalOpen, isQuitModalOpen } = useStateContext();
   const dispatch = useDispatchContext();
 
-  const closeInfoModal = useCallback(()=> { dispatch({ type: 'toggleInfoModal', isOpen: false }); }, []);
-  const closeProfileModal = useCallback(()=> { dispatch({ type: 'toggleProfileModal', isOpen: false }); }, []);
-  const closeChatModal = useCallback(()=> { dispatch({ type: 'toggleChatModal', isOpen: false }); }, []);
-  const closeMusicModal = useCallback(()=> { dispatch({ type: 'toggleMusicModal', isOpen: false }); }, []);
-  const closeSettingsModal = useCallback(()=> { dispatch({ type: 'toggleSettingsModal', isOpen: false }); }, []);
-  const closeQuitModal = useCallback(()=> { dispatch({ type: 'toggleQuitModal', isOpen: false }); }, []);
+  const closeInfoModal = useCallback(() => {
+    dispatch({ type: 'toggleInfoModal', isOpen: false });
+  }, []);
+  const closeProfileModal = useCallback(() => {
+    dispatch({ type: 'toggleProfileModal', isOpen: false });
+  }, []);
+  const closeChatModal = useCallback(() => {
+    dispatch({ type: 'toggleChatModal', isOpen: false });
+  }, []);
+  const closeMusicModal = useCallback(() => {
+    dispatch({ type: 'toggleMusicModal', isOpen: false });
+  }, []);
+  const closeSettingsModal = useCallback(() => {
+    dispatch({ type: 'toggleSettingsModal', isOpen: false });
+  }, []);
+  const closeQuitModal = useCallback(() => {
+    dispatch({ type: 'toggleQuitModal', isOpen: false });
+  }, []);
 
   const inputRef = useRef(null);
 
-  const onAfterInfoModalOpen = useCallback(()=> { inputRef.current.focus(); }, []);
-  const onAfterMusicModalOpen = useCallback(()=> { /* iframeRef.current.focus(); */ }, []);
+  const onAfterInfoModalOpen = useCallback(() => {
+    inputRef.current.focus();
+  }, []);
+  const onAfterMusicModalOpen = useCallback(() => {
+    /* iframeRef.current.focus(); */
+  }, []);
 
   return (
     <Fragment>
@@ -40,7 +56,13 @@ const Modals = (props) => {
       <Modal contentLabel='Settings' className='settings-modal' isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
       </Modal>
-      <Modal contentLabel='Quit' className='quit-modal' isOpen={isQuitModalOpen} onRequestClose={closeQuitModal} shouldCloseOnEsc={false} shouldCloseOnOverlayClick={false}>
+      <Modal
+        contentLabel='Quit'
+        className='quit-modal'
+        isOpen={isQuitModalOpen}
+        onRequestClose={closeQuitModal}
+        shouldCloseOnEsc={false}
+        shouldCloseOnOverlayClick={false}>
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
@@ -49,7 +71,7 @@ const Modals = (props) => {
         <input ref={inputRef} />
       </Popup>
       <Popup ariaLabel='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
-        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
+        <iframe src='https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI' allowtransparency='true' allow='encrypted-media' />
       </Popup>
     </Fragment>
   );

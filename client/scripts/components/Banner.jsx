@@ -19,27 +19,29 @@ const Banner = (props) => {
         <div className='primary-player-bet'>
           <p>Bet</p>
           <p>
-            {primaryPlayer.hands.map((hand, index) =>
+            {primaryPlayer.hands.map((hand, index) => (
               <span key={index}>{formatMoney(hand.bet)}</span>
-            )}
+            ))}
           </p>
         </div>
       </div>
       <div>
         <div className='message'>
           <p>
-            {messages.map((message, index) =>
+            {messages.map((message, index) => (
               <span key={index}>{message}</span>
-            )}</p>
+            ))}
+          </p>
         </div>
       </div>
       <div>
         <div className='primary-player-hand-total'>
           <p>{primaryPlayer.name}</p>
           <p>
-            {primaryPlayer.hands.map((hand, index) =>
+            {primaryPlayer.hands.map((hand, index) => (
               <span key={index}>{getHandTotal(hand)}</span>
-            )}</p>
+            ))}
+          </p>
         </div>
         <div className='dealer-hand-total'>
           <p>{dealer.name}</p>
