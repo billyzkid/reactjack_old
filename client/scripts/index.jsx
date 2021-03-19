@@ -5,12 +5,12 @@ import App from './components/App.jsx';
 import '../styles/index.scss';
 
 const state = {
-  isInfoModalOpen: false,
-  isProfileModalOpen: false,
-  isChatModalOpen: false,
-  isMusicModalOpen: false,
-  isSettingsModalOpen: false,
-  isQuitModalOpen: false,
+  isInfoPopupOpen: false,
+  isProfilePopupOpen: false,
+  isChatPopupOpen: false,
+  isMusicPopupOpen: false,
+  isSettingsPopupOpen: false,
+  isQuitPopupOpen: false,
   dealer: {
     name: 'Dealer',
     hand: {
@@ -56,18 +56,18 @@ const state = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'toggleInfoModal':
-      return { ...state, isInfoModalOpen: action.isOpen };
-    case 'toggleProfileModal':
-      return { ...state, isProfileModalOpen: action.isOpen };
-    case 'toggleChatModal':
-      return { ...state, isChatModalOpen: action.isOpen };
-    case 'toggleMusicModal':
-      return { ...state, isMusicModalOpen: action.isOpen };
-    case 'toggleSettingsModal':
-      return { ...state, isSettingsModalOpen: action.isOpen };
-    case 'toggleQuitModal':
-      return { ...state, isQuitModalOpen: action.isOpen };
+    case 'toggleInfoPopup':
+      return { ...state, isInfoPopupOpen: action.isOpen };
+    case 'toggleProfilePopup':
+      return { ...state, isProfilePopupOpen: action.isOpen };
+    case 'toggleChatPopup':
+      return { ...state, isChatPopupOpen: action.isOpen };
+    case 'toggleMusicPopup':
+      return { ...state, isMusicPopupOpen: action.isOpen };
+    case 'toggleSettingsPopup':
+      return { ...state, isSettingsPopupOpen: action.isOpen };
+    case 'toggleQuitPopup':
+      return { ...state, isQuitPopupOpen: action.isOpen };
     case 'addPlayer':
       return { ...state, players: state.players.concat(action.player) };
     case 'removePlayer':

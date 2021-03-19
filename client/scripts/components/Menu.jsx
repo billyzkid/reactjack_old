@@ -7,21 +7,21 @@ const Menu = (props) => {
 
   const dispatch = useDispatchContext();
 
-  const openInfoModal = useCallback(() => { dispatch({ type: 'toggleInfoModal', isOpen: true }); }, []);
-  const openProfileModal = useCallback(() => { dispatch({ type: 'toggleProfileModal', isOpen: true }); }, []);
-  const openChatModal = useCallback(() => { dispatch({ type: 'toggleChatModal', isOpen: true }); }, []);
-  const openMusicModal = useCallback(() => { dispatch({ type: 'toggleMusicModal', isOpen: true }); }, []);
-  const openSettingsModal = useCallback(() => { dispatch({ type: 'toggleSettingsModal', isOpen: true }); }, []);
-  const openQuitModal = useCallback(() => { dispatch({ type: 'toggleQuitModal', isOpen: true }); }, []);
+  const openInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: true }); }, []);
+  const openProfilePopup = useCallback(() => { dispatch({ type: 'toggleProfilePopup', isOpen: true }); }, []);
+  const openChatPopup = useCallback(() => { dispatch({ type: 'toggleChatPopup', isOpen: true }); }, []);
+  const openMusicPopup = useCallback(() => { dispatch({ type: 'toggleMusicPopup', isOpen: true }); }, []);
+  const openSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: true }); }, []);
+  const openQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: true }); }, []);
 
   return (
     <div className="menu">
-      <button className="modal-button info-modal-button" aria-label="Information" onClick={openInfoModal}></button>
-      <button className="modal-button profile-modal-button" aria-label="Profile" onClick={openProfileModal}></button>
-      <button className="modal-button chat-modal-button" aria-label="Chat" onClick={openChatModal}></button>
-      <button className="modal-button music-modal-button" aria-label="Music" onClick={openMusicModal}></button>
-      <button className="modal-button settings-modal-button" aria-label="Settings" onClick={openSettingsModal}></button>
-      <button className="modal-button quit-modal-button" aria-label="Quit" onClick={openQuitModal}></button>
+      <button className="popup-button info-popup-button" aria-label="Information" onClick={openInfoPopup}></button>
+      <button className="popup-button profile-popup-button" aria-label="Profile" onClick={openProfilePopup}></button>
+      <button className="popup-button chat-popup-button" aria-label="Chat" onClick={openChatPopup}></button>
+      <button className="popup-button music-popup-button" aria-label="Music" onClick={openMusicPopup}></button>
+      <button className="popup-button settings-popup-button" aria-label="Settings" onClick={openSettingsPopup}></button>
+      <button className="popup-button quit-popup-button" aria-label="Quit" onClick={openQuitPopup}></button>
     </div>
   );
 };

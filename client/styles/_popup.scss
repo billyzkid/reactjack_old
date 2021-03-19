@@ -170,8 +170,12 @@
   overflow: hidden; // prevent page from scrolling while popup is open
 }
 
-.info-popup-open .info-modal-button,
-.music-popup-open .music-modal-button {
+.info-popup-open .info-popup-button,
+.profile-popup-open .profile-popup-button,
+.chat-popup-open .chat-popup-button,
+.music-popup-open .music-popup-button,
+.settings-popup-open .settings-popup-button,
+.quit-popup-open .quit-popup-button {
   color: $menu-button-color-alt;
 }
 

@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
 
-  > .modal-button {
+  > .popup-button {
     font: $menu-button-font;
     width: $menu-button-width;
     height: $menu-button-height;
@@ -27,27 +27,27 @@
 
   }
 
-  > .info-modal-button::before {
+  > .info-popup-button::before {
     content: '\f05a'; // la-info-circle
   }
 
-  > .profile-modal-button::before {
+  > .profile-popup-button::before {
     content: '\f2bd'; // la-user-circle
   }
 
-  > .chat-modal-button::before {
+  > .chat-popup-button::before {
     content: '\f086'; // la-comments
   }
 
-  > .music-modal-button::before {
+  > .music-popup-button::before {
     content: '\f001'; // la-music
   }
 
-  > .settings-modal-button::before {
+  > .settings-popup-button::before {
     content: '\f013'; // la-cog
   }
 
-  > .quit-modal-button::before {
+  > .quit-popup-button::before {
     content: '\f2f5'; // la-sign-out-alt
   }
 

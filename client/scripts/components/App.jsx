@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './Table.jsx';
 import Menu from './Menu.jsx';
-import Modals from './Modals.jsx';
+import Popups from './Popups.jsx';
 import Popup from './Popup.jsx';
 
 Popup.ariaHiddenSelector = '.app';
@@ -14,7 +14,7 @@ const App = (props) => {
     <div className="app">
       <Table />
       <Menu />
-      <Modals />
+      <Popups />
     </div>
   );
 };
