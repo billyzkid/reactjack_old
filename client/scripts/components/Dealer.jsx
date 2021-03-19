@@ -9,7 +9,7 @@ const Dealer = (props) => {
   const { dealer } = useStateContext();
 
   return (
-    <div className='dealer'>
+    <div className="dealer">
       <Hand hand={dealer.hand} />
     </div>
   );

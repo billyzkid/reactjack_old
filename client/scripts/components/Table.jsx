@@ -9,7 +9,7 @@ const Table = (props) => {
   console.log('Table render', props);
 
   return (
-    <div className='table'>
+    <div className="table">
       <h1>Reactjack</h1>
       <Dealer />
       <Banner />

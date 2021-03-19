@@ -44,21 +44,21 @@ const Modals = (props) => {
         <p>Information</p>
         <input ref={inputRef} />
       </Modal> */}
-      <Modal contentLabel='Profile' className='profile-modal' isOpen={isProfileModalOpen} onRequestClose={closeProfileModal}>
+      <Modal contentLabel="Profile" className="profile-modal" isOpen={isProfileModalOpen} onRequestClose={closeProfileModal}>
         <p>Profile</p>
       </Modal>
-      <Modal contentLabel='Chat' className='chat-modal' isOpen={isChatModalOpen} onRequestClose={closeChatModal}>
+      <Modal contentLabel="Chat" className="chat-modal" isOpen={isChatModalOpen} onRequestClose={closeChatModal}>
         <p>Chat</p>
       </Modal>
       {/* <Modal contentLabel='Music' className='music-modal' isOpen={isMusicModalOpen} onRequestClose={closeMusicModal}>
         <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Modal> */}
-      <Modal contentLabel='Settings' className='settings-modal' isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
+      <Modal contentLabel="Settings" className="settings-modal" isOpen={isSettingsModalOpen} onRequestClose={closeSettingsModal}>
         <p>Settings</p>
       </Modal>
       <Modal
-        contentLabel='Quit'
-        className='quit-modal'
+        contentLabel="Quit"
+        className="quit-modal"
         isOpen={isQuitModalOpen}
         onRequestClose={closeQuitModal}
         shouldCloseOnEsc={false}
@@ -66,12 +66,12 @@ const Modals = (props) => {
         <p>Quit</p>
         <button onClick={closeQuitModal}>Close</button>
       </Modal>
-      <Popup ariaLabel='Information' className='info-popup' isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
+      <Popup ariaLabel="Information" className="info-popup" isOpen={isInfoModalOpen} onAfterOpen={onAfterInfoModalOpen} onRequestClose={closeInfoModal}>
         <p>Information</p>
         <input ref={inputRef} />
       </Popup>
-      <Popup ariaLabel='Music' className='music-popup' isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
-        <iframe src='https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI' allowtransparency='true' allow='encrypted-media' />
+      <Popup ariaLabel="Music" className="music-popup" isOpen={isMusicModalOpen} onAfterOpen={onAfterMusicModalOpen} onRequestClose={closeMusicModal}>
+        <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
       </Popup>
     </Fragment>
   );

@@ -11,7 +11,7 @@ const App = (props) => {
   console.log('App render', props);
 
   return (
-    <div className='app'>
+    <div className="app">
       <Table />
       <Menu />
       <Modals />

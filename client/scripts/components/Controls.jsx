@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Controls = (props) => {
   console.log('Controls render', props);
 
-  return <div className='controls' />;
+  return <div className="controls" />;
 };
 
 // Controls.propTypes = {

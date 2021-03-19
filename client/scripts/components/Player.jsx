@@ -7,8 +7,8 @@ const Player = (props) => {
   console.log('Player render', props);
 
   return (
-    <div className='player'>
-      <div className='info'>
+    <div className="player">
+      <div className="info">
         <p>{props.player.name}</p>
         <p>{formatMoney(props.player.chips)}</p>
         <p>
@@ -22,7 +22,7 @@ const Player = (props) => {
           ))}
         </p>
       </div>
-      <div className='hands'>
+      <div className="hands">
         {props.player.hands.map((hand, index) => (
           <Hand key={index} hand={hand} />
         ))}
