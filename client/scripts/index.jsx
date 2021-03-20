@@ -102,6 +102,18 @@ const reducer = (state, action) => {
         }
       };
 
+    case 'sweepCardsFromDealer':
+      return {
+        ...state,
+        dealer: {
+          ...state.dealer,
+          hand: {
+            ...state.dealer.hand,
+            cards: []
+          }
+        }
+      };
+
     case 'updateSettings':
       return { ...state, settings: action.settings };
 
