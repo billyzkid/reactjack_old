@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
+
+const FLIP_TIMEOUT_MS = 750;
 
 const Card = React.forwardRef((props, ref) => {
   console.log('Card render', props);
@@ -10,8 +12,10 @@ const Card = React.forwardRef((props, ref) => {
 
   if (hidden && flip) {
     classNames = `card ${rank}-of-${suit} hidden flip`;
+    setTimeout(() => ref.current.classList.remove('hidden', 'flip'), FLIP_TIMEOUT_MS);
   } else if (!hidden && flip) {
     classNames = `card ${rank}-of-${suit} flip`;
+    setTimeout(() => { ref.current.classList.add('hidden'); ref.current.classList.remove(`${rank}-of-${suit}`, 'flip'); }, FLIP_TIMEOUT_MS);
   } else if (!hidden && !flip) {
     classNames = `card ${rank}-of-${suit}`;
   } else if (hidden && !flip) {

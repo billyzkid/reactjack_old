@@ -107,7 +107,7 @@ $quit-popup-text-margin: 0 0 1em;
 $quit-popup-button-font-size: 1.25em;
 $quit-popup-button-margin: 0.25em;
 
-// 'enter' timeout in Hand.jsx must match the duration below
+// enter timeout in Hand.jsx must match the duration below
 $card-enter-transition-duration: 1s;
 $card-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-enter-transition-delay: 0s;
@@ -116,11 +116,12 @@ $card-enter-flip-transition-duration: 0.75s;
 $card-enter-flip-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-enter-flip-transition-delay: 0.25s;
 
-// 'exit' timeout in Hand.jsx must match the duration below
+// exit timeout in Hand.jsx must match the duration below
 $card-exit-transition-duration: 1s;
 $card-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-exit-transition-delay: 0s;
 
+// flip timeout in Card.jsx must match the duration below
 $card-flip-transition-duration: 0.75s;
 $card-flip-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-flip-transition-delay: 0s;
