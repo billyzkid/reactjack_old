@@ -15,7 +15,7 @@ const App = (props) => {
 
   useEffect(() => {
     dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts' } });
-    dispatch({ type: 'dealCardToDealer', card: { rank: '?', suit: '?' } });
+    setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: '?', suit: '?' } }), 500);
   }, []);
 
   return (

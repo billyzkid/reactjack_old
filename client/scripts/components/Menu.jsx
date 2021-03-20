@@ -13,6 +13,7 @@ const Menu = (props) => {
   const openMusicPopup = useCallback(() => { dispatch({ type: 'toggleMusicPopup', isOpen: true }); }, []);
   const openSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: true }); }, []);
   const openQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: true }); }, []);
+  const dealCardToDealer = useCallback(() => { dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'spades' } }); }, []);
 
   return (
     <div className="menu">
@@ -22,6 +23,7 @@ const Menu = (props) => {
       <button className="popup-button music-popup-button" aria-label="Music" onClick={openMusicPopup}></button>
       <button className="popup-button settings-popup-button" aria-label="Settings" onClick={openSettingsPopup}></button>
       <button className="popup-button quit-popup-button" aria-label="Quit" onClick={openQuitPopup}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" onClick={dealCardToDealer}></button>
     </div>
   );
 };

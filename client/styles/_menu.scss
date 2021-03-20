@@ -51,4 +51,8 @@
     content: '\f2f5'; // la-sign-out-alt
   }
 
+  > .dev-popup-button::before {
+    content: '\f121'; // la-code
+  }
+
 }
