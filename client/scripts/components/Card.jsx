@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = (props) => {
+const Card = React.forwardRef((props, ref) => {
   console.log('Card render', props);
 
   const { rank, suit } = props.card;
@@ -14,8 +14,8 @@ const Card = (props) => {
     classNames = `card ${rank}-of-${suit}`;
   }
 
-  return <div className={classNames} />;
-};
+  return <div ref={ref} className={classNames} />;
+});
 
 Card.propTypes = {
   card: PropTypes.object.isRequired
