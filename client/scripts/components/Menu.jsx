@@ -15,6 +15,7 @@ const Menu = (props) => {
   const openQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: true }); }, []);
   const dealCardToDealer = useCallback(() => { dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'spades' } }); }, []);
   const sweepCardsFromDealer = useCallback(() => { dispatch({ type: 'sweepCardsFromDealer' }); }, []);
+  const flipHoleCard = useCallback(() => { dispatch({ type: 'flipHoleCard' }); }, []);
 
   return (
     <div className="menu">
@@ -26,6 +27,7 @@ const Menu = (props) => {
       <button className="popup-button quit-popup-button" aria-label="Quit" onClick={openQuitPopup}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" onClick={dealCardToDealer}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" onClick={sweepCardsFromDealer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" onClick={flipHoleCard}></button>
     </div>
   );
 };

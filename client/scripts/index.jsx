@@ -114,6 +114,26 @@ const reducer = (state, action) => {
         }
       };
 
+    case 'flipHoleCard':
+      return {
+        ...state,
+        dealer: {
+          ...state.dealer,
+          hand: {
+            ...state.dealer.hand,
+            cards: state.dealer.hand.cards.map((card) => {
+
+              if (card.hidden) {
+                card.hidden = false;
+                card.flip = true;
+              }
+
+              return card;
+            })
+          }
+        }
+      };
+
     case 'updateSettings':
       return { ...state, settings: action.settings };
 
