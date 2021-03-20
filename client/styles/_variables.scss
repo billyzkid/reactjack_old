@@ -26,10 +26,11 @@ $menu-button-color-alt: goldenrod;
 $menu-button-text-shadow: inherit;
 $menu-button-transition: color 200ms ease 0ms;
 
-// 'enter' timeout in Popup.jsx must match the durations below
+// 'enter' timeout in Popup.jsx must match the duration below
 $popup-enter-transition-duration: 500ms;
 $popup-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
+// 'exit' timeout in Popup.jsx must match the duration below
 $popup-exit-transition-duration: 500ms;
 $popup-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
@@ -106,7 +107,7 @@ $quit-popup-text-margin: 0 0 1em;
 $quit-popup-button-font-size: 1.25em;
 $quit-popup-button-margin: 0.25em;
 
-// card animations
+// 'enter' timeout in Hand.jsx must match the duration below
 $card-enter-transition-duration: 1s;
 $card-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-enter-transition-delay: 0s;
@@ -115,6 +116,7 @@ $card-enter-flip-transition-duration: 0.75s;
 $card-enter-flip-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-enter-flip-transition-delay: 0.25s;
 
+// 'exit' timeout in Hand.jsx must match the duration below
 $card-exit-transition-duration: 1s;
 $card-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-exit-transition-delay: 0s;
