@@ -122,7 +122,7 @@ const reducer = (state, action) => {
           hand: {
             ...state.dealer.hand,
             cards: state.dealer.hand.cards.map((card) => {
-              card.flip = true;
+              card.hidden = false;
               return card;
             })
           }

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { StateContext, DispatchContext, SocketContext } from './components/Context.jsx';
 
 function useStateContext() {
@@ -31,4 +31,15 @@ function useSocketContext() {
   return context;
 }
 
-export { useStateContext, useDispatchContext, useSocketContext };
+function useIsMounted() {
+  const [isMounted, setisMounted] = useState(false);
+
+  useEffect(() => {
+    setisMounted(true);
+    return () => setisMounted(false);
+  }, [])
+
+  return isMounted;
+}
+
+export { useStateContext, useDispatchContext, useSocketContext, useIsMounted };
