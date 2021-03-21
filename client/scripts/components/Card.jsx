@@ -14,8 +14,6 @@ const Card = forwardRef((props, ref) => {
     let timeout;
     let node = ref.current;
 
-    console.log('here');
-
     if (isMounted) {
       if (hidden) {
         node.className = `card ${rank}-of-${suit} flip`;
