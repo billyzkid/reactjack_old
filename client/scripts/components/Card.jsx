@@ -9,7 +9,6 @@ const Card = forwardRef((props, ref) => {
 
   const { rank, suit, hidden } = props.card;
   const isMounted = useIsMounted();
-  const [isFlipped, setIsFlipped] = useState(false);
 
   useLayoutEffect(() => {
     let timeoutId;
