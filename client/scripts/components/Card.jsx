@@ -1,33 +1,33 @@
-import React, { forwardRef, useLayoutEffect } from 'react';
+import React, { forwardRef, useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useIsMounted } from '../hooks.js';
 
-const FLIP_TIMEOUT_MS = 5750;
+const FLIP_TIMEOUT_MS = 750;
 
 const Card = forwardRef((props, ref) => {
   console.log('Card render', props);
 
   const { rank, suit, hidden } = props.card;
   const isMounted = useIsMounted();
+  const [isFlipped, setIsFlipped] = useState(false);
 
   useLayoutEffect(() => {
-    let timeout;
-    let node = ref.current;
+    let timeoutId;
 
     if (isMounted) {
       if (hidden) {
-        node.className = `card ${rank}-of-${suit} flip`;
-        timeout = setTimeout(() => { node.className = 'card hidden' }, FLIP_TIMEOUT_MS);
+        ref.current.className = `card ${rank}-of-${suit} flip`;
+        timeoutId = setTimeout(() => ref.current.className = 'card hidden', FLIP_TIMEOUT_MS);
       } else {
-        node.className = `card ${rank}-of-${suit} hidden flip`;
-        timeout = setTimeout(() => { node.className = `card ${rank}-of-${suit}` }, FLIP_TIMEOUT_MS);
+        ref.current.className = `card hidden ${rank}-of-${suit} flip`;
+        timeoutId = setTimeout(() => ref.current.className = `card ${rank}-of-${suit}`, FLIP_TIMEOUT_MS);
       }
     }
 
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(timeoutId);
   }, [hidden])
 
-  return <div ref={ref} className={`card ${hidden ? 'hidden' : `${rank}-of-${suit}`}`} />
+  return <div ref={ref} className={hidden ? 'card hidden' : `card ${rank}-of-${suit}`} />
 });
 
 Card.propTypes = {

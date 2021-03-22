@@ -14,10 +14,10 @@ const App = (props) => {
   const dispatch = useDispatchContext();
 
   useEffect(() => {
+    // deal two cards to dealer
     dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts', hidden: false } });
-    //const timeout = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);
-
-    //return () => clearTimeout(timeout);
+    const timeoutId = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
