@@ -2,7 +2,7 @@ import React, { forwardRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useIsMounted } from '../hooks.js';
 
-const FLIP_TIMEOUT_MS = 750;
+const FLIP_TIMEOUT_MS = 5750;
 
 const Card = forwardRef((props, ref) => {
   console.log('Card render', props);

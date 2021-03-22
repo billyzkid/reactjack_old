@@ -15,9 +15,9 @@ const App = (props) => {
 
   useEffect(() => {
     dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts', hidden: false } });
-    const timeout = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);
+    //const timeout = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);
 
-    return () => clearTimeout(timeout);
+    //return () => clearTimeout(timeout);
   }, []);
 
   return (
