@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { memo, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Portal from './Portal.jsx';
 import { CSSTransition } from 'react-transition-group';
@@ -13,8 +13,8 @@ const animations = {
 };
 
 const timeouts = {
-  enter: 500,
-  exit: 500
+  enter: 300,
+  exit: 300
 };
 
 const Popup = (props) => {
@@ -163,4 +163,4 @@ Popup.defaultProps = {
   children: null
 };
 
-export default Popup;
+export default memo(Popup);

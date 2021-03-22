@@ -27,11 +27,11 @@ $menu-button-text-shadow: inherit;
 $menu-button-transition: color 200ms ease 0ms;
 
 // 'enter' timeout in Popup.jsx must match the duration below
-$popup-enter-transition-duration: 500ms;
+$popup-enter-transition-duration: 300ms;
 $popup-enter-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
 // 'exit' timeout in Popup.jsx must match the duration below
-$popup-exit-transition-duration: 500ms;
+$popup-exit-transition-duration: 300ms;
 $popup-exit-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 
 $popup-mask-background: rgba(0,0,0,0.5);

@@ -67,7 +67,10 @@ const state = {
       ]
     }
   ],
-  messages: ['This is a message.', 'This is a longer message.']
+  message: [
+    'This is the first line of the message.',
+    'This is the second line of the message.'
+  ]
 };
 
 const reducer = (state, action) => {

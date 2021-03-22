@@ -25,7 +25,7 @@ const ContextProvider = (props) => {
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
-        <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
+        <SocketContext.Provider value={socket} children={children} />
       </DispatchContext.Provider>
     </StateContext.Provider>
   );

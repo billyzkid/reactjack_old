@@ -6,7 +6,7 @@ import { formatMoney, getHandTotal } from '../utils.js';
 const Banner = (props) => {
   console.log('Banner render', props);
 
-  const { dealer, players, messages } = useStateContext();
+  const { dealer, players, message } = useStateContext();
   const primaryPlayer = players.find((player) => player.primary);
 
   return (
@@ -28,8 +28,8 @@ const Banner = (props) => {
       <div>
         <div className="message">
           <p>
-            {messages.map((message, index) => (
-              <span key={index}>{message}</span>
+            {message.map((line, index) => (
+              <span key={index}>{line}</span>
             ))}
           </p>
         </div>
