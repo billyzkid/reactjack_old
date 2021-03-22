@@ -24,7 +24,7 @@ const Card = forwardRef((props, ref) => {
     }
 
     return () => clearTimeout(timeoutId);
-  }, [hidden])
+  }, [rank, suit, hidden])
 
   return <div ref={ref} className={hidden ? 'card hidden' : `card ${rank}-of-${suit}`} />
 });
