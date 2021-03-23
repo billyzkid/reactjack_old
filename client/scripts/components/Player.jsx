@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { forwardRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Hand from './Hand.jsx';
 import { getClassNames, getHandTotal, formatMoney } from '../utils.js';
 
-const Player = (props) => {
+const Player = forwardRef((props, ref) => {
   console.log('Player render', props);
 
   const { player } = props;
@@ -17,7 +17,7 @@ const Player = (props) => {
   });
 
   return (
-    <div className={classNames}>
+    <div ref={ref} className={classNames}>
       {!dummy &&
         <Fragment>
           <div className="info">
@@ -45,7 +45,7 @@ const Player = (props) => {
       }
     </div>
   );
-};
+});
 
 Player.propTypes = {
   player: PropTypes.object.isRequired

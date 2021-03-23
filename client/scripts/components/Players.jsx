@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useStateContext } from '../hooks.js';
 import Player from './Player.jsx';
+
+const timeouts = {
+  enter: 1000,
+  exit: 1000
+};
 
 const Players = (props) => {
   console.log('Players render', props);
@@ -10,11 +16,16 @@ const Players = (props) => {
   const seatedPlayers = sitPlayers(players);
 
   return (
-    <div className="players">
-      {seatedPlayers.map((player, index) => (
-        <Player key={index} player={player} />
-      ))}
-    </div>
+    <TransitionGroup className="players">
+      {seatedPlayers.map((player, index) => {
+        const playerRef = createRef(null); // avoids findDOMNode warning
+        return (
+          <CSSTransition key={player.id} nodeRef={playerRef} timeout={timeouts}>
+            <Player ref={playerRef} player={player} />
+          </CSSTransition>
+        );
+      })}
+    </TransitionGroup>
   );
 };
 
@@ -22,7 +33,7 @@ const Players = (props) => {
 //   foo: PropTypes.bool.isRequired
 // };
 
-const dummyPlayer = { dummy: true };
+const dummyPlayer = { id: Date.now() + Math.random(), dummy: true };
 
 function sitPlayers(players) {
   const seatedPlayers = [];

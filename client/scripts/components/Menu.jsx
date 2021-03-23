@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatchContext } from '../hooks.js';
+import { useDispatchContext, useStateContext } from '../hooks.js';
 
 const Menu = (props) => {
   console.log('Menu render', props);
 
+  const { players } = useStateContext();
   const dispatch = useDispatchContext();
 
   const openInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: true }); }, []);
@@ -16,6 +17,24 @@ const Menu = (props) => {
   const dealCardToDealer = useCallback(() => { dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'spades' } }); }, []);
   const sweepCardsFromDealer = useCallback(() => { dispatch({ type: 'sweepCardsFromDealer' }); }, []);
   const flipHoleCard = useCallback(() => { dispatch({ type: 'flipHoleCard' }); }, []);
+  const addPlayer = useCallback(() => { dispatch({ type: 'addPlayer', player: {
+    id: Date.now() + Math.random(),
+    name: 'Avery',
+    primary: false,
+    active: false,
+    chips: 1000,
+    hands: [
+      {
+        active: false,
+        bet: 10,
+        cards: [
+          { rank: 'ace', suit: 'hearts' },
+          { rank: 'two', suit: 'spades' }
+        ]
+      }
+    ]
+  } }); }, []);
+  const removePlayer = useCallback(() => { dispatch({ type: 'removePlayer', id: players[players.length - 1].id }); }, []);
 
   return (
     <div className="menu">
@@ -25,9 +44,11 @@ const Menu = (props) => {
       <button className="popup-button music-popup-button" aria-label="Music" onClick={openMusicPopup}></button>
       <button className="popup-button settings-popup-button" aria-label="Settings" onClick={openSettingsPopup}></button>
       <button className="popup-button quit-popup-button" aria-label="Quit" onClick={openQuitPopup}></button>
-      <button className="popup-button dev-popup-button" aria-label="Dev" onClick={dealCardToDealer}></button>
-      <button className="popup-button dev-popup-button" aria-label="Dev" onClick={sweepCardsFromDealer}></button>
-      <button className="popup-button dev-popup-button" aria-label="Dev" onClick={flipHoleCard}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="dealCardToDealer" onClick={dealCardToDealer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="sweepCardsFromDealer" onClick={sweepCardsFromDealer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="flipHoleCard" onClick={flipHoleCard}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="addPlayer" onClick={addPlayer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="removePlayer" onClick={removePlayer}></button>
     </div>
   );
 };

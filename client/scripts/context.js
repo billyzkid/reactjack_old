@@ -36,6 +36,7 @@ const initialState = {
   },
   players: [
     {
+      id: 100,
       name: 'Will',
       primary: true,
       active: true,
@@ -68,6 +69,7 @@ const initialState = {
       ]
     },
     {
+      id: 101,
       name: 'Lisa',
       primary: false,
       active: false,
@@ -84,6 +86,7 @@ const initialState = {
       ]
     },
     {
+      id: 102,
       name: 'Tyler',
       primary: false,
       active: false,
@@ -100,6 +103,7 @@ const initialState = {
       ]
     },
     {
+      id: 103,
       name: 'Dan',
       primary: false,
       active: false,
@@ -116,6 +120,7 @@ const initialState = {
       ]
     },
     {
+      id: 104,
       name: 'Avery',
       primary: false,
       active: false,
