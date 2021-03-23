@@ -12,7 +12,7 @@ const Banner = (props) => {
   return (
     <div className="banner">
       {primaryPlayer &&
-        <div class="banner-left-container">
+        <div className="banner-left-container">
           <div className="primary-player-chips">
             <p>Chips</p>
             <p>{formatMoney(primaryPlayer.chips)}</p>
