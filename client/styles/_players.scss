@@ -12,7 +12,27 @@
   justify-content: flex-end;
   align-items: center;
   min-width: 9.375em;
-  // transition: all 0.2s ease 0s;
+  margin-top: 3.375em;
+  transform: translate3d(0,2.5em,0);
+  transition: transform 0.2s ease 0s;
+
+  &.primary {
+    transform: translate3d(0,-2.5em,0) scale3d(1.2,1.2,1.2);
+
+    &::before,
+    > .info {
+      display: none;
+    }
+
+  }
+
+  &.dummy {
+
+    &::before {
+      display: none;
+    }
+
+  }
 
   &::before {
     content: '';

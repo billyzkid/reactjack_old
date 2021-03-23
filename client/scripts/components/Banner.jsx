@@ -11,21 +11,23 @@ const Banner = (props) => {
 
   return (
     <div className="banner">
-      <div>
-        <div className="primary-player-chips">
-          <p>Chips</p>
-          <p>{formatMoney(primaryPlayer.chips)}</p>
+      {primaryPlayer &&
+        <div class="banner-left-container">
+          <div className="primary-player-chips">
+            <p>Chips</p>
+            <p>{formatMoney(primaryPlayer.chips)}</p>
+          </div>
+          <div className="primary-player-bet">
+            <p>Bet</p>
+            <p>
+              {primaryPlayer.hands.map((hand, index) => (
+                <span key={index}>{formatMoney(hand.bet)}</span>
+              ))}
+            </p>
+          </div>
         </div>
-        <div className="primary-player-bet">
-          <p>Bet</p>
-          <p>
-            {primaryPlayer.hands.map((hand, index) => (
-              <span key={index}>{formatMoney(hand.bet)}</span>
-            ))}
-          </p>
-        </div>
-      </div>
-      <div>
+      }
+      <div className="banner-middle-container">
         <div className="message">
           <p>
             {message.map((line, index) => (
@@ -34,20 +36,22 @@ const Banner = (props) => {
           </p>
         </div>
       </div>
-      <div>
-        <div className="primary-player-hand-total">
-          <p>{primaryPlayer.name}</p>
-          <p>
-            {primaryPlayer.hands.map((hand, index) => (
-              <span key={index}>{getHandTotal(hand)}</span>
-            ))}
-          </p>
+      {primaryPlayer &&
+        <div className="banner-right-container">
+          <div className="primary-player-hand-total">
+            <p>{primaryPlayer.name}</p>
+            <p>
+              {primaryPlayer.hands.map((hand, index) => (
+                <span key={index}>{getHandTotal(hand)}</span>
+              ))}
+            </p>
+          </div>
+          <div className="dealer-hand-total">
+            <p>{dealer.name}</p>
+            <p>{getHandTotal(dealer.hand)}</p>
+          </div>
         </div>
-        <div className="dealer-hand-total">
-          <p>{dealer.name}</p>
-          <p>{getHandTotal(dealer.hand)}</p>
-        </div>
-      </div>
+      }
     </div>
   );
 };
