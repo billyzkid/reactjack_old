@@ -1,5 +1,15 @@
 import { useContext, useState, useEffect } from 'react';
-import { StateContext, DispatchContext, SocketContext } from './components/Context.jsx';
+import { SocketContext, StateContext, DispatchContext } from './components/ContextProvider.jsx';
+
+function useSocketContext() {
+  const context = useContext(SocketContext);
+
+  if (!context) {
+    throw new Error('useSocketContext must be used within ContextProvider');
+  }
+
+  return context;
+}
 
 function useStateContext() {
   const context = useContext(StateContext);
@@ -21,25 +31,18 @@ function useDispatchContext() {
   return context;
 }
 
-function useSocketContext() {
-  const context = useContext(SocketContext);
-
-  if (!context) {
-    throw new Error('useSocketContext must be used within ContextProvider');
-  }
-
-  return context;
-}
-
 function useIsMounted() {
   const [isMounted, setisMounted] = useState(false);
 
   useEffect(() => {
     setisMounted(true);
-    return () => setisMounted(false);
+
+    return () => {
+      setisMounted(false);
+    };
   }, [])
 
   return isMounted;
 }
 
-export { useStateContext, useDispatchContext, useSocketContext, useIsMounted };
+export { useSocketContext, useStateContext, useDispatchContext, useIsMounted };
