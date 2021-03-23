@@ -1,29 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Hand from './Hand.jsx';
-import { formatMoney, getHandTotal } from '../utils.js';
+import { getClassNames, getHandTotal, formatMoney } from '../utils.js';
 
 const Player = (props) => {
   console.log('Player render', props);
 
+  const { player } = props;
+  const { name, primary, active, chips, hands } = player;
+
+  const classNames = getClassNames({
+    'player': true,
+    'primary': primary,
+    'active': active
+  });
+
   return (
-    <div className="player">
+    <div className={classNames}>
       <div className="info">
-        <p>{props.player.name}</p>
-        <p>{formatMoney(props.player.chips)}</p>
-        <p>
-          {props.player.hands.map((hand, index) => (
-            <span key={index}>{formatMoney(hand.bet)}</span>
-          ))}
-        </p>
-        <p>
-          {props.player.hands.map((hand, index) => (
-            <span key={index}>{getHandTotal(hand)}</span>
-          ))}
-        </p>
+        <p className="player-name">{name}</p>
+        <div>
+          <p className="player-chips">{formatMoney(chips)}</p>
+          <p className="player-bet">
+            {hands.map((hand, index) => (
+              <span key={index}>{formatMoney(hand.bet)}</span>
+            ))}
+          </p>
+          <p className="player-hand-total">
+            {hands.map((hand, index) => (
+              <span key={index}>{getHandTotal(hand)}</span>
+            ))}
+          </p>
+        </div>
       </div>
       <div className="hands">
-        {props.player.hands.map((hand, index) => (
+        {hands.map((hand, index) => (
           <Hand key={index} hand={hand} />
         ))}
       </div>

@@ -14,7 +14,7 @@ const Table = (props) => {
       <Dealer />
       <Banner />
       {/* <Controls /> */}
-      {/* <Players /> */}
+      <Players />
     </div>
   );
 };

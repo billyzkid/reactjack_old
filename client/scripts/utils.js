@@ -36,6 +36,10 @@ function getNumberOrString(value) {
   return !isNaN(number) ? number : value;
 }
 
+function getClassNames(obj) {
+  return Object.keys(obj).filter((name) => obj[name]).join(' ');
+}
+
 function getHandTotal(hand) {
   return '6 or 16';
 }
@@ -48,4 +52,4 @@ function formatMoney(value) {
   }
 }
 
-export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getHandTotal, formatMoney };
+export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getClassNames, getHandTotal, formatMoney };

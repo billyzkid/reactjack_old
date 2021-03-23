@@ -2,6 +2,7 @@ import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from './Card.jsx';
+import { getClassNames } from '../utils.js';
 
 const timeouts = {
   enter: 1000,
@@ -11,9 +12,17 @@ const timeouts = {
 const Hand = (props) => {
   console.log('Hand render', props);
 
+  const { hand } = props;
+  const { active, cards } = hand;
+
+  const classNames = getClassNames({
+    'hand': true,
+    'active': active
+  });
+
   return (
-    <TransitionGroup className="hand">
-      {props.hand.cards.map((card, index) => {
+    <TransitionGroup className={classNames}>
+      {cards.map((card, index) => {
         const cardRef = createRef(null); // avoids findDOMNode warning
         return (
           <CSSTransition key={index} nodeRef={cardRef} timeout={timeouts}>

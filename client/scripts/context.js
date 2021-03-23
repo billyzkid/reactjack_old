@@ -38,10 +38,11 @@ const initialState = {
     {
       name: 'Will',
       primary: true,
-      active: false,
+      active: true,
       chips: 1000,
       hands: [
         {
+          active: true,
           bet: 10,
           cards: [
             { rank: 'ace', suit: 'hearts' },
@@ -49,6 +50,7 @@ const initialState = {
           ]
         },
         {
+          active: false,
           bet: 20,
           cards: [
             { rank: 'ace', suit: 'hearts' },
@@ -56,7 +58,72 @@ const initialState = {
           ]
         },
         {
+          active: false,
           bet: 30,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Lisa',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Tyler',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Dan',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Avery',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
           cards: [
             { rank: 'ace', suit: 'hearts' },
             { rank: 'two', suit: 'spades' }

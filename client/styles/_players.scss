@@ -1,2 +1,105 @@
 .players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.player {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 9.375em;
+  // transition: all 0.2s ease 0s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 9.375em;
+    height: 9.375em;
+    border: 0.4375em solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  > .info {
+    position: relative;
+    min-width: 90%;
+    text-align: center;
+    margin-bottom: 0.3125em;
+
+    > .player-name {
+      padding: 0.05em 0.3em;
+      margin: 0;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      font-size: 0.8em;
+
+      > p {
+        width: 33.333333%;
+        margin: 0;
+
+        &.player-chips {
+          background-color: rgba(255,0,0,0.5);
+        }
+
+        &.player-bet {
+          background-color: rgba(0,255,0,0.5);
+        }
+
+        &.player-hand-total {
+          background-color: rgba(0,0,255,0.5);
+        }
+
+        > span {
+          display: block;
+        }
+
+      }
+
+    }
+
+  }
+
+  > .hands {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // height: 9.375em;
+    // transition: all 0.25s;
+
+    > .hand {
+
+      // these will need to be calculated in code for n split hands
+      &:nth-child(1) {
+        transform: translate3d(-2.5em,-1.25em,0);
+      }
+
+      &:nth-child(2) {
+        transform: translate3d(0,0,0);
+      }
+
+      &:nth-child(3) {
+        transform: translate3d(2.5em,1.25em,0);
+      }
+
+      &:only-child {
+        transform: translate3d(0,0,0);
+      }
+
+    }
+
+  }
+
+  &.active > .info > .player-name {
+    background-image: linear-gradient(to top, rgba(218,165,32,0.5), rgba(218,165,32,0));
+  }
+
 }
