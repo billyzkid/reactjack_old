@@ -7,42 +7,37 @@ const Player = forwardRef((props, ref) => {
   console.log('Player render', props);
 
   const { player } = props;
-  const { name, dummy, primary, active, chips, hands } = player;
+  const { name, primary, active, chips, hands, style } = player;
 
   const classNames = getClassNames({
     'player': true,
-    'dummy': dummy,
     'primary': primary,
     'active': active
   });
 
   return (
-    <div ref={ref} className={classNames}>
-      {!dummy &&
-        <Fragment>
-          <div className="info">
-            <p className="player-name">{name}</p>
-            <div>
-              <p className="player-chips">{formatMoney(chips)}</p>
-              <p className="player-bet">
-                {hands.map((hand, index) => (
-                  <span key={index}>{formatMoney(hand.bet)}</span>
-                ))}
-              </p>
-              <p className="player-hand-total">
-                {hands.map((hand, index) => (
-                  <span key={index}>{getHandTotal(hand)}</span>
-                ))}
-              </p>
-            </div>
-          </div>
-          <div className="hands">
+    <div ref={ref} className={classNames} style={style}>
+      <div className="info">
+        <p className="player-name">{name}</p>
+        <div>
+          <p className="player-chips">{formatMoney(chips)}</p>
+          <p className="player-bet">
             {hands.map((hand, index) => (
-              <Hand key={index} hand={hand} />
+              <span key={index}>{formatMoney(hand.bet)}</span>
             ))}
-          </div>
-        </Fragment>
-      }
+          </p>
+          <p className="player-hand-total">
+            {hands.map((hand, index) => (
+              <span key={index}>{getHandTotal(hand)}</span>
+            ))}
+          </p>
+        </div>
+      </div>
+      <div className="hands">
+        {hands.map((hand, index) => (
+          <Hand key={index} hand={hand} />
+        ))}
+      </div>
     </div>
   );
 });
