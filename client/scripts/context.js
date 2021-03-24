@@ -140,99 +140,88 @@ const initialState = {
   message: ['This is the first line of the message.', 'This is the second line of the message.']
 };
 
-const reducer = (state, action) => {
+const reducer = (draft, action) => {
   switch (action.type) {
-    case 'toggleInfoPopup':
-      return { ...state, isInfoPopupOpen: action.isOpen };
 
-    case 'toggleProfilePopup':
-      return { ...state, isProfilePopupOpen: action.isOpen };
+    case 'toggleInfoPopup': {
+      draft.isInfoPopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'toggleChatPopup':
-      return { ...state, isChatPopupOpen: action.isOpen };
+    case 'toggleProfilePopup': {
+      draft.isProfilePopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'toggleMusicPopup':
-      return { ...state, isMusicPopupOpen: action.isOpen };
+    case 'toggleChatPopup': {
+      draft.isChatPopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'toggleSettingsPopup':
-      return { ...state, isSettingsPopupOpen: action.isOpen };
+    case 'toggleMusicPopup': {
+      draft.isMusicPopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'toggleQuitPopup':
-      return { ...state, isQuitPopupOpen: action.isOpen };
+    case 'toggleSettingsPopup': {
+      draft.isSettingsPopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'updateSettings':
-      return { ...state, settings: action.settings };
+    case 'toggleQuitPopup': {
+      draft.isQuitPopupOpen = action.isOpen;
+      return;
+    }
 
-    case 'dealCardToDealer':
-      return {
-        ...state,
-        dealer: {
-          ...state.dealer,
-          hand: {
-            ...state.dealer.hand,
-            cards: state.dealer.hand.cards.concat(action.card)
-          }
-        }
-      };
+    case 'updateSettings': {
+      draft.settings = action.settings;
+      return;
+    }
+
+    case 'dealCardToDealer': {
+      draft.dealer.hand.cards.push(action.card);
+      return;
+    }
 
     case 'dealCardToPlayer': {
-      const player = state.players.find((player) => player.id === action.playerId);
+      const player = draft.players.find((player) => player.id === action.playerId);
       const hand = player.hands[action.handIndex];
       hand.cards.push(action.card);
-
-      return {
-        ...state
-      };
+      return;
     }
 
-    case 'sweepCardsFromDealer':
-      return {
-        ...state,
-        dealer: {
-          ...state.dealer,
-          hand: {
-            ...state.dealer.hand,
-            cards: []
-          }
-        }
-      };
+    case 'sweepCardsFromDealer': {
+      draft.dealer.hand.cards.splice(0, draft.dealer.hand.cards.length);
+      return;
+    }
 
     case 'sweepCardsFromPlayer': {
-      const player = state.players.find((player) => player.id === action.playerId);
+      const player = draft.players.find((player) => player.id === action.playerId);
       const hand = player.hands[action.handIndex];
-      hand.cards = [];
-
-      return {
-        ...state
-      };
+      hand.cards.splice(0, hand.cards.length);
+      return;
     }
 
-    case 'flipHoleCard':
-      return {
-        ...state,
-        dealer: {
-          ...state.dealer,
-          hand: {
-            ...state.dealer.hand,
-            cards: state.dealer.hand.cards.map((card) => {
-              if (card.hidden) {
-                return { ...card, hidden: false };
-              } else {
-                return card;
-              }
-            })
-          }
-        }
-      };
+    case 'flipHoleCard': {
+      const holeCard = draft.dealer.hand.cards[1];
+      holeCard.hidden = !holeCard.hidden;
+      return;
+    }
 
-    case 'addPlayer':
-      return { ...state, players: state.players.concat(action.player) };
+    case 'addPlayer': {
+      draft.players.push(action.player);
+      return;
+    }
 
-    case 'removePlayer':
-      return { ...state, players: state.players.filter((player) => player.id !== action.id) };
+    case 'removePlayer': {
+      const index = draft.players.findIndex((player) => player.id === action.id)
+      draft.players.splice(index, 1);
+      return;
+    }
 
-    default:
+    default: {
       throw new Error(`Unhandled action type: ${action.type}`);
+    }
   }
 };
 
