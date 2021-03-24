@@ -42,33 +42,33 @@ function sitPlayers(players) {
 
     switch (otherPlayers.length) {
       case 0:
-        primaryPlayer.style = { 'grid-column': '3' };
+        primaryPlayer.style = { gridColumn: '3' };
         break;
 
       case 1:
-        primaryPlayer.style = { 'grid-column': '3' };
-        otherPlayers[0].style = { 'grid-column': '1' };
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
         break;
 
       case 2:
-        primaryPlayer.style = { 'grid-column': '3' };
-        otherPlayers[0].style = { 'grid-column': '1' };
-        otherPlayers[1].style = { 'grid-column': '2' };
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
         break;
 
       case 3:
-        primaryPlayer.style = { 'grid-column': '3' };
-        otherPlayers[0].style = { 'grid-column': '1' };
-        otherPlayers[1].style = { 'grid-column': '2' };
-        otherPlayers[2].style = { 'grid-column': '4' };
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
+        otherPlayers[2].style = { gridColumn: '4' };
         break;
 
       case 4:
-        primaryPlayer.style = { 'grid-column': '3' };
-        otherPlayers[0].style = { 'grid-column': '1' };
-        otherPlayers[1].style = { 'grid-column': '2' };
-        otherPlayers[2].style = { 'grid-column': '4' };
-        otherPlayers[3].style = { 'grid-column': '5' };
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
+        otherPlayers[2].style = { gridColumn: '4' };
+        otherPlayers[3].style = { gridColumn: '5' };
         break;
 
       default:
@@ -80,33 +80,33 @@ function sitPlayers(players) {
         break;
 
       case 1:
-        players[0].style = { 'grid-column': '1' };
+        players[0].style = { gridColumn: '1' };
         break;
 
       case 2:
-        players[0].style = { 'grid-column': '1' };
-        players[1].style = { 'grid-column': '2' };
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
         break;
 
       case 3:
-        players[0].style = { 'grid-column': '1' };
-        players[1].style = { 'grid-column': '2' };
-        players[2].style = { 'grid-column': '3' };
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
         break;
 
       case 4:
-        players[0].style = { 'grid-column': '1' };
-        players[1].style = { 'grid-column': '2' };
-        players[2].style = { 'grid-column': '3' };
-        players[3].style = { 'grid-column': '4' };
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
+        players[3].style = { gridColumn: '4' };
         break;
 
       case 5:
-        players[0].style = { 'grid-column': '1' };
-        players[1].style = { 'grid-column': '2' };
-        players[2].style = { 'grid-column': '3' };
-        players[3].style = { 'grid-column': '4' };
-        players[4].style = { 'grid-column': '5' };
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
+        players[3].style = { gridColumn: '4' };
+        players[4].style = { gridColumn: '5' };
         break;
 
       default:
