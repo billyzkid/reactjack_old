@@ -15,7 +15,9 @@ const Menu = (props) => {
   const openSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: true }); }, []);
   const openQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: true }); }, []);
   const dealCardToDealer = useCallback(() => { dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'spades' } }); }, []);
+  const dealCardToPlayer = useCallback(() => { dispatch({ type: 'dealCardToPlayer', playerId: players[players.length - 1].id, handIndex: 0, card: { rank: 'ace', suit: 'spades' } }); }, [players]);
   const sweepCardsFromDealer = useCallback(() => { dispatch({ type: 'sweepCardsFromDealer' }); }, []);
+  const sweepCardsFromPlayer = useCallback(() => { dispatch({ type: 'sweepCardsFromPlayer', playerId: players[players.length - 1].id, handIndex: 0 }); }, [players]);
   const flipHoleCard = useCallback(() => { dispatch({ type: 'flipHoleCard' }); }, []);
   const addPlayer = useCallback(() => { dispatch({ type: 'addPlayer', player: {
     id: Date.now() + Math.random(),
@@ -45,7 +47,9 @@ const Menu = (props) => {
       <button className="popup-button settings-popup-button" aria-label="Settings" onClick={openSettingsPopup}></button>
       <button className="popup-button quit-popup-button" aria-label="Quit" onClick={openQuitPopup}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" title="dealCardToDealer" onClick={dealCardToDealer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="dealCardToPlayer" onClick={dealCardToPlayer}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" title="sweepCardsFromDealer" onClick={sweepCardsFromDealer}></button>
+      <button className="popup-button dev-popup-button" aria-label="Dev" title="sweepCardsFromPlayer" onClick={sweepCardsFromPlayer}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" title="flipHoleCard" onClick={flipHoleCard}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" title="addPlayer" onClick={addPlayer}></button>
       <button className="popup-button dev-popup-button" aria-label="Dev" title="removePlayer" onClick={removePlayer}></button>

@@ -175,6 +175,16 @@ const reducer = (state, action) => {
         }
       };
 
+    case 'dealCardToPlayer': {
+      const player = state.players.find((player) => player.id === action.playerId);
+      const hand = player.hands[action.handIndex];
+      hand.cards.push(action.card);
+
+      return {
+        ...state
+      };
+    }
+
     case 'sweepCardsFromDealer':
       return {
         ...state,
@@ -186,6 +196,16 @@ const reducer = (state, action) => {
           }
         }
       };
+
+    case 'sweepCardsFromPlayer': {
+      const player = state.players.find((player) => player.id === action.playerId);
+      const hand = player.hands[action.handIndex];
+      hand.cards = [];
+
+      return {
+        ...state
+      };
+    }
 
     case 'flipHoleCard':
       return {
