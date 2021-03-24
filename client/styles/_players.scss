@@ -7,85 +7,79 @@
 }
 
 .player {
-  position: relative;
+  position: relative; // so we can absolutely position the seat
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  width: 9.375em;
-  margin-top: 3.375em;
-  transform: translate3d(0,2.5em,0);
-  transition: transform 0.2s ease 0s;
+  font: $player-font;
+  width: $player-width;
+  margin: $player-margin;
+  transform: $player-transform;
+  transition: transform $player-transition-duration $player-transition-function $player-transition-delay;
 
   &.primary {
-    transform: translate3d(0,-2.5em,0) scale3d(1.2,1.2,1.2);
+    transform: $primary-player-transform;
 
     &::before,
     > .info {
       display: none;
     }
-
-  }
-
-  &.dummy {
-
-    &::before {
-      display: none;
-    }
-
   }
 
   &::before {
     content: '';
     position: absolute;
-    width: 9.375em;
-    height: 9.375em;
-    border: 0.4375em solid rgba(255,255,255,0.5);
+    width: $seat-width;
+    height: $seat-height;
+    border: $seat-border;
     border-radius: 50%;
     box-sizing: border-box;
   }
 
   > .info {
     position: relative;
-    min-width: 90%;
+    width: $player-info-width;
+    margin: $player-info-margin;
     text-align: center;
-    margin-bottom: 0.3125em;
+    white-space: nowrap;
 
     > .player-name {
-      padding: 0.05em 0.3em;
-      margin: 0;
+      font-size: $player-name-font-size;
+      padding: $player-name-padding;
+      margin: $player-name-margin;
     }
 
     > div {
       display: flex;
       flex-direction: row;
+      justify-content: center;
       align-items: flex-start;
-      font-size: 0.8em;
 
       > p {
-        width: 33.333333%;
-        margin: 0;
+        flex: 1 0 33.3333%;
+        font-size: $player-info-item-font-size;
+        padding: $player-info-item-padding;
+        margin: $player-info-item-margin;
+        box-sizing: border-box;
 
         &.player-chips {
-          background-color: rgba(255,0,0,0.5);
+          background: $player-chips-background;
         }
 
         &.player-bet {
-          background-color: rgba(0,255,0,0.5);
+          background: $player-bet-background;
         }
 
         &.player-hand-total {
-          background-color: rgba(0,0,255,0.5);
+          background: $player-hand-total-background;
         }
 
         > span {
           display: block;
         }
-
       }
-
     }
-
   }
 
   > .hands {
