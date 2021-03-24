@@ -5,8 +5,8 @@ import { useStateContext } from '../hooks.js';
 import Player from './Player.jsx';
 
 const timeouts = {
-  enter: 1000,
-  exit: 1000
+  enter: 500,
+  exit: 200
 };
 
 const Players = (props) => {
@@ -42,33 +42,33 @@ function sitPlayers(players) {
 
     switch (otherPlayers.length) {
       case 0:
-        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-column': '3' };
         break;
 
       case 1:
-        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
-        otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
+        primaryPlayer.style = { 'grid-column': '3' };
+        otherPlayers[0].style = { 'grid-column': '1' };
         break;
 
       case 2:
-        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
-        otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
+        primaryPlayer.style = { 'grid-column': '3' };
+        otherPlayers[0].style = { 'grid-column': '1' };
+        otherPlayers[1].style = { 'grid-column': '2' };
         break;
 
       case 3:
-        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
-        otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
-        otherPlayers[2].style = { 'grid-area': '1 / 4 / auto / auto' };
+        primaryPlayer.style = { 'grid-column': '3' };
+        otherPlayers[0].style = { 'grid-column': '1' };
+        otherPlayers[1].style = { 'grid-column': '2' };
+        otherPlayers[2].style = { 'grid-column': '4' };
         break;
 
       case 4:
-        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
-        otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
-        otherPlayers[2].style = { 'grid-area': '1 / 4 / auto / auto' };
-        otherPlayers[3].style = { 'grid-area': '1 / 5 / auto / auto' };
+        primaryPlayer.style = { 'grid-column': '3' };
+        otherPlayers[0].style = { 'grid-column': '1' };
+        otherPlayers[1].style = { 'grid-column': '2' };
+        otherPlayers[2].style = { 'grid-column': '4' };
+        otherPlayers[3].style = { 'grid-column': '5' };
         break;
 
       default:
@@ -80,33 +80,33 @@ function sitPlayers(players) {
         break;
 
       case 1:
-        players[0].style = { 'grid-area': '1 / 1 / auto / auto' };
+        players[0].style = { 'grid-column': '1' };
         break;
 
       case 2:
-        players[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        players[1].style = { 'grid-area': '1 / 2 / auto / auto' };
+        players[0].style = { 'grid-column': '1' };
+        players[1].style = { 'grid-column': '2' };
         break;
 
       case 3:
-        players[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        players[1].style = { 'grid-area': '1 / 2 / auto / auto' };
-        players[2].style = { 'grid-area': '1 / 3 / auto / auto' };
+        players[0].style = { 'grid-column': '1' };
+        players[1].style = { 'grid-column': '2' };
+        players[2].style = { 'grid-column': '3' };
         break;
 
       case 4:
-        players[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        players[1].style = { 'grid-area': '1 / 2 / auto / auto' };
-        players[2].style = { 'grid-area': '1 / 3 / auto / auto' };
-        players[3].style = { 'grid-area': '1 / 4 / auto / auto' };
+        players[0].style = { 'grid-column': '1' };
+        players[1].style = { 'grid-column': '2' };
+        players[2].style = { 'grid-column': '3' };
+        players[3].style = { 'grid-column': '4' };
         break;
 
       case 5:
-        players[0].style = { 'grid-area': '1 / 1 / auto / auto' };
-        players[1].style = { 'grid-area': '1 / 2 / auto / auto' };
-        players[2].style = { 'grid-area': '1 / 3 / auto / auto' };
-        players[3].style = { 'grid-area': '1 / 4 / auto / auto' };
-        players[4].style = { 'grid-area': '1 / 5 / auto / auto' };
+        players[0].style = { 'grid-column': '1' };
+        players[1].style = { 'grid-column': '2' };
+        players[2].style = { 'grid-column': '3' };
+        players[3].style = { 'grid-column': '4' };
+        players[4].style = { 'grid-column': '5' };
         break;
 
       default:
