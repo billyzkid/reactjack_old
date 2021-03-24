@@ -16,19 +16,19 @@ const Card = forwardRef((props, ref) => {
     if (isMounted) {
       if (hidden) {
         ref.current.className = `card ${rank}-of-${suit} flip`;
-        timeoutId = setTimeout(() => ref.current.className = 'card hidden', FLIP_TIMEOUT_MS);
+        timeoutId = setTimeout(() => { ref.current.className = 'card hidden'; }, FLIP_TIMEOUT_MS);
       } else {
         ref.current.className = `card hidden ${rank}-of-${suit} flip`;
-        timeoutId = setTimeout(() => ref.current.className = `card ${rank}-of-${suit}`, FLIP_TIMEOUT_MS);
+        timeoutId = setTimeout(() => { ref.current.className = `card ${rank}-of-${suit}`; }, FLIP_TIMEOUT_MS);
       }
     }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [rank, suit, hidden])
+  }, [rank, suit, hidden]);
 
-  return <div ref={ref} className={hidden ? 'card hidden' : `card ${rank}-of-${suit}`} />
+  return <div ref={ref} className={hidden ? 'card hidden' : `card ${rank}-of-${suit}`} />;
 });
 
 Card.propTypes = {

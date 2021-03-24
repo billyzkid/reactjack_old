@@ -16,8 +16,8 @@ const Hand = (props) => {
   const { active, cards } = hand;
 
   const classNames = getClassNames({
-    'hand': true,
-    'active': active
+    hand: true,
+    active: active
   });
 
   return (

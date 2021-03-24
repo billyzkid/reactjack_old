@@ -10,9 +10,9 @@ const Player = forwardRef((props, ref) => {
   const { name, primary, active, chips, hands, style } = player;
 
   const classNames = getClassNames({
-    'player': true,
-    'primary': primary,
-    'active': active
+    player: true,
+    primary: primary,
+    active: active
   });
 
   return (

@@ -40,7 +40,7 @@ function useIsMounted() {
     return () => {
       setisMounted(false);
     };
-  }, [])
+  }, []);
 
   return isMounted;
 }

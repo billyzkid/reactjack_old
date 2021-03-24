@@ -11,7 +11,7 @@ const Banner = (props) => {
 
   return (
     <div className="banner">
-      {primaryPlayer &&
+      {primaryPlayer && (
         <div className="banner-left-container">
           <div className="primary-player-chips">
             <p>Chips</p>
@@ -26,7 +26,7 @@ const Banner = (props) => {
             </p>
           </div>
         </div>
-      }
+      )}
       <div className="banner-middle-container">
         <div className="message">
           <p>
@@ -36,7 +36,7 @@ const Banner = (props) => {
           </p>
         </div>
       </div>
-      {primaryPlayer &&
+      {primaryPlayer && (
         <div className="banner-right-container">
           <div className="primary-player-hand-total">
             <p>{primaryPlayer.name}</p>
@@ -51,7 +51,7 @@ const Banner = (props) => {
             <p>{getHandTotal(dealer.hand)}</p>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };

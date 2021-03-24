@@ -42,29 +42,29 @@ function sitPlayers(players) {
 
     switch (otherPlayers.length) {
       case 0:
-        primaryPlayer.style =   { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
         break;
 
       case 1:
-        primaryPlayer.style =   { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
         otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
         break;
 
       case 2:
-        primaryPlayer.style =   { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
         otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
         otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
         break;
 
       case 3:
-        primaryPlayer.style =   { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
         otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
         otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
         otherPlayers[2].style = { 'grid-area': '1 / 4 / auto / auto' };
         break;
 
       case 4:
-        primaryPlayer.style =   { 'grid-area': '1 / 3 / auto / auto' };
+        primaryPlayer.style = { 'grid-area': '1 / 3 / auto / auto' };
         otherPlayers[0].style = { 'grid-area': '1 / 1 / auto / auto' };
         otherPlayers[1].style = { 'grid-area': '1 / 2 / auto / auto' };
         otherPlayers[2].style = { 'grid-area': '1 / 4 / auto / auto' };
