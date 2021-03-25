@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { useImmerReducer } from 'use-immer';
-import { sitPlayers } from '../utils.js';
+import { sitPlayers, positionHands } from '../utils.js';
 
 const initialState = {
   isInfoPopupOpen: false,
@@ -99,12 +99,12 @@ const reducer = (draft, action) => {
       return;
     }
 
-    case 'sweepCardsFromDealer': {
+    case 'sweepDealerHand': {
       draft.dealer.hand.cards.splice(0, draft.dealer.hand.cards.length);
       return;
     }
 
-    case 'sweepCardsFromPlayer': {
+    case 'sweepPlayerHand': {
       const player = draft.players.find((player) => player.id === action.playerId);
       const hand = player.hands[action.handIndex];
       hand.cards.splice(0, hand.cards.length);
@@ -118,8 +118,7 @@ const reducer = (draft, action) => {
     }
 
     case 'addPlayer': {
-      // use spread here to avoid "Cannot assign to read only property" error
-      draft.players.push({ ...action.player });
+      draft.players.push({ ...action.player }); // copy object to avoid mutation error
       sitPlayers(draft.players);
       return;
     }
@@ -128,6 +127,20 @@ const reducer = (draft, action) => {
       const index = draft.players.findIndex((player) => player.id === action.playerId);
       draft.players.splice(index, 1);
       sitPlayers(draft.players);
+      return;
+    }
+
+    case 'addPlayerHand': {
+      const player = draft.players.find((player) => player.id === action.playerId);
+      player.hands.push({ ...action.hand }); // copy object to avoid mutation error
+      positionHands(player.hands);
+      return;
+    }
+
+    case 'removePlayerHand': {
+      const player = draft.players.find((player) => player.id === action.playerId);
+      player.hands.splice(action.handIndex, 1);
+      positionHands(player.hands);
       return;
     }
 

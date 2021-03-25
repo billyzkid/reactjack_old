@@ -4,6 +4,7 @@
   grid-auto-flow: column;
   justify-items: center;
   width: 100%;
+  min-height: 15.30125em;
 }
 
 .player {
@@ -82,37 +83,6 @@
     }
   }
 
-  > .hands {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    // height: 9.375em;
-    // transition: all 0.25s;
-
-    > .hand {
-
-      // these will need to be calculated in code for n split hands
-      &:nth-child(1) {
-        transform: translate3d(-2.5em,-1.25em,0);
-      }
-
-      &:nth-child(2) {
-        transform: translate3d(0,0,0);
-      }
-
-      &:nth-child(3) {
-        transform: translate3d(2.5em,1.25em,0);
-      }
-
-      &:only-child {
-        transform: translate3d(0,0,0);
-      }
-
-    }
-
-  }
-
   &.active > .info > .player-name {
     background-image: linear-gradient(to top, rgba(218,165,32,0.5), rgba(218,165,32,0));
   }
@@ -124,7 +94,6 @@
       transform: translate3d(0,0,0) rotate3d(0,0,1,0deg) scale3d(1,1,1);
       transition: transform 200ms cubic-bezier(0.16,0.84,0.32,1.24) 300ms;
     }
-
   }
 
   &.exit {
@@ -135,5 +104,4 @@
       transition: opacity 200ms ease 0ms;
     }
   }
-
 }

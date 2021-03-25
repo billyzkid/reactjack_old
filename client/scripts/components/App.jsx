@@ -28,32 +28,7 @@ const App = (props) => {
       primary: true,
       active: false,
       chips: 1000,
-      hands: [
-        {
-          active: true,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        },
-        {
-          active: false,
-          bet: 20,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        },
-        {
-          active: false,
-          bet: 30,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
+      hands: []
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -62,16 +37,7 @@ const App = (props) => {
       primary: false,
       active: true,
       chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
+      hands: []
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -80,16 +46,7 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
+      hands: []
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -98,16 +55,7 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
+      hands: []
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -116,16 +64,7 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
+      hands: []
     }});
 
     // deal up card to the dealer

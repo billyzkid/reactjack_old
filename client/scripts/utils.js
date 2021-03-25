@@ -90,7 +90,7 @@ function sitPlayers(players) {
         break;
 
       default:
-        throw new Error('Table can only seat a maximum of 5 players.');
+        throw new Error('Table can seat a maximum of 5 players.');
     }
   } else {
     switch (players.length) {
@@ -128,9 +128,41 @@ function sitPlayers(players) {
         break;
 
       default:
-        throw new Error('Table can only seat a maximum of 5 players.');
+        throw new Error('Table can seat a maximum of 5 players.');
     }
   }
 }
 
-export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getClassNames, getHandTotal, formatMoney, sitPlayers };
+function positionHands(hands) {
+  switch (hands.length) {
+    case 0:
+      break;
+
+    case 1:
+      hands[0].style = { transform: 'translate3d(0,0,0)' };
+      break;
+
+    case 2:
+      hands[0].style = { transform: 'translate3d(-1.25em,-0.625em,0)' };
+      hands[1].style = { transform: 'translate3d(1.25em,0.625em,0)' };
+      break;
+
+    case 3:
+      hands[0].style = { transform: 'translate3d(-2.5em,-1.25em,0)' };
+      hands[1].style = { transform: 'translate3d(0,0,0)' };
+      hands[2].style = { transform: 'translate3d(2.5em,1.25em,0)' };
+      break;
+
+    case 4:
+      hands[0].style = { transform: 'translate3d(-3.75em,-1.875em,0)' };
+      hands[1].style = { transform: 'translate3d(-1.25em,-0.625em,0)' };
+      hands[2].style = { transform: 'translate3d(1.25em,0.625em,0)' };
+      hands[3].style = { transform: 'translate3d(3.75em,1.875em,0)' };
+      break;
+
+    default:
+      throw new Error('Players can have a maximum of 4 hands.');
+  }
+}
+
+export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getClassNames, getHandTotal, formatMoney, sitPlayers, positionHands };

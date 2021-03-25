@@ -13,7 +13,7 @@ const Hand = (props) => {
   console.log('Hand render', props);
 
   const { hand } = props;
-  const { active, cards } = hand;
+  const { active, cards, style } = hand;
 
   const classNames = getClassNames({
     hand: true,
@@ -21,7 +21,7 @@ const Hand = (props) => {
   });
 
   return (
-    <TransitionGroup className={classNames}>
+    <TransitionGroup className={classNames} style={style}>
       {cards.map((card, index) => {
         const cardRef = createRef(null); // avoids findDOMNode warning
         return (
