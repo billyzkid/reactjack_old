@@ -15,7 +15,6 @@
     text-shadow: $main-menu-button-text-shadow;
     background: none;
     outline: none;
-    cursor: pointer;
     transition: $main-menu-button-transition;
     @include font-smoothing(on);
 

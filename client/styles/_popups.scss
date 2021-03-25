@@ -163,11 +163,10 @@
     position: relative;
     outline: none;
   }
-
 }
 
 .popup-open {
-  overflow: hidden; // prevent page from scrolling while popup is open
+  overflow: hidden; // prevents page from scrolling while popup is open
 }
 
 .info-popup-open .info-popup-button,
@@ -202,7 +201,7 @@
     margin: 0;
   }
 
-  // prevents anchors from "butting head" against top
+  // prevents headers from "butting head" against top when anchor links are clicked
   > h1::before,
   > h2::before,
   > h3::before,
@@ -214,7 +213,6 @@
     visibility: hidden;
     pointer-events: none;
   }
-
 }
 
 .profile-popup > .popup-content {
@@ -242,9 +240,7 @@
     > input {
       width: $profile-popup-input-width;
     }
-
   }
-
 }
 
 .chat-popup > .popup-content {
@@ -319,9 +315,7 @@
                 border-bottom-right-radius: 0.625em;
                 background: $chat-popup-window-background;
               }
-
             }
-
           }
 
           &.outgoing {
@@ -352,15 +346,10 @@
                 border-bottom-left-radius: 0.625em;
                 background: $chat-popup-window-background;
               }
-
             }
-
           }
-
         }
-
       }
-
     }
 
     > div:nth-child(2) {
@@ -378,11 +367,8 @@
       > input {
         width: $chat-popup-input-width;
       }
-
     }
-
   }
-
 }
 
 .music-popup > .popup-content {
@@ -403,7 +389,6 @@
     min-width: 150px; // prevent iframe content from breaking at narrow widths
     border: 0;
   }
-
 }
 
 .settings-popup > .popup-content {
@@ -429,9 +414,7 @@
     > span {
       margin-right: $settings-popup-setting-label-margin-right;
     }
-
   }
-
 }
 
 .quit-popup > .popup-content {
@@ -454,7 +437,5 @@
       font-size: $quit-popup-button-font-size;
       margin: $quit-popup-button-margin;
     }
-
   }
-
 }

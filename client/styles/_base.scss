@@ -10,6 +10,45 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+// buttons
+button,
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  cursor: pointer;
+}
+
+// input
+input,
+select {
+  font: inherit;
+  color: inherit;
+  text-shadow: inherit;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.3em;
+  background: rgba(0,0,0,0.1);
+
+  &[type=text],
+  &[type=number] {
+    padding: 0.2em 0.4em;
+    appearance: none; // remove the inner shadow in iOS
+    outline: none; // let the blinking cursor indicate focus
+  }
+
+  &::placeholder {
+    color: rgba(255,255,255,0.2);
+    text-shadow: none;
+  }
+
+  &::-webkit-inner-spin-button {
+    margin-right: -0.2em;
+  }
+
+  > option {
+    background-color: black;
+  }
+}
+
+
 // links
 a {
   outline: none;
@@ -34,7 +73,6 @@ a {
   &:active {
     color: $link-color-active;
   }
-
 }
 
 // scrollbars
