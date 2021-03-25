@@ -1,7 +1,13 @@
-import React, { forwardRef, Fragment } from 'react';
+import React, { forwardRef, createRef } from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hand from './Hand.jsx';
 import { getClassNames, getHandTotal, formatMoney } from '../utils.js';
+
+const timeouts = {
+  enter: 1000,
+  exit: 1000
+};
 
 const Player = forwardRef((props, ref) => {
   console.log('Player render', props);
@@ -33,11 +39,16 @@ const Player = forwardRef((props, ref) => {
           </p>
         </div>
       </div>
-      <div className="hands">
-        {hands.map((hand, index) => (
-          <Hand key={index} hand={hand} />
-        ))}
-      </div>
+      <TransitionGroup className="hands">
+        {hands.map((hand, index) => {
+          const handRef = createRef(null); // avoids findDOMNode warning
+          return (
+            <CSSTransition key={index} nodeRef={handRef} timeout={timeouts}>
+              <Hand ref={handRef} hand={hand} />
+            </CSSTransition>
+          );
+        })}
+      </TransitionGroup>
     </div>
   );
 });

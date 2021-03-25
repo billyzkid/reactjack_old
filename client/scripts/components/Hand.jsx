@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { forwardRef, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from './Card.jsx';
@@ -9,7 +9,7 @@ const timeouts = {
   exit: 1000
 };
 
-const Hand = (props) => {
+const Hand = forwardRef((props, ref) => {
   console.log('Hand render', props);
 
   const { hand } = props;
@@ -21,18 +21,20 @@ const Hand = (props) => {
   });
 
   return (
-    <TransitionGroup className={classNames} style={style}>
-      {cards.map((card, index) => {
-        const cardRef = createRef(null); // avoids findDOMNode warning
-        return (
-          <CSSTransition key={index} nodeRef={cardRef} timeout={timeouts}>
-            <Card ref={cardRef} card={card} />
-          </CSSTransition>
-        );
-      })}
-    </TransitionGroup>
+    <div ref={ref} className={classNames} style={style}>
+      <TransitionGroup component={null}>
+        {cards.map((card, index) => {
+          const cardRef = createRef(null); // avoids findDOMNode warning
+          return (
+            <CSSTransition key={index} nodeRef={cardRef} timeout={timeouts}>
+              <Card ref={cardRef} card={card} />
+            </CSSTransition>
+          );
+        })}
+      </TransitionGroup>
+    </div>
   );
-};
+});
 
 Hand.propTypes = {
   hand: PropTypes.object.isRequired
