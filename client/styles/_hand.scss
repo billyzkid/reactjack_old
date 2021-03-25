@@ -15,6 +15,24 @@
   // transition: all 0.25s;
   // background-color: black;
 
+  &.enter {
+    opacity: 0;
+
+    &.enter-active {
+      opacity: 1;
+      transition: opacity 200ms ease 0ms;
+    }
+  }
+
+  &.exit {
+    opacity: 1;
+
+    &.exit-active {
+      opacity: 0;
+      transition: opacity 200ms ease 0ms;
+    }
+  }
+
   &.active::before {
     content: '';
     position: absolute;
