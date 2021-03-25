@@ -18,36 +18,43 @@ button,
 }
 
 // input
-input,
-select {
-  font: inherit;
-  color: inherit;
-  text-shadow: inherit;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 0.3em;
-  background: rgba(0,0,0,0.1);
-
-  &[type=text],
-  &[type=number] {
-    padding: 0.2em 0.4em;
-    appearance: none; // remove the inner shadow in iOS
-    outline: none; // let the blinking cursor indicate focus
-  }
+input[type=text],
+input[type=number] {
+  font: $input-font;
+  color: $input-color;
+  text-shadow: $input-text-shadow;
+  padding: $input-padding;
+  border: $input-border;
+  border-radius: $input-border-radius;
+  background: $input-background;
+  appearance: none; // remove the inner shadow on iOS
+  outline: none; // let the cursor indicate focus
 
   &::placeholder {
-    color: rgba(255,255,255,0.2);
-    text-shadow: none;
+    color: $input-placeholder-color;
+    text-shadow: $input-placeholder-text-shadow;
   }
 
   &::-webkit-inner-spin-button {
-    margin-right: -0.2em;
-  }
-
-  > option {
-    background-color: black;
+    margin-right: $input-number-button-margin;
   }
 }
 
+// select
+select {
+  font: $select-font;
+  color: $select-color;
+  text-shadow: $select-text-shadow;
+  padding: $select-padding;
+  border: $select-border;
+  border-radius: $select-border-radius;
+  background: $select-background;
+  box-sizing: content-box;
+
+  > option {
+    background: $select-option-background;
+  }
+}
 
 // links
 a {

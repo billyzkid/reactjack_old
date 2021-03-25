@@ -3,6 +3,26 @@ $base-color: white;
 $base-text-shadow: 1px 1px 1px black;
 $base-background: black;
 
+$input-font: inherit;
+$input-color: inherit;
+$input-text-shadow: inherit;
+$input-padding: 0.2em 0.4em;
+$input-border: 1px solid rgba(255,255,255,0.2);
+$input-border-radius: 0.3em;
+$input-background: rgba(0,0,0,0.1);
+$input-placeholder-color: rgba(255,255,255,0.2);
+$input-placeholder-text-shadow: none;
+$input-number-button-margin: -0.2em;
+
+$select-font: $input-font;
+$select-color: $input-color;
+$select-text-shadow: $input-text-shadow;
+$select-padding: 0.121875em; // yields same height as input boxes
+$select-border: $input-border;
+$select-border-radius: $input-border-radius;
+$select-background: $input-background;
+$select-option-background: black;
+
 $link-color: green;
 $link-color-visited: green;
 $link-color-hover: lightgreen;
@@ -102,7 +122,7 @@ $settings-popup-border: 0;
 $settings-popup-border-radius: 0.5em;
 $settings-popup-background: black;
 $settings-popup-box-shadow: 0 0 2em black;
-$settings-popup-setting-min-height: 2em;
+$settings-popup-setting-min-height: 2.0869125em; // yields a 3px margin around select boxes
 $settings-popup-setting-border-bottom: 1px solid rgba(255,255,255,0.2);
 $settings-popup-setting-label-margin-right: 5em;
 
