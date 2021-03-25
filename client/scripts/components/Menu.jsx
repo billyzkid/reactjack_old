@@ -36,7 +36,7 @@ const Menu = (props) => {
       }
     ]
   } }); }, []);
-  const removePlayer = useCallback(() => { dispatch({ type: 'removePlayer', id: players[players.length - 1].id }); }, [players]);
+  const removePlayer = useCallback(() => { dispatch({ type: 'removePlayer', playerId: players[players.length - 1].id }); }, [players]);
 
   return (
     <div className="menu">
