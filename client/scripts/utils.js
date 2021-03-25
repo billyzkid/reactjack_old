@@ -143,21 +143,21 @@ function positionHands(hands) {
       break;
 
     case 2:
-      hands[0].style = { transform: 'translate3d(-1.25em,-0.625em,0)' };
-      hands[1].style = { transform: 'translate3d(1.25em,0.625em,0)' };
+      hands[0].style = { transform: 'translate3d(-2.5em,-0.625em,0)' };
+      hands[1].style = { transform: 'translate3d(2.5em,0.625em,0)' };
       break;
 
     case 3:
-      hands[0].style = { transform: 'translate3d(-2.5em,-1.25em,0)' };
+      hands[0].style = { transform: 'translate3d(-5em,-1.25em,0)' };
       hands[1].style = { transform: 'translate3d(0,0,0)' };
-      hands[2].style = { transform: 'translate3d(2.5em,1.25em,0)' };
+      hands[2].style = { transform: 'translate3d(5em,1.25em,0)' };
       break;
 
     case 4:
-      hands[0].style = { transform: 'translate3d(-3.75em,-1.875em,0)' };
-      hands[1].style = { transform: 'translate3d(-1.25em,-0.625em,0)' };
-      hands[2].style = { transform: 'translate3d(1.25em,0.625em,0)' };
-      hands[3].style = { transform: 'translate3d(3.75em,1.875em,0)' };
+      hands[0].style = { transform: 'translate3d(-7.5em,-1.875em,0)' };
+      hands[1].style = { transform: 'translate3d(-2.5em,-0.625em,0)' };
+      hands[2].style = { transform: 'translate3d(2.5em,0.625em,0)' };
+      hands[3].style = { transform: 'translate3d(7.5em,1.875em,0)' };
       break;
 
     default:
