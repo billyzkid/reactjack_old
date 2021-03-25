@@ -1,14 +1,8 @@
 import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
-import { setAutoFreeze } from 'immer';
 import { useImmerReducer } from 'use-immer';
 import { sitPlayers } from '../utils.js';
-
-// disable auto freezing so we can call sitPlayers from the reducer below
-// TODO: figure out an alternative way?
-// see https://immerjs.github.io/immer/freezing
-setAutoFreeze(false);
 
 const initialState = {
   isInfoPopupOpen: false,
@@ -124,7 +118,8 @@ const reducer = (draft, action) => {
     }
 
     case 'addPlayer': {
-      draft.players.push(action.player);
+      // use spread here to avoid "Cannot assign to read only property" error
+      draft.players.push({ ...action.player });
       sitPlayers(draft.players);
       return;
     }
