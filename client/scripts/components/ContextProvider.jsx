@@ -48,7 +48,6 @@ const initialState = {
 
 const reducer = (draft, action) => {
   switch (action.type) {
-
     case 'toggleInfoPopup': {
       draft.isInfoPopupOpen = action.isOpen;
       return;
@@ -121,7 +120,7 @@ const reducer = (draft, action) => {
     }
 
     case 'removePlayer': {
-      const index = draft.players.findIndex((player) => player.id === action.playerId)
+      const index = draft.players.findIndex((player) => player.id === action.playerId);
       draft.players.splice(index, 1);
       sitPlayers(draft.players);
       return;
