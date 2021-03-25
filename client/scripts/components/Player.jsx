@@ -5,8 +5,8 @@ import Hand from './Hand.jsx';
 import { getClassNames, getHandTotal, formatMoney } from '../utils.js';
 
 const timeouts = {
-  enter: 1000,
-  exit: 1000
+  enter: 200,
+  exit: 200
 };
 
 const Player = forwardRef((props, ref) => {
