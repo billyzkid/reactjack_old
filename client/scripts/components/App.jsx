@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Table from './Table.jsx';
-import Menu from './Menu.jsx';
+import MainMenu from './MainMenu.jsx';
+import DebugMenu from './DebugMenu.jsx';
 import Popups from './Popups.jsx';
 import Popup from './Popup.jsx';
 import { useDispatchContext } from '../hooks.js';
@@ -81,7 +82,8 @@ const App = (props) => {
   return (
     <div className="app">
       <Table />
-      <Menu />
+      <MainMenu />
+      <DebugMenu />
       <Popups />
     </div>
   );

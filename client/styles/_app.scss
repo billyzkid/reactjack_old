@@ -1,5 +1,7 @@
 .app {
-  position: relative; // Relative position used for absolute-positioned menu
+  position: relative; // contains absolute-positioned main menu
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;
 }

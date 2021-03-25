@@ -17,14 +17,20 @@ $scrollbar-thumb-background: rgba(170,170,170,0.8);
 
 $table-background: url('../images/table.jpg') bottom/cover no-repeat;
 $table-title-font: 400 5em/1.5 'Monsieur La Doulaise', cursive;
+$table-title-margin: 0;
 
-$menu-button-font: 900 2em/1 'Line Awesome Free';
-$menu-button-width: 1.5em;
-$menu-button-height: 1.5em;
-$menu-button-color: inherit;
-$menu-button-color-alt: goldenrod;
-$menu-button-text-shadow: inherit;
-$menu-button-transition: color 200ms ease 0ms;
+$main-menu-button-font: 900 2em/1 'Line Awesome Free';
+$main-menu-button-width: 1.5em;
+$main-menu-button-height: 1.5em;
+$main-menu-button-color: inherit;
+$main-menu-button-color-alt: goldenrod;
+$main-menu-button-text-shadow: inherit;
+$main-menu-button-transition: color 200ms ease 0ms;
+
+$debug-menu-padding: 0.125em;
+$debug-menu-background: white;
+$debug-menu-button-font-size: 0.8em;
+$debug-menu-button-margin: 0.15625em;
 
 // 'enter' timeout in Popup.jsx must match the duration below
 $popup-enter-transition-duration: 300ms;

@@ -1,16 +1,16 @@
 .table {
-  position: relative; // Relative position used for absolute-positioned cards on mobile
+  position: relative; // may contain absolute-positioned players (e.g. on mobile)
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
   overflow: hidden;
   background: $table-background;
 
   > h1 {
     font: $table-title-font;
+    margin: $table-title-margin;
     text-align: center;
-    margin: 0;
   }
 }

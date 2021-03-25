@@ -1,4 +1,4 @@
-.menu {
+.main-menu {
   position: absolute;
   top: 0;
   left: 0;
@@ -6,25 +6,24 @@
   flex-direction: column;
 
   > .popup-button {
-    font: $menu-button-font;
-    width: $menu-button-width;
-    height: $menu-button-height;
+    font: $main-menu-button-font;
+    width: $main-menu-button-width;
+    height: $main-menu-button-height;
     padding: 0;
     border: 0;
-    color: $menu-button-color;
-    text-shadow: $menu-button-text-shadow;
+    color: $main-menu-button-color;
+    text-shadow: $main-menu-button-text-shadow;
     background: none;
     outline: none;
     cursor: pointer;
-    transition: $menu-button-transition;
+    transition: $main-menu-button-transition;
     @include font-smoothing(on);
 
     &:focus,
     &:hover:enabled,
     &:active:enabled {
-        color: $menu-button-color-alt;
+        color: $main-menu-button-color-alt;
     }
-
   }
 
   > .info-popup-button::before {
@@ -50,9 +49,4 @@
   > .quit-popup-button::before {
     content: '\f2f5'; // la-sign-out-alt
   }
-
-  > .dev-popup-button::before {
-    content: '\f121'; // la-code
-  }
-
 }
