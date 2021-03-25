@@ -14,8 +14,118 @@ const App = (props) => {
   const dispatch = useDispatchContext();
 
   useEffect(() => {
-    // deal two cards to dealer
+
+    // add players
+    dispatch({ type: 'addPlayer', player: {
+      id: 100,
+      name: 'Will',
+      primary: true,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: true,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        },
+        {
+          active: false,
+          bet: 20,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        },
+        {
+          active: false,
+          bet: 30,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }});
+
+    dispatch({ type: 'addPlayer', player: {
+      id: 101,
+      name: 'Lisa',
+      primary: false,
+      active: true,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }});
+
+    dispatch({ type: 'addPlayer', player: {
+      id: 102,
+      name: 'Tyler',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }});
+
+    dispatch({ type: 'addPlayer', player: {
+      id: 103,
+      name: 'Dan',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }});
+
+    dispatch({ type: 'addPlayer', player: {
+      id: 104,
+      name: 'Avery',
+      primary: false,
+      active: false,
+      chips: 1000,
+      hands: [
+        {
+          active: false,
+          bet: 10,
+          cards: [
+            { rank: 'ace', suit: 'hearts' },
+            { rank: 'two', suit: 'spades' }
+          ]
+        }
+      ]
+    }});
+
+    // deal up card to the dealer
     dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts', hidden: false } });
+
+    // deal hole card to the dealer
     const timeoutId = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);
 
     return () => {

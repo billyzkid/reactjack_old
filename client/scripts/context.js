@@ -1,4 +1,9 @@
 import io from 'socket.io-client';
+import { setAutoFreeze } from 'immer';
+
+// Disabling immer's auto-freeze is required to call sitPlayers below
+// TODO: Figure out an alternative way
+setAutoFreeze(false);
 
 const socket = io();
 
@@ -34,109 +39,7 @@ const initialState = {
       cards: []
     }
   },
-  players: [
-    {
-      id: 100,
-      name: 'Will',
-      primary: true,
-      active: true,
-      chips: 1000,
-      hands: [
-        {
-          active: true,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        },
-        {
-          active: false,
-          bet: 20,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        },
-        {
-          active: false,
-          bet: 30,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 101,
-      name: 'Lisa',
-      primary: false,
-      active: false,
-      chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 102,
-      name: 'Tyler',
-      primary: false,
-      active: false,
-      chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 103,
-      name: 'Dan',
-      primary: false,
-      active: false,
-      chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 104,
-      name: 'Avery',
-      primary: false,
-      active: false,
-      chips: 1000,
-      hands: [
-        {
-          active: false,
-          bet: 10,
-          cards: [
-            { rank: 'ace', suit: 'hearts' },
-            { rank: 'two', suit: 'spades' }
-          ]
-        }
-      ]
-    }
-  ],
+  players: [],
   message: ['This is the first line of the message.', 'This is the second line of the message.']
 };
 
@@ -210,12 +113,14 @@ const reducer = (draft, action) => {
 
     case 'addPlayer': {
       draft.players.push(action.player);
+      sitPlayers(draft.players);
       return;
     }
 
     case 'removePlayer': {
       const index = draft.players.findIndex((player) => player.id === action.id)
       draft.players.splice(index, 1);
+      sitPlayers(draft.players);
       return;
     }
 
@@ -224,5 +129,86 @@ const reducer = (draft, action) => {
     }
   }
 };
+
+function sitPlayers(players) {
+  const primaryPlayer = players.find((player) => player.primary);
+
+  if (primaryPlayer) {
+    const otherPlayers = players.filter((player) => player !== primaryPlayer);
+
+    switch (otherPlayers.length) {
+      case 0:
+        primaryPlayer.style = { gridColumn: '3' };
+        break;
+
+      case 1:
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        break;
+
+      case 2:
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
+        break;
+
+      case 3:
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
+        otherPlayers[2].style = { gridColumn: '4' };
+        break;
+
+      case 4:
+        primaryPlayer.style = { gridColumn: '3' };
+        otherPlayers[0].style = { gridColumn: '1' };
+        otherPlayers[1].style = { gridColumn: '2' };
+        otherPlayers[2].style = { gridColumn: '4' };
+        otherPlayers[3].style = { gridColumn: '5' };
+        break;
+
+      default:
+        throw new Error('Table can only seat a maximum of 5 players.');
+    }
+  } else {
+    switch (players.length) {
+      case 0:
+        break;
+
+      case 1:
+        players[0].style = { gridColumn: '1' };
+        break;
+
+      case 2:
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        break;
+
+      case 3:
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
+        break;
+
+      case 4:
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
+        players[3].style = { gridColumn: '4' };
+        break;
+
+      case 5:
+        players[0].style = { gridColumn: '1' };
+        players[1].style = { gridColumn: '2' };
+        players[2].style = { gridColumn: '3' };
+        players[3].style = { gridColumn: '4' };
+        players[4].style = { gridColumn: '5' };
+        break;
+
+      default:
+        throw new Error('Table can only seat a maximum of 5 players.');
+    }
+  }
+}
 
 export { socket, initialState, reducer };
