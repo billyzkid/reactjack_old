@@ -43,7 +43,7 @@ const initialState = {
     }
   },
   players: [],
-  message: ['This is the first line of the message.', 'This is the second line of the message.']
+  message: []
 };
 
 const reducer = (draft, action) => {
@@ -75,6 +75,16 @@ const reducer = (draft, action) => {
 
     case 'toggleQuitPopup': {
       draft.isQuitPopupOpen = action.isOpen;
+      return;
+    }
+
+    case 'showMessage': {
+      draft.message = action.message;
+      return;
+    }
+
+    case 'hideMessage': {
+      draft.message = [];
       return;
     }
 

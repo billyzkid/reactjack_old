@@ -15,6 +15,12 @@ const App = (props) => {
 
   useEffect(() => {
 
+    // show message
+    dispatch({ type: 'showMessage', message: [
+      'This is the first line of the message.',
+      'This is the second line of the message.'
+    ]});
+
     // add players
     dispatch({ type: 'addPlayer', player: {
       id: 100,
