@@ -156,11 +156,11 @@ $card-flip-transition-delay: 0s;
 $players-font: inherit;
 $players-color: inherit;
 $players-width: 100%;
-$players-min-height: 14.724625em;
+$players-min-height: 16em;
 
 $player-width: 9.375em;
 $player-transform: translate3d(0,2.5em,0);
-$primary-player-transform: translate3d(0,-2.5em,0) scale3d(1.2,1.2,1.2);
+$primary-player-transform: translate3d(0,-4em,0) scale3d(1.2,1.2,1.2);
 $player-transition: transform 200ms ease 0ms;
 
 $seat-width: $player-width;

@@ -21,6 +21,7 @@
 
   &.primary {
     transform: $primary-player-transform;
+    z-index: 1; // above other players
 
     &::before,
     > .info {
