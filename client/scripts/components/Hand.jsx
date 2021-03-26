@@ -12,13 +12,19 @@ const timeouts = {
 const Hand = forwardRef((props, ref) => {
   console.log('Hand render', props);
 
-  const { hand } = props;
-  const { active, cards, style } = hand;
+  const { hand, position } = props;
+  const { active, cards } = hand;
 
   const classNames = getClassNames({
     hand: true,
     active: active
   });
+
+  const style = {};
+
+  if (position) {
+    style.transform = `translate3d(${position.x}em, ${position.y}em, 0)`;
+  }
 
   return (
     <div ref={ref} className={classNames} style={style}>

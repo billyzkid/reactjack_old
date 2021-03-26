@@ -2,7 +2,7 @@ import React, { forwardRef, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hand from './Hand.jsx';
-import { getClassNames, getHandTotal, formatMoney } from '../utils.js';
+import { getClassNames, getHandPositions, getHandTotal, formatMoney } from '../utils.js';
 
 const timeouts = {
   enter: 200,
@@ -12,8 +12,9 @@ const timeouts = {
 const Player = forwardRef((props, ref) => {
   console.log('Player render', props);
 
-  const { player } = props;
-  const { name, primary, active, chips, hands, style } = player;
+  const { player, position } = props;
+  const { name, primary, active, chips, hands } = player;
+  const handPositions = getHandPositions(hands);
 
   const classNames = getClassNames({
     player: true,
@@ -22,7 +23,7 @@ const Player = forwardRef((props, ref) => {
   });
 
   return (
-    <div ref={ref} className={classNames} style={style}>
+    <div ref={ref} className={classNames} style={{ gridColumn: position + 1 }}>
       <div className="info">
         <p className="player-name">{name}</p>
         <div>
@@ -42,9 +43,10 @@ const Player = forwardRef((props, ref) => {
       <TransitionGroup className="hands">
         {hands.map((hand, index) => {
           const handRef = createRef(null); // avoids findDOMNode warning
+          const handPosition = handPositions[index];
           return (
             <CSSTransition key={index} nodeRef={handRef} timeout={timeouts}>
-              <Hand ref={handRef} hand={hand} />
+              <Hand ref={handRef} hand={hand} position={handPosition} />
             </CSSTransition>
           );
         })}

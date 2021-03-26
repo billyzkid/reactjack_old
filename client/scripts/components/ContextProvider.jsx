@@ -2,7 +2,6 @@ import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { useImmerReducer } from 'use-immer';
-import { sitPlayers, positionHands } from '../utils.js';
 
 const initialState = {
   isInfoPopupOpen: false,
@@ -122,29 +121,25 @@ const reducer = (draft, action) => {
     }
 
     case 'addPlayer': {
-      draft.players.push({ ...action.player }); // copy object to avoid mutation error
-      sitPlayers(draft.players);
+      draft.players.push(action.player);
       return;
     }
 
     case 'removePlayer': {
       const index = draft.players.findIndex((player) => player.id === action.playerId);
       draft.players.splice(index, 1);
-      sitPlayers(draft.players);
       return;
     }
 
     case 'addPlayerHand': {
       const player = draft.players.find((player) => player.id === action.playerId);
-      player.hands.push({ ...action.hand }); // copy object to avoid mutation error
-      positionHands(player.hands);
+      player.hands.push(action.hand);
       return;
     }
 
     case 'removePlayerHand': {
       const player = draft.players.find((player) => player.id === action.playerId);
       player.hands.splice(action.handIndex, 1);
-      positionHands(player.hands);
       return;
     }
 
