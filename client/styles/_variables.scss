@@ -37,7 +37,7 @@ $scrollbar-thumb-background: rgba(170,170,170,0.8);
 
 $table-background: url('../images/table.jpg') bottom/cover no-repeat;
 $table-title-font: 400 5em/1.5 'Monsieur La Doulaise', cursive;
-$table-title-margin: 0;
+$table-title-margin: 0.2em 0;
 
 $main-menu-button-font: 900 2em/1 'Line Awesome Free';
 $main-menu-button-width: 1.5em;
@@ -151,6 +151,10 @@ $card-exit-transition-delay: 0s;
 $card-flip-transition-duration: 0.75s;
 $card-flip-transition-function: cubic-bezier(0.165,0.84,0.44,1);
 $card-flip-transition-delay: 0s;
+
+// dealer
+$dealer-margin: 1em 0 2em;
+$dealer-transform: none;
 
 // players
 $players-font: inherit;
