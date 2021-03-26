@@ -24,11 +24,11 @@ const Banner = (props) => {
           <Fragment>
             {primaryPlayer && (
               <div ref={leftContainerRef} className="banner-left-container">
-                <div className="primary-player-chips">
+                <div className="player-chips">
                   <p>Chips</p>
                   <p>{formatMoney(primaryPlayer.chips)}</p>
                 </div>
-                <div className="primary-player-bet">
+                <div className="player-bet">
                   <p>Bet</p>
                   <p>
                     {primaryPlayer.hands.map((hand, index) => (
@@ -55,7 +55,7 @@ const Banner = (props) => {
           <Fragment>
             {primaryPlayer && (
               <div ref={rightContainerRef} className="banner-right-container">
-                <div className="primary-player-hand-total">
+                <div className="player-hand-total">
                   <p>{primaryPlayer.name}</p>
                   <p>
                     {primaryPlayer.hands.map((hand, index) => (

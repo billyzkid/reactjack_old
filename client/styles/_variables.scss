@@ -181,3 +181,17 @@ $player-info-item-margin: 0;
 $player-chips-background: rgba(255,0,0,0.5);
 $player-bet-background: rgba(0,255,0,0.5);
 $player-hand-total-background: rgba(0,0,255,0.5);
+
+// banner
+$banner-font: 300 1em/1.2 'Dosis', sans-serif;
+$banner-letter-spacing: 0.1em;
+$banner-color: inherit;
+$banner-container-border: 2px solid white;
+$banner-container-enter-transition: opacity 1000ms ease 0ms;
+$banner-container-exit-transition: opacity 1000ms ease 0ms;
+$banner-item-margin: 0 1.5625em;
+$banner-item-color-player: lightblue;
+$banner-item-color-dealer: goldenrod;
+$banner-item-value-font-size: 1.1em;
+$banner-item-value-font-weight: 600;
+$banner-item-value-letter-spacing: 0.15em;
