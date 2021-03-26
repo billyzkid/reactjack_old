@@ -1,11 +1,12 @@
 .banner {
-  font: $banner-font;
-  letter-spacing: $banner-letter-spacing;
-  color: $banner-color;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  font: $banner-font;
+  color: $banner-color;
+  width: $banner-width;
+  min-height: $banner-min-height;
 
   > div {
     display: flex;
@@ -50,7 +51,7 @@
   .player-hand-total,
   .dealer-hand-total,
   .message {
-    text-align: center;
+    letter-spacing: $banner-item-letter-spacing;
     margin: $banner-item-margin;
   }
 
@@ -62,6 +63,10 @@
   .player-bet,
   .dealer-hand-total {
     text-align: right;
+  }
+
+  .message {
+    text-align: center;
   }
 
   .player-hand-total {

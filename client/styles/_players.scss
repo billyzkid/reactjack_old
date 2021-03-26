@@ -3,8 +3,10 @@
   grid-template-columns: repeat(5, 20%);
   grid-auto-flow: column;
   justify-items: center;
-  width: 100%;
-  min-height: 15.30125em;
+  font: $players-font;
+  color: $players-color;
+  width: $players-width;
+  min-height: $players-min-height;
 }
 
 .player {
@@ -13,11 +15,9 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  font: $player-font;
   width: $player-width;
-  margin: $player-margin;
   transform: $player-transform;
-  transition: transform $player-transition-duration $player-transition-function $player-transition-delay;
+  transition: $player-transition;
 
   &.primary {
     transform: $primary-player-transform;
@@ -84,15 +84,15 @@
   }
 
   &.active > .info > .player-name {
-    background-image: linear-gradient(to top, rgba(218,165,32,0.5), rgba(218,165,32,0));
+    background: $player-active-background;
   }
 
   &.enter {
-    transform: translate3d(0,3.125em,0) rotate3d(0,0,1,180deg) scale3d(0,0,0);
+    transform: $player-enter-transform;
 
     &.enter-active {
-      transform: translate3d(0,0,0) rotate3d(0,0,1,0deg) scale3d(1,1,1);
-      transition: transform 200ms cubic-bezier(0.16,0.84,0.32,1.24) 300ms;
+      transform: $player-enter-active-transform;
+      transition: $player-enter-transition;
     }
   }
 
@@ -101,7 +101,7 @@
 
     &.exit-active {
       opacity: 0;
-      transition: opacity 200ms ease 0ms;
+      transition: $player-exit-transition;
     }
   }
 }
