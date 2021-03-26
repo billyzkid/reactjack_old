@@ -19,11 +19,12 @@ const Player = forwardRef((props, ref) => {
   const classNames = getClassNames({
     player: true,
     primary: primary,
-    active: active
+    active: active,
+    [`position-${position}`]: true
   });
 
   return (
-    <div ref={ref} className={classNames} style={{ gridColumn: position + 1 }}>
+    <div ref={ref} className={classNames}>
       <div className="info">
         <p className="player-name">{name}</p>
         <div>

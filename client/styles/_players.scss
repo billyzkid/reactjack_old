@@ -59,8 +59,9 @@
       align-items: flex-start;
 
       > p {
-        flex: 1 0 33.3333%;
+        flex: 1 0 33.333333%;
         font-size: $player-info-item-font-size;
+        width: 33.333333%;
         padding: $player-info-item-padding;
         margin: $player-info-item-margin;
         box-sizing: border-box;
@@ -88,6 +89,26 @@
     background: $player-active-background;
   }
 
+  &.position-1 {
+    grid-column: 1;
+  }
+
+  &.position-2 {
+    grid-column: 2;
+  }
+
+  &.position-3 {
+    grid-column: 3;
+  }
+
+  &.position-4 {
+    grid-column: 4;
+  }
+
+  &.position-5 {
+    grid-column: 5;
+  }
+
   &.enter {
     transform: $player-enter-transform;
 
@@ -105,4 +126,82 @@
       transition: $player-exit-transition;
     }
   }
+
+  @media screen and (max-width: 768px) {
+
+    &.position-1 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translate3d(-3.5em,-8em,0) rotate3d(0,0,1,45deg);
+    }
+
+    &.position-2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translate3d(-3.5em,3em,0) rotate3d(0,0,1,45deg);
+    }
+
+    &.position-4 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate3d(3.5em,3em,0) rotate3d(0,0,-1,45deg);
+    }
+
+    &.position-5 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate3d(3.5em,-8em,0) rotate3d(0,0,-1,45deg);
+    }
+
+    &.position-3:not(.primary) {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate3d(-50%,3em,0);
+    }
+
+    &.position-1 > .info,
+    &.position-2 > .info {
+      transform: rotate3d(0,0,-1,45deg);
+    }
+
+    &.position-4 > .info,
+    &.position-5 > .info {
+      transform: rotate3d(0,0,1,45deg);
+    }
+
+    &.position-1 > .info > .player-name,
+    &.position-2 > .info > .player-name {
+      text-align: left;
+    }
+
+    &.position-4 > .info > .player-name,
+    &.position-5 > .info > .player-name {
+      text-align: right;
+    }
+
+    &.active.position-1 > .info > .player-name,
+    &.active.position-2 > .info > .player-name {
+      background-image: linear-gradient(to right, rgba(218,165,32,0.5), rgba(218,165,32,0));
+    }
+
+    &.active.position-4 > .info > .player-name,
+    &.active.position-5 > .info > .player-name {
+      background-image: linear-gradient(to left, rgba(218,165,32,0.5), rgba(218,165,32,0));
+    }
+
+    &.position-1 > .info > div,
+    &.position-2 > .info > div,
+    &.position-4 > .info > div,
+    &.position-5 > .info > div {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
+
+

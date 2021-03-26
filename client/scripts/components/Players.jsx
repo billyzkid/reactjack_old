@@ -20,7 +20,7 @@ const Players = (props) => {
     <TransitionGroup className="players">
       {players.map((player) => {
         const playerRef = createRef(null); // avoids findDOMNode warning
-        const position = positions.indexOf(player);
+        const position = positions.indexOf(player) + 1;
         return (
           <CSSTransition key={player.id} nodeRef={playerRef} timeout={timeouts}>
             <Player ref={playerRef} player={player} position={position} />
