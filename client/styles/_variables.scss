@@ -181,11 +181,14 @@ $player-info-item-margin: 0;
 $player-chips-background: rgba(255,0,0,0.5);
 $player-bet-background: rgba(0,255,0,0.5);
 $player-hand-total-background: rgba(0,0,255,0.5);
-
 $player-active-background: linear-gradient(to top, rgba(218,165,32,0.5), rgba(218,165,32,0));
+
 $player-enter-transform: translate3d(0,3.125em,0) rotate3d(0,0,1,180deg) scale3d(0,0,0);
 $player-enter-active-transform: translate3d(0,0,0) rotate3d(0,0,1,0deg) scale3d(1,1,1);
 $player-enter-transition: transform 200ms cubic-bezier(0.16,0.84,0.32,1.24) 300ms;
+
+$player-exit-opacity: 1;
+$player-exit-active-opacity: 0;
 $player-exit-transition: opacity 200ms ease 0ms;
 
 // banner

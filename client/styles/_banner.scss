@@ -58,11 +58,13 @@
   .player-chips,
   .player-hand-total {
     text-align: left;
+    white-space: nowrap;
   }
 
   .player-bet,
   .dealer-hand-total {
     text-align: right;
+    white-space: nowrap;
   }
 
   .message {
