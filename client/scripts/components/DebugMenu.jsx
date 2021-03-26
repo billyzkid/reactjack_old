@@ -14,6 +14,7 @@ const DebugMenu = (props) => {
   const sweepPlayerHand = useCallback(() => { dispatch({ type: 'sweepPlayerHand', playerId: players[players.length - 1].id, handIndex: players[players.length - 1].hands.length - 1 }); }, [players]);
   const flipHoleCard = useCallback(() => { dispatch({ type: 'flipHoleCard' }); }, []);
   const addPlayer = useCallback(() => { dispatch({ type: 'addPlayer', player: { id: Date.now() + Math.random(), name: 'Avery', primary: false, active: false, chips: 1000, hands: [] } }); }, []);
+  const addPrimaryPlayer = useCallback(() => { dispatch({ type: 'addPlayer', player: { id: Date.now() + Math.random(), name: 'Avery', primary: true, active: false, chips: 1000, hands: [] } }); }, []);
   const removePlayer = useCallback(() => { dispatch({ type: 'removePlayer', playerId: players[players.length - 1].id }); }, [players]);
   const addPlayerHand = useCallback(() => { dispatch({ type: 'addPlayerHand', playerId: players[players.length - 1].id, hand: { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }}); }, [players]);
   const removePlayerHand = useCallback(() => { dispatch({ type: 'removePlayerHand', playerId: players[players.length - 1].id, handIndex: players[players.length - 1].hands.length - 1 }); }, [players]);
@@ -26,6 +27,7 @@ const DebugMenu = (props) => {
       <button onClick={sweepPlayerHand}>sweepPlayerHand</button>
       <button onClick={flipHoleCard}>flipHoleCard</button>
       <button onClick={addPlayer}>addPlayer</button>
+      <button onClick={addPrimaryPlayer}>addPrimaryPlayer</button>
       <button onClick={removePlayer}>removePlayer</button>
       <button onClick={addPlayerHand}>addPlayerHand</button>
       <button onClick={removePlayerHand}>removePlayerHand</button>

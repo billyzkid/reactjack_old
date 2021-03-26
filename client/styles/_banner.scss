@@ -25,6 +25,24 @@
       border-left: 2px solid white;
     }
 
+    &.enter {
+      opacity: 0;
+
+      &.enter-active {
+        opacity: 1;
+        transition: opacity 1000ms ease 0ms;
+      }
+    }
+
+    &.exit:not(.enter) {
+      opacity: 1;
+
+      &.exit-active {
+        opacity: 0;
+        transition: opacity 1000ms ease 0ms;
+      }
+    }
+
   }
 
   p {
