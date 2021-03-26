@@ -42,6 +42,10 @@ const initialState = {
 
 const reducer = (draft, action) => {
   switch (action.type) {
+    case 'reset': {
+      return initialState;
+    }
+
     case 'toggleInfoPopup': {
       draft.isInfoPopupOpen = action.isOpen;
       return;

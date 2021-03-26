@@ -29,7 +29,10 @@ const App = (props) => {
       primary: true,
       active: false,
       chips: 1000,
-      hands: []
+      hands: [
+        { active: true, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] },
+        { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }
+      ]
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -38,7 +41,9 @@ const App = (props) => {
       primary: false,
       active: true,
       chips: 1000,
-      hands: []
+      hands: [
+        { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }
+      ]
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -47,7 +52,9 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: []
+      hands: [
+        { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }
+      ]
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -56,7 +63,9 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: []
+      hands: [
+        { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }
+      ]
     }});
 
     dispatch({ type: 'addPlayer', player: {
@@ -65,7 +74,9 @@ const App = (props) => {
       primary: false,
       active: false,
       chips: 1000,
-      hands: []
+      hands: [
+        { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }
+      ]
     }});
 
     // deal up card to the dealer
@@ -76,6 +87,7 @@ const App = (props) => {
 
     return () => {
       clearTimeout(timeoutId);
+      dispatch({ type: 'reset' });
     };
   }, []);
 
