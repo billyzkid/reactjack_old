@@ -18,6 +18,8 @@ const DebugMenu = (props) => {
   const removePlayer = useCallback(() => { dispatch({ type: 'removePlayer', playerId: players[players.length - 1].id }); }, [players]);
   const addPlayerHand = useCallback(() => { dispatch({ type: 'addPlayerHand', playerId: players[players.length - 1].id, hand: { active: false, bet: 10, cards: [{ rank: 'ace', suit: 'hearts' }, { rank: 'two', suit: 'spades' }] }}); }, [players]);
   const removePlayerHand = useCallback(() => { dispatch({ type: 'removePlayerHand', playerId: players[players.length - 1].id, handIndex: players[players.length - 1].hands.length - 1 }); }, [players]);
+  const showMessage = useCallback(() => { dispatch({ type: 'showMessage', message: ['Line one.', 'Line two.'] }); }, []);
+  const hideMessage = useCallback(() => { dispatch({ type: 'hideMessage' }); }, []);
 
   return (
     <div className="debug-menu">
@@ -31,6 +33,8 @@ const DebugMenu = (props) => {
       <button onClick={removePlayer}>removePlayer</button>
       <button onClick={addPlayerHand}>addPlayerHand</button>
       <button onClick={removePlayerHand}>removePlayerHand</button>
+      <button onClick={showMessage}>showMessage</button>
+      <button onClick={hideMessage}>hideMessage</button>
     </div>
   );
 };

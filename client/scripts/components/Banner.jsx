@@ -12,15 +12,21 @@ const timeouts = {
 const Banner = (props) => {
   console.log('Banner render', props);
 
+  const { message, dealer, players } = useStateContext();
+  const primaryPlayer = players.find((player) => player.primary);
+
   const leftContainerRef = useRef(null);
   const rightContainerRef = useRef(null);
-  const { dealer, players, message } = useStateContext();
-  const primaryPlayer = players.find((player) => player.primary);
+  const middleContainerRef = useRef(null);
+
+  const leftContainerKey = !!primaryPlayer;
+  const rightContainerKey = !!primaryPlayer;
+  const middleContainerKey = message && message.length > 0;
 
   return (
     <div className="banner">
       <SwitchTransition>
-        <CSSTransition key={!!primaryPlayer} nodeRef={leftContainerRef} timeout={timeouts}>
+        <CSSTransition key={leftContainerKey} nodeRef={leftContainerRef} timeout={timeouts}>
           <Fragment>
             {primaryPlayer && (
               <div ref={leftContainerRef} className="banner-left-container">
@@ -41,17 +47,25 @@ const Banner = (props) => {
           </Fragment>
         </CSSTransition>
       </SwitchTransition>
-      <div className="banner-middle-container">
-        <div className="message">
-          <p>
-            {message.map((line, index) => (
-              <span key={index}>{line}</span>
-            ))}
-          </p>
-        </div>
-      </div>
       <SwitchTransition>
-        <CSSTransition key={!!primaryPlayer} nodeRef={rightContainerRef} timeout={timeouts}>
+        <CSSTransition key={middleContainerKey} nodeRef={middleContainerRef} timeout={timeouts}>
+          <Fragment>
+            {message && message.length > 0 && (
+              <div ref={middleContainerRef} className="banner-middle-container">
+                <div className="message">
+                  <p>
+                    {message.map((line, index) => (
+                      <span key={index}>{line}</span>
+                    ))}
+                  </p>
+                </div>
+              </div>
+            )}
+          </Fragment>
+        </CSSTransition>
+      </SwitchTransition>
+      <SwitchTransition>
+        <CSSTransition key={rightContainerKey} nodeRef={rightContainerRef} timeout={timeouts}>
           <Fragment>
             {primaryPlayer && (
               <div ref={rightContainerRef} className="banner-right-container">
