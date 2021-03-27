@@ -60,4 +60,6 @@ Player.propTypes = {
   player: PropTypes.object.isRequired
 };
 
+Player.displayName = 'Player';
+
 export default Player;

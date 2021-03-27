@@ -46,4 +46,6 @@ Hand.propTypes = {
   hand: PropTypes.object.isRequired
 };
 
+Hand.displayName = 'Hand';
+
 export default Hand;

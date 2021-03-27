@@ -17,7 +17,7 @@ const timeouts = {
   exit: 300
 };
 
-const Popup = (props) => {
+const Popup = memo((props) => {
   console.log('Popup render', props);
 
   const {
@@ -127,7 +127,7 @@ const Popup = (props) => {
       </div>
     </Portal>
   );
-};
+});
 
 Popup.ariaHiddenSelector = '#app';
 
@@ -163,4 +163,6 @@ Popup.defaultProps = {
   children: null
 };
 
-export default memo(Popup);
+Popup.displayName = 'Popup';
+
+export default Popup;

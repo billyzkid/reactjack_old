@@ -35,4 +35,6 @@ Card.propTypes = {
   card: PropTypes.object.isRequired
 };
 
+Card.displayName = 'Card';
+
 export default Card;
