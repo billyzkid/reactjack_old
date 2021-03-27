@@ -1,2 +1,51 @@
 .controls {
+
+  > .name-container,
+  > .buy-in-container,
+  > .insurance-container,
+  > .even-money-container {
+
+    > p {
+      text-align: center;
+      margin: 0 0 0.75em;
+    }
+  }
+
+  > .sit-container,
+  > .sit-in-out-container,
+  > .bet-container,
+  > .decision-container,
+  > .name-container > div,
+  > .buy-in-container > div,
+  > .insurance-container > div,
+  > .even-money-container > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    > input,
+    > button {
+      font-size: 1.25em;
+      margin: 0.25em;
+    }
+  }
+
+  > .name-container > div > input {
+    width: 12em;
+  }
+
+  > .bet-container,
+  > .buy-in-container > div {
+
+    &::before {
+      content: '$';
+      font-size: 1.25em;
+    }
+
+    > input {
+      width: 4em;
+    }
+  }
 }
