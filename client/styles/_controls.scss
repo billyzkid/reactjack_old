@@ -49,8 +49,8 @@
 
     &::before {
       content: '$';
-      font-size: $controls-money-text-font-size;
-      margin: $controls-money-text-margin;
+      font-size: $controls-dollar-sign-font-size;
+      margin: $controls-dollar-sign-margin;
     }
   }
 
@@ -69,23 +69,23 @@
   > div {
 
     &.enter {
-      opacity: 0;
-      transform: translate3d(0,-5em,0);
+      opacity: $controls-enter-opacity;
+      transform: $controls-enter-transform;
 
       &.enter-active {
-        opacity: 1;
-        transform: translate3d(0,0,0);
+        opacity: $controls-enter-active-opacity;
+        transform: $controls-enter-active-transform;
         transition: $controls-enter-transition;
       }
     }
 
     &.exit {
-      opacity: 1;
-      transform: translate3d(0,0,0);
+      opacity: $controls-exit-opacity;
+      transform: $controls-exit-transform;
 
       &.exit-active {
-        opacity: 0;
-        transform: translate3d(0,-5em,0);
+        opacity: $controls-exit-active-opacity;
+        transform: $controls-exit-active-transform;
         transition: $controls-exit-transition;
       }
     }

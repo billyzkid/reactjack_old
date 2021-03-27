@@ -216,10 +216,22 @@ $controls-min-height: 6em;
 $controls-text-margin: 0 0 0.75em;
 $controls-input-font-size: 1.25em;
 $controls-input-margin: 0.25em;
-$controls-money-text-font-size: $controls-input-font-size;
-$controls-money-text-margin: 0;
+$controls-dollar-sign-font-size: $controls-input-font-size;
+$controls-dollar-sign-margin: 0;
 $controls-name-input-width: 12em;
 $controls-buy-in-input-width: 4em;
 $controls-bet-input-width: 4em;
+
+// enter timeout in Controls.jsx must match the transition duration below
+$controls-enter-opacity: 0;
+$controls-enter-active-opacity: 1;
+$controls-enter-transform: translate3d(0,-6em,0);
+$controls-enter-active-transform: translate3d(0,0,0);
 $controls-enter-transition: opacity 200ms ease-out 0ms, transform 200ms ease-out 0ms;
+
+// exit timeout in Controls.jsx must match the transition duration below
+$controls-exit-opacity: 1;
+$controls-exit-active-opacity: 0;
+$controls-exit-transform: translate3d(0,0,0);
+$controls-exit-active-transform: translate3d(0,-6em,0);
 $controls-exit-transition: opacity 200ms ease-in 0ms, transform 200ms ease-in 0ms;
