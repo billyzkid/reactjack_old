@@ -7,7 +7,7 @@
 
     > p {
       text-align: center;
-      margin: 0 0 0.75em;
+      margin: $controls-text-margin;
     }
   }
 
@@ -27,13 +27,9 @@
 
     > input,
     > button {
-      font-size: 1.25em;
-      margin: 0.25em;
+      font-size: $controls-input-font-size;
+      margin: $controls-input-margin;
     }
-  }
-
-  > .name-container > div > input {
-    width: 12em;
   }
 
   > .bet-container,
@@ -41,11 +37,20 @@
 
     &::before {
       content: '$';
-      font-size: 1.25em;
+      font-size: $controls-money-text-font-size;
+      margin: $controls-money-text-margin;
     }
+  }
 
-    > input {
-      width: 4em;
-    }
+  > .name-container > div > input {
+    width: $controls-name-input-width;
+  }
+
+  > .buy-in-container > div > input {
+    width: $controls-buy-in-input-width;
+  }
+
+  > .bet-container > input {
+    width: $controls-bet-input-width;
   }
 }
