@@ -10,6 +10,14 @@ const initialState = {
   isMusicPopupOpen: false,
   isSettingsPopupOpen: false,
   isQuitPopupOpen: false,
+  isNameControlVisible: false,
+  isSitControlVisible: false,
+  isInOutControlVisible: false,
+  isBuyInControlVisible: false,
+  isBetControlVisible: false,
+  isInsuranceControlVisible: false,
+  isEvenMoneyControlVisible: false,
+  isDecisionControlVisible: false,
   settings: {
     soundEffects: false,
     shuffleAfterEveryRound: false,
@@ -72,6 +80,46 @@ const reducer = (draft, action) => {
 
     case 'toggleQuitPopup': {
       draft.isQuitPopupOpen = action.isOpen;
+      return;
+    }
+
+    case 'toggleNameControl': {
+      draft.isNameControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleSitControl': {
+      draft.isSitControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleInOutControl': {
+      draft.isInOutControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleBuyInControl': {
+      draft.isBuyInControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleBetControl': {
+      draft.isBetControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleInsuranceControl': {
+      draft.isInsuranceControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleEvenMoneyControl': {
+      draft.isEvenMoneyControlVisible = action.isVisible;
+      return;
+    }
+
+    case 'toggleDecisionControl': {
+      draft.isDecisionControlVisible = action.isVisible;
       return;
     }
 

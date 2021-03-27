@@ -212,6 +212,7 @@ $banner-item-value-font-weight: 600;
 $banner-item-value-letter-spacing: 0.15em;
 
 // controls
+$controls-min-height: 6em;
 $controls-text-margin: 0 0 0.75em;
 $controls-input-font-size: 1.25em;
 $controls-input-margin: 0.25em;
@@ -220,3 +221,5 @@ $controls-money-text-margin: 0;
 $controls-name-input-width: 12em;
 $controls-buy-in-input-width: 4em;
 $controls-bet-input-width: 4em;
+$controls-enter-transition: opacity 200ms ease-out 0ms, transform 200ms ease-out 0ms;
+$controls-exit-transition: opacity 200ms ease-in 0ms, transform 200ms ease-in 0ms;

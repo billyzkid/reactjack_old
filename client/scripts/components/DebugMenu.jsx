@@ -5,7 +5,18 @@ import { useStateContext, useDispatchContext } from '../hooks.js';
 const DebugMenu = (props) => {
   console.log('DebugMenu render', props);
 
-  const { players } = useStateContext();
+  const {
+    players,
+    isNameControlVisible,
+    isSitControlVisible,
+    isInOutControlVisible,
+    isBuyInControlVisible,
+    isBetControlVisible,
+    isInsuranceControlVisible,
+    isEvenMoneyControlVisible,
+    isDecisionControlVisible
+  } = useStateContext();
+
   const dispatch = useDispatchContext();
 
   const dealCardToDealer = useCallback(() => { dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'spades' } }); }, []);
@@ -20,6 +31,14 @@ const DebugMenu = (props) => {
   const removePlayerHand = useCallback(() => { dispatch({ type: 'removePlayerHand', playerId: players[players.length - 1].id, handIndex: players[players.length - 1].hands.length - 1 }); }, [players]);
   const showMessage = useCallback(() => { dispatch({ type: 'showMessage', message: ['Line one.', 'Line two.'] }); }, []);
   const hideMessage = useCallback(() => { dispatch({ type: 'hideMessage' }); }, []);
+  const toggleNameControl = useCallback(() => { dispatch({ type: 'toggleNameControl', isVisible: !isNameControlVisible  }); }, [isNameControlVisible]);
+  const toggleSitControl = useCallback(() => { dispatch({ type: 'toggleSitControl', isVisible: !isSitControlVisible  }); }, [isSitControlVisible]);
+  const toggleInOutControl = useCallback(() => { dispatch({ type: 'toggleInOutControl', isVisible: !isInOutControlVisible  }); }, [isInOutControlVisible]);
+  const toggleBuyInControl = useCallback(() => { dispatch({ type: 'toggleBuyInControl', isVisible: !isBuyInControlVisible  }); }, [isBuyInControlVisible]);
+  const toggleBetControl = useCallback(() => { dispatch({ type: 'toggleBetControl', isVisible: !isBetControlVisible  }); }, [isBetControlVisible]);
+  const toggleInsuranceControl = useCallback(() => { dispatch({ type: 'toggleInsuranceControl', isVisible: !isInsuranceControlVisible  }); }, [isInsuranceControlVisible]);
+  const toggleEvenMoneyControl = useCallback(() => { dispatch({ type: 'toggleEvenMoneyControl', isVisible: !isEvenMoneyControlVisible  }); }, [isEvenMoneyControlVisible]);
+  const toggleDecisionControl = useCallback(() => { dispatch({ type: 'toggleDecisionControl', isVisible: !isDecisionControlVisible  }); }, [isDecisionControlVisible]);
 
   return (
     <div className="debug-menu">
@@ -35,6 +54,14 @@ const DebugMenu = (props) => {
       <button onClick={removePlayerHand}>removePlayerHand</button>
       <button onClick={showMessage}>showMessage</button>
       <button onClick={hideMessage}>hideMessage</button>
+      <button onClick={toggleNameControl}>toggleNameControl</button>
+      <button onClick={toggleSitControl}>toggleSitControl</button>
+      <button onClick={toggleInOutControl}>toggleInOutControl</button>
+      <button onClick={toggleBuyInControl}>toggleBuyInControl</button>
+      <button onClick={toggleBetControl}>toggleBetControl</button>
+      <button onClick={toggleInsuranceControl}>toggleInsuranceControl</button>
+      <button onClick={toggleEvenMoneyControl}>toggleEvenMoneyControl</button>
+      <button onClick={toggleDecisionControl}>toggleDecisionControl</button>
     </div>
   );
 };

@@ -20,8 +20,8 @@
   transition: $player-transition;
 
   &.primary {
-    transform: $primary-player-transform;
     z-index: 1; // above other players
+    transform: $primary-player-transform;
 
     &::before,
     > .info {

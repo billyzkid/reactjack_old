@@ -1,4 +1,16 @@
 .controls {
+  position: relative;
+  z-index: 2; // above primary player
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: $controls-min-height;
+
+  > div {
+    position: absolute;
+  }
 
   > .name-container,
   > .buy-in-container,
@@ -12,7 +24,7 @@
   }
 
   > .sit-container,
-  > .sit-in-out-container,
+  > .in-out-container,
   > .bet-container,
   > .decision-container,
   > .name-container > div,
@@ -52,5 +64,30 @@
 
   > .bet-container > input {
     width: $controls-bet-input-width;
+  }
+
+  > div {
+
+    &.enter {
+      opacity: 0;
+      transform: translate3d(0,-5em,0);
+
+      &.enter-active {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+        transition: $controls-enter-transition;
+      }
+    }
+
+    &.exit {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+
+      &.exit-active {
+        opacity: 0;
+        transform: translate3d(0,-5em,0);
+        transition: $controls-exit-transition;
+      }
+    }
   }
 }
