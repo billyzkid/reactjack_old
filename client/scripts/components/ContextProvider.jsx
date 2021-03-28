@@ -53,73 +53,49 @@ const reducer = (draft, action) => {
       return initialState;
     }
 
-    case 'toggleInfoPopup': {
-      draft.isInfoPopupOpen = action.isOpen;
-      return;
-    }
-
-    case 'toggleProfilePopup': {
-      draft.isProfilePopupOpen = action.isOpen;
-      return;
-    }
-
-    case 'toggleChatPopup': {
-      draft.isChatPopupOpen = action.isOpen;
-      return;
-    }
-
-    case 'toggleMusicPopup': {
-      draft.isMusicPopupOpen = action.isOpen;
-      return;
-    }
-
-    case 'toggleSettingsPopup': {
-      draft.isSettingsPopupOpen = action.isOpen;
-      return;
-    }
-
+    case 'toggleInfoPopup':
+    case 'toggleProfilePopup':
+    case 'toggleChatPopup':
+    case 'toggleMusicPopup':
+    case 'toggleSettingsPopup':
     case 'toggleQuitPopup': {
-      draft.isQuitPopupOpen = action.isOpen;
+      if (action.isOpen) {
+        draft.isInfoPopupOpen = false;
+        draft.isProfilePopupOpen = false;
+        draft.isChatPopupOpen = false;
+        draft.isMusicPopupOpen = false;
+        draft.isSettingPopupOpen = false;
+        draft.isQuitPopupOpen = false;
+      }
+
+      const popup = action.type.slice(6);
+      const key = `is${popup}Open`;
+      draft[key] = action.isOpen;
       return;
     }
 
-    case 'toggleNameControl': {
-      draft.isNameControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleSitControl': {
-      draft.isSitControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleInOutControl': {
-      draft.isInOutControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleBuyInControl': {
-      draft.isBuyInControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleBetControl': {
-      draft.isBetControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleInsuranceControl': {
-      draft.isInsuranceControlVisible = action.isVisible;
-      return;
-    }
-
-    case 'toggleEvenMoneyControl': {
-      draft.isEvenMoneyControlVisible = action.isVisible;
-      return;
-    }
-
+    case 'toggleNameControl':
+    case 'toggleSitControl':
+    case 'toggleInOutControl':
+    case 'toggleBuyInControl':
+    case 'toggleBetControl':
+    case 'toggleInsuranceControl':
+    case 'toggleEvenMoneyControl':
     case 'toggleDecisionControl': {
-      draft.isDecisionControlVisible = action.isVisible;
+      if (action.isVisible) {
+        draft.isNameControlVisible = false;
+        draft.isSitControlVisible = false;
+        draft.isInOutControlVisible = false;
+        draft.isBuyInControlVisible = false;
+        draft.isBetControlVisible = false;
+        draft.isInsuranceControlVisible = false;
+        draft.isEvenMoneyControlVisible = false;
+        draft.isDecisionControlVisible = false;
+      }
+
+      const control = action.type.slice(6);
+      const key = `is${control}Visible`;
+      draft[key] = action.isVisible;
       return;
     }
 

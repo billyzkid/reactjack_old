@@ -1,6 +1,6 @@
 .controls {
   position: relative;
-  z-index: 2; // above primary player
+  z-index: 200; // above primary player
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -71,6 +71,7 @@
     &.enter {
       opacity: $controls-enter-opacity;
       transform: $controls-enter-transform;
+      z-index: 201; // entering control is above exiting control
 
       &.enter-active {
         opacity: $controls-enter-active-opacity;

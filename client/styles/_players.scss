@@ -20,7 +20,7 @@
   transition: $player-transition;
 
   &.primary {
-    z-index: 1; // above other players
+    z-index: 100; // above other players
     transform: $primary-player-transform;
 
     &::before,

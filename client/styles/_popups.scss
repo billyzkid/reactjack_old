@@ -1,7 +1,7 @@
 .popup {
   position: fixed;
   inset: 0;
-  z-index: 3; // above controls
+  z-index: 300; // above controls
 
   // positions
   &-center {
