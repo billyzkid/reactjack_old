@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useStateContext } from '../hooks.js';
 
@@ -36,9 +36,9 @@ const NameControl = (props) => {
   const [name, setName] = useState(DEFAULT_NAME);
   const { isNameControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => nameInputRef.current.select());
-  const onNameInputChange = useCallback((event) => setName(event.currentTarget.value));
-  const onGoButtonClick = useCallback(() => console.log('name', name));
+  const onEnter = useCallback(() => nameInputRef.current.select(), []);
+  const onNameInputChange = useCallback((event) => setName(event.currentTarget.value), []);
+  const onGoButtonClick = useCallback(() => console.log('name', name), [name]);
 
   return (
     <CSSTransition nodeRef={nameContainerRef} in={isNameControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -60,8 +60,8 @@ const SitControl = (props) => {
   const sitButtonRef = useRef(null);
   const { isSitControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => sitButtonRef.current.focus());
-  const onSitButtonClick = useCallback(() => console.log('sit'));
+  const onEnter = useCallback(() => sitButtonRef.current.focus(), []);
+  const onSitButtonClick = useCallback(() => console.log('sit'), []);
 
   return (
     <CSSTransition nodeRef={sitContainerRef} in={isSitControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -80,9 +80,9 @@ const InOutControl = (props) => {
   const outButtonRef = useRef(null);
   const { isInOutControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => inButtonRef.current.focus());
-  const onInButtonClick = useCallback(() => console.log('in'));
-  const onOutButtonClick = useCallback(() => console.log('out'));
+  const onEnter = useCallback(() => inButtonRef.current.focus(), []);
+  const onInButtonClick = useCallback(() => console.log('in'), []);
+  const onOutButtonClick = useCallback(() => console.log('out'), []);
 
   return (
     <CSSTransition nodeRef={inOutContainerRef} in={isInOutControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -102,9 +102,9 @@ const BuyInControl = (props) => {
   const [buyInAmount, setBuyInAmount] = useState(DEFAULT_BUY_IN_AMOUNT);
   const { isBuyInControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => buyInInputRef.current.select());
-  const onBuyInInputChange = useCallback((event) => setBuyInAmount(event.currentTarget.value));
-  const onBuyInButtonClick = useCallback(() => console.log('buy in', buyInAmount));
+  const onEnter = useCallback(() => buyInInputRef.current.select(), []);
+  const onBuyInInputChange = useCallback((event) => setBuyInAmount(event.currentTarget.value), []);
+  const onBuyInButtonClick = useCallback(() => console.log('buy in', buyInAmount), [buyInAmount]);
 
   return (
     <CSSTransition nodeRef={buyInContainerRef} in={isBuyInControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -127,9 +127,9 @@ const BetControl = (props) => {
   const [betAmount, setBetAmount] = useState(DEFAULT_BET_AMOUNT);
   const { isBetControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => betInputRef.current.select());
-  const onBetInputChange = useCallback((event) => setBetAmount(event.currentTarget.value));
-  const onBetButtonClick = useCallback(() => console.log('bet', betAmount));
+  const onEnter = useCallback(() => betInputRef.current.select(), []);
+  const onBetInputChange = useCallback((event) => setBetAmount(event.currentTarget.value), []);
+  const onBetButtonClick = useCallback(() => console.log('bet', betAmount), [betAmount]);
 
   return (
     <CSSTransition nodeRef={betContainerRef} in={isBetControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -149,9 +149,9 @@ const InsuranceControl = (props) => {
   const noButtonRef = useRef(null);
   const { isInsuranceControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => noButtonRef.current.focus());
-  const onYesButtonClick = useCallback(() => console.log('yes'));
-  const onNoButtonClick = useCallback(() => console.log('no'));
+  const onEnter = useCallback(() => noButtonRef.current.focus(), []);
+  const onYesButtonClick = useCallback(() => console.log('yes'), []);
+  const onNoButtonClick = useCallback(() => console.log('no'), []);
 
   return (
     <CSSTransition nodeRef={insuranceContainerRef} in={isInsuranceControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -174,9 +174,9 @@ const EvenMoneyControl = (props) => {
   const noButtonRef = useRef(null);
   const { isEvenMoneyControlVisible } = useStateContext();
 
-  const onEnter = useCallback(() => noButtonRef.current.focus());
-  const onYesButtonClick = useCallback(() => console.log('yes'));
-  const onNoButtonClick = useCallback(() => console.log('no'));
+  const onEnter = useCallback(() => noButtonRef.current.focus(), []);
+  const onYesButtonClick = useCallback(() => console.log('yes'), []);
+  const onNoButtonClick = useCallback(() => console.log('no'), []);
 
   return (
     <CSSTransition nodeRef={evenMoneyContainerRef} in={isEvenMoneyControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
@@ -197,11 +197,11 @@ const DecisionControl = (props) => {
   const decisionContainerRef = useRef(null);
   const { isDecisionControlVisible } = useStateContext();
 
-  const onHitButtonClick = useCallback(() => console.log('hit'));
-  const onStandButtonClick = useCallback(() => console.log('stand'));
-  const onSplitButtonClick = useCallback(() => console.log('split'));
-  const onDoubleButtonClick = useCallback(() => console.log('double'));
-  const onSurrenderButtonClick = useCallback(() => console.log('surrender'));
+  const onHitButtonClick = useCallback(() => console.log('hit'), []);
+  const onStandButtonClick = useCallback(() => console.log('stand'), []);
+  const onSplitButtonClick = useCallback(() => console.log('split'), []);
+  const onDoubleButtonClick = useCallback(() => console.log('double'), []);
+  const onSurrenderButtonClick = useCallback(() => console.log('surrender'), []);
 
   return (
     <CSSTransition nodeRef={decisionContainerRef} in={isDecisionControlVisible} timeout={timeouts} mountOnEnter unmountOnExit>

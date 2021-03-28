@@ -1,7 +1,10 @@
-import React, { Fragment, useRef, useCallback, useMemo } from 'react';
+import React, { Fragment, useRef, useState, useCallback, useMemo } from 'react';
 import { useStateContext, useDispatchContext } from '../hooks.js';
 import { getNumberOrString } from '../utils.js';
 import Popup from './Popup.jsx';
+
+const DEFAULT_NAME = '';
+const DEFAULT_MESSAGE = '';
 
 Popup.ariaHiddenSelector = '.app';
 
@@ -10,6 +13,7 @@ const InfoPopup = (props) => {
 
   const { isInfoPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
+
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleInfoPopup', isOpen: false }), []);
 
   // allows popup to be memoized
@@ -268,22 +272,26 @@ const InfoPopup = (props) => {
 const ProfilePopup = (props) => {
   console.log('ProfilePopup render', props);
 
+  const nameInputRef = useRef(null);
+  const [name, setName] = useState(DEFAULT_NAME);
   const { isProfilePopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
-  const nameInputRef = useRef(null);
-  const onAfterOpen = useCallback(() => nameInputRef.current.focus(), []);
+
+  const onAfterOpen = useCallback(() => nameInputRef.current.select(), []);
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleProfilePopup', isOpen: false }), []);
+  const onNameInputChange = useCallback((event) => setName(event.currentTarget.value), []);
+  const onChangeNameButtonClick = useCallback(() => console.log('change', name), [name]);
 
   // allows popup to be memoized
   const children = useMemo(() => (
     <Fragment>
       <p>Don't like being called Will?</p>
       <div>
-        <input ref={nameInputRef} type="text" minLength="1" maxLength="20" placeholder="Name" spellCheck="false" />
-        <button className="silver">Change</button>
+        <input ref={nameInputRef} type="text" minLength="1" maxLength="20" placeholder="Name" spellCheck="false" value={name} onChange={onNameInputChange} />
+        <button className="silver" onClick={onChangeNameButtonClick}>Change</button>
       </div>
     </Fragment>
-  ), []);
+  ), [name]);
 
   return (
     <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
@@ -293,11 +301,15 @@ const ProfilePopup = (props) => {
 const ChatPopup = (props) => {
   console.log('ChatPopup render', props);
 
+  const messageInputRef = useRef(null);
+  const [message, setMessage] = useState(DEFAULT_MESSAGE);
   const { isChatPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
-  const messageInputRef = useRef(null);
-  const onAfterOpen = useCallback(() => messageInputRef.current.focus(), []);
+
+  const onAfterOpen = useCallback(() => messageInputRef.current.select(), []);
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleChatPopup', isOpen: false }), []);
+  const onMessageInputChange = useCallback((event) => setMessage(event.currentTarget.value), []);
+  const onSendMessageButtonClick = useCallback(() => console.log('send', message), [message]);
 
   // allows popup to be memoized
   const children = useMemo(() => (
@@ -322,11 +334,11 @@ const ChatPopup = (props) => {
         </div>
       </div>
       <div>
-        <input ref={messageInputRef} type="text" minLength="1" maxLength="140" placeholder="Message" />
-        <button className="silver">Send</button>
+        <input ref={messageInputRef} type="text" minLength="1" maxLength="140" placeholder="Message" value={message} onChange={onMessageInputChange} />
+        <button className="silver" onClick={onSendMessageButtonClick}>Send</button>
       </div>
     </div>
-  ), []);
+  ), [message]);
 
   return (
     <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
@@ -338,6 +350,7 @@ const MusicPopup = (props) => {
 
   const { isMusicPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
+
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleMusicPopup', isOpen: false }), []);
 
   // allows popup to be memoized
@@ -356,6 +369,7 @@ const SettingsPopup = (props) => {
   const { isSettingsPopupOpen, settings } = useStateContext();
   const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitFoursFivesTens, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender } = settings;
   const dispatch = useDispatchContext();
+
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleSettingsPopup', isOpen: false }), []);
 
   // called by each setting input below
@@ -497,15 +511,18 @@ const QuitPopup = (props) => {
 
   const { isQuitPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
+
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleQuitPopup', isOpen: false }), []);
+  const onQuitButtonClick = useCallback(() => console.log('quit'), []);
+  const onCancelButtonClick = useCallback(() => console.log('cancel'), []);
 
   // allows popup to be memoized
   const children = useMemo(() => (
     <Fragment>
       <p>Had enough already?</p>
       <div>
-        <button className="silver">Quit</button>
-        <button className="silver">Cancel</button>
+        <button className="silver" onClick={onQuitButtonClick}>Quit</button>
+        <button className="silver" onClick={onCancelButtonClick}>Cancel</button>
       </div>
     </Fragment>
   ), []);
