@@ -1,39 +1,19 @@
 import React, { Fragment, useRef, useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
 import { useStateContext, useDispatchContext } from '../hooks.js';
 import { getNumberOrString } from '../utils.js';
 import Popup from './Popup.jsx';
 
-const Popups = (props) => {
-  console.log('Popups render', props);
+Popup.ariaHiddenSelector = '.app';
 
-  const { isInfoPopupOpen, isProfilePopupOpen, isChatPopupOpen, isMusicPopupOpen, isSettingsPopupOpen, isQuitPopupOpen, settings } = useStateContext();
-  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitFoursFivesTens, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender } = settings;
+const InfoPopup = (props) => {
+  console.log('InfoPopup render', props);
 
+  const { isInfoPopupOpen } = useStateContext();
   const dispatch = useDispatchContext();
-  const profileNameInputRef = useRef(null);
-  const chatMessageInputRef = useRef(null);
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleInfoPopup', isOpen: false }), []);
 
-  const onAfterProfilePopupOpen = useCallback(() => { profileNameInputRef.current.focus(); }, []);
-  const onAfterChatPopupOpen = useCallback(() => { chatMessageInputRef.current.focus(); }, []);
-
-  const closeInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: false }); }, []);
-  const closeProfilePopup = useCallback(() => { dispatch({ type: 'toggleProfilePopup', isOpen: false }); }, []);
-  const closeChatPopup = useCallback(() => { dispatch({ type: 'toggleChatPopup', isOpen: false }); }, []);
-  const closeMusicPopup = useCallback(() => { dispatch({ type: 'toggleMusicPopup', isOpen: false }); }, []);
-  const closeSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: false }); }, []);
-  const closeQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: false }); }, []);
-
-  const onSettingsChange = useCallback((event) => {
-    const target = event.currentTarget;
-    const settingName = target.name;
-    const settingValue = (target.type === 'checkbox') ? target.checked : getNumberOrString(target.value);
-
-    dispatch({ type: 'updateSettings', settings: { ...settings, [settingName]: settingValue } });
-  }, [settings]);
-
-  // using useMemo for the popup children allows the parent popups to be memoized
-  const infoPopupChildren = useMemo(() => (
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <Fragment>
       <h1 id="blackjack-rules-of-the-game">Blackjack: Rules of the Game</h1>
       <p>Adapted from <a href="https://www.blackjackinfo.com/blackjack-rules/" target="_blank">https://www.blackjackinfo.com/blackjack-rules/</a></p>
@@ -280,17 +260,47 @@ const Popups = (props) => {
     </Fragment>
   ), []);
 
-  const profilePopupChildren = useMemo(() => (
+  return (
+    <Popup ariaLabel="Information" className="info-popup" isOpen={isInfoPopupOpen} onRequestClose={onRequestClose} children={children} />
+  );
+};
+
+const ProfilePopup = (props) => {
+  console.log('ProfilePopup render', props);
+
+  const { isProfilePopupOpen } = useStateContext();
+  const dispatch = useDispatchContext();
+  const nameInputRef = useRef(null);
+  const onAfterOpen = useCallback(() => nameInputRef.current.focus(), []);
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleProfilePopup', isOpen: false }), []);
+
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <Fragment>
       <p>Don't like being called Will?</p>
       <div>
-        <input ref={profileNameInputRef} type="text" minLength="1" maxLength="20" placeholder="Name" spellCheck="false" />
+        <input ref={nameInputRef} type="text" minLength="1" maxLength="20" placeholder="Name" spellCheck="false" />
         <button className="silver">Change</button>
       </div>
     </Fragment>
-  ), []);
+  ), [nameInputRef]);
 
-  const chatPopupChildren = useMemo(() => (
+  return (
+    <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
+  );
+};
+
+const ChatPopup = (props) => {
+  console.log('ChatPopup render', props);
+
+  const { isChatPopupOpen } = useStateContext();
+  const dispatch = useDispatchContext();
+  const messageInputRef = useRef(null);
+  const onAfterOpen = useCallback(() => messageInputRef.current.focus(), []);
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleChatPopup', isOpen: false }), []);
+
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <div>
       <div>
         <div>
@@ -312,17 +322,53 @@ const Popups = (props) => {
         </div>
       </div>
       <div>
-        <input ref={chatMessageInputRef} type="text" minLength="1" maxLength="140" placeholder="Message" />
+        <input ref={messageInputRef} type="text" minLength="1" maxLength="140" placeholder="Message" />
         <button className="silver">Send</button>
       </div>
     </div>
-  ), []);
+  ), [messageInputRef]);
 
-  const musicPopupChildren = useMemo(() => (
+  return (
+    <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
+  );
+};
+
+const MusicPopup = (props) => {
+  console.log('MusicPopup render', props);
+
+  const { isMusicPopupOpen } = useStateContext();
+  const dispatch = useDispatchContext();
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleMusicPopup', isOpen: false }), []);
+
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <iframe src="https://open.spotify.com/embed/playlist/7FJ5yarckSPshvmaP4ywBI" allowtransparency="true" allow="encrypted-media" />
   ), []);
 
-  const settingsPopupChildren = useMemo(() => (
+  return (
+    <Popup ariaLabel="Music" className="music-popup" isOpen={isMusicPopupOpen} onRequestClose={onRequestClose} children={children} />
+  );
+};
+
+const SettingsPopup = (props) => {
+  console.log('SettingsPopup render', props);
+
+  const { isSettingsPopupOpen, settings } = useStateContext();
+  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitFoursFivesTens, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender } = settings;
+  const dispatch = useDispatchContext();
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleSettingsPopup', isOpen: false }), []);
+
+  // called by each setting input below
+  const onSettingsChange = useCallback((event) => {
+    const target = event.currentTarget;
+    const settingName = target.name;
+    const settingValue = (target.type === 'checkbox') ? target.checked : getNumberOrString(target.value);
+
+    dispatch({ type: 'updateSettings', settings: { ...settings, [settingName]: settingValue } });
+  }, [settings]);
+
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <Fragment>
       <label>
         <span>Sound effects</span>
@@ -441,7 +487,20 @@ const Popups = (props) => {
     </Fragment>
   ), [onSettingsChange]);
 
-  const quitPopupChildren = useMemo(() => (
+  return (
+    <Popup ariaLabel="Settings" className="settings-popup" isOpen={isSettingsPopupOpen} onRequestClose={onRequestClose} children={children} />
+  );
+};
+
+const QuitPopup = (props) => {
+  console.log('QuitPopup render', props);
+
+  const { isQuitPopupOpen } = useStateContext();
+  const dispatch = useDispatchContext();
+  const onRequestClose = useCallback(() => dispatch({ type: 'toggleQuitPopup', isOpen: false }), []);
+
+  // allows popup to be memoized
+  const children = useMemo(() => (
     <Fragment>
       <p>Had enough already?</p>
       <div>
@@ -452,19 +511,8 @@ const Popups = (props) => {
   ), []);
 
   return (
-    <Fragment>
-      <Popup ariaLabel="Information" className="info-popup" isOpen={isInfoPopupOpen} onRequestClose={closeInfoPopup} children={infoPopupChildren} />
-      <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterProfilePopupOpen} onRequestClose={closeProfilePopup} children={profilePopupChildren} />
-      <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterChatPopupOpen} onRequestClose={closeChatPopup} children={chatPopupChildren} />
-      <Popup ariaLabel="Music" className="music-popup" isOpen={isMusicPopupOpen} onRequestClose={closeMusicPopup} children={musicPopupChildren} />
-      <Popup ariaLabel="Settings" className="settings-popup" isOpen={isSettingsPopupOpen} onRequestClose={closeSettingsPopup} children={settingsPopupChildren} />
-      <Popup ariaLabel="Quit" className="quit-popup" isOpen={isQuitPopupOpen} onRequestClose={closeQuitPopup} children={quitPopupChildren} />
-    </Fragment>
+    <Popup ariaLabel="Quit" className="quit-popup" isOpen={isQuitPopupOpen} onRequestClose={onRequestClose} children={children} />
   );
 };
 
-// Popups.propTypes = {
-//   foo: PropTypes.bool.isRequired
-// };
-
-export default Popups;
+export { InfoPopup, ProfilePopup, ChatPopup, MusicPopup, SettingsPopup, QuitPopup };

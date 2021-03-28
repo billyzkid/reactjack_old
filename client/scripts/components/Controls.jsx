@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { useStateContext } from '../hooks.js';
 
@@ -7,6 +6,23 @@ const timeouts = {
   enter: 200,
   exit: 200
 }
+
+const Controls = (props) => {
+  console.log('Controls render', props);
+
+  return (
+    <div className="controls">
+      <NameControl />
+      <SitControl />
+      <InOutControl />
+      <BuyInControl />
+      <BetControl />
+      <InsuranceControl />
+      <EvenMoneyControl />
+      <DecisionControl />
+    </div>
+  );
+};
 
 const NameControl = (props) => {
   console.log('NameControl render', props);
@@ -149,26 +165,5 @@ const DecisionControl = (props) => {
     </CSSTransition>
   );
 };
-
-const Controls = (props) => {
-  console.log('Controls render', props);
-
-  return (
-    <div className="controls">
-      <NameControl />
-      <SitControl />
-      <InOutControl />
-      <BuyInControl />
-      <BetControl />
-      <InsuranceControl />
-      <EvenMoneyControl />
-      <DecisionControl />
-    </div>
-  );
-};
-
-// Controls.propTypes = {
-//   foo: PropTypes.bool.isRequired
-// };
 
 export default Controls;

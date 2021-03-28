@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useLayoutEffect } from 'react';
+import React, { forwardRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useIsMounted } from '../hooks.js';
 

@@ -1,5 +1,4 @@
 import React, { Fragment, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useStateContext } from '../hooks.js';
 import { formatMoney, getHandTotal } from '../utils.js';
@@ -89,9 +88,5 @@ const Banner = (props) => {
     </div>
   );
 };
-
-// Banner.propTypes = {
-//   foo: PropTypes.bool.isRequired
-// };
 
 export default Banner;

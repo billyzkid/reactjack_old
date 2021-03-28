@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatchContext } from '../hooks.js';
 
 const MainMenu = (props) => {
@@ -7,12 +6,12 @@ const MainMenu = (props) => {
 
   const dispatch = useDispatchContext();
 
-  const openInfoPopup = useCallback(() => { dispatch({ type: 'toggleInfoPopup', isOpen: true }); }, []);
-  const openProfilePopup = useCallback(() => { dispatch({ type: 'toggleProfilePopup', isOpen: true }); }, []);
-  const openChatPopup = useCallback(() => { dispatch({ type: 'toggleChatPopup', isOpen: true }); }, []);
-  const openMusicPopup = useCallback(() => { dispatch({ type: 'toggleMusicPopup', isOpen: true }); }, []);
-  const openSettingsPopup = useCallback(() => { dispatch({ type: 'toggleSettingsPopup', isOpen: true }); }, []);
-  const openQuitPopup = useCallback(() => { dispatch({ type: 'toggleQuitPopup', isOpen: true }); }, []);
+  const openInfoPopup = useCallback(() => dispatch({ type: 'toggleInfoPopup', isOpen: true }), []);
+  const openProfilePopup = useCallback(() => dispatch({ type: 'toggleProfilePopup', isOpen: true }), []);
+  const openChatPopup = useCallback(() => dispatch({ type: 'toggleChatPopup', isOpen: true }), []);
+  const openMusicPopup = useCallback(() => dispatch({ type: 'toggleMusicPopup', isOpen: true }), []);
+  const openSettingsPopup = useCallback(() => dispatch({ type: 'toggleSettingsPopup', isOpen: true }), []);
+  const openQuitPopup = useCallback(() => dispatch({ type: 'toggleQuitPopup', isOpen: true }), []);
 
   return (
     <div className="main-menu">
@@ -25,9 +24,5 @@ const MainMenu = (props) => {
     </div>
   );
 };
-
-// MainMenu.propTypes = {
-//   foo: PropTypes.bool.isRequired
-// };
 
 export default MainMenu;

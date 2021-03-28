@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useStateContext } from '../hooks.js';
 import Hand from './Hand.jsx';
 
@@ -14,9 +13,5 @@ const Dealer = (props) => {
     </div>
   );
 };
-
-// Dealer.propTypes = {
-//   foo: PropTypes.bool.isRequired
-// };
 
 export default Dealer;
