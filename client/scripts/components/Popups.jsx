@@ -283,7 +283,7 @@ const ProfilePopup = (props) => {
         <button className="silver">Change</button>
       </div>
     </Fragment>
-  ), [nameInputRef]);
+  ), []);
 
   return (
     <Popup ariaLabel="Profile" className="profile-popup" isOpen={isProfilePopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
@@ -326,7 +326,7 @@ const ChatPopup = (props) => {
         <button className="silver">Send</button>
       </div>
     </div>
-  ), [messageInputRef]);
+  ), []);
 
   return (
     <Popup ariaLabel="Chat" className="chat-popup" isOpen={isChatPopupOpen} onAfterOpen={onAfterOpen} onRequestClose={onRequestClose} children={children} />
