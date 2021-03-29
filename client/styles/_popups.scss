@@ -163,6 +163,8 @@
   > .popup-content {
     position: relative;
     outline: none;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
@@ -415,6 +417,10 @@
     > span:nth-child(1) {
       margin-right: $settings-popup-setting-label-margin-right;
     }
+  }
+
+  > label:nth-child(17),
+  > label:nth-child(18) {
 
     > span:nth-child(2) {
 
@@ -425,6 +431,22 @@
 
       > input[type=number] {
         width: $settings-popup-bet-input-width;
+      }
+    }
+  }
+
+  > label:nth-child(19),
+  > label:nth-child(20) {
+
+    > span:nth-child(2) {
+
+      &::before {
+        content: '$';
+        margin: $settings-popup-dollar-sign-margin;
+      }
+
+      > input[type=number] {
+        width: $settings-popup-buy-in-input-width;
       }
     }
   }

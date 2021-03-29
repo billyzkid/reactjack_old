@@ -5,6 +5,10 @@ import Popup from './Popup.jsx';
 
 const DEFAULT_NAME = '';
 const DEFAULT_MESSAGE = '';
+const MIN_BET = 1;
+const MAX_BET = 10000;
+const MIN_BUY_IN = 10;
+const MAX_BUY_IN = 100000;
 
 Popup.ariaHiddenSelector = '.app';
 
@@ -367,7 +371,7 @@ const SettingsPopup = (props) => {
   console.log('SettingsPopup render', props);
 
   const { isSettingsPopupOpen, settings } = useStateContext();
-  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender, minBet, maxBet } = settings;
+  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender, minBet, maxBet, minBuyIn, maxBuyIn } = settings;
   const dispatch = useDispatchContext();
 
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleSettingsPopup', isOpen: false }), []);
@@ -497,13 +501,25 @@ const SettingsPopup = (props) => {
       <label>
         <span>Minimum bet</span>
         <span>
-          <input type="number" name="minBet" min="1" max={maxBet} placeholder="Amount" value={minBet} onChange={onSettingsChange} />
+          <input type="number" name="minBet" min={MIN_BET} max={maxBet} placeholder="Amount" value={minBet} onChange={onSettingsChange} />
         </span>
       </label>
       <label>
         <span>Maximum bet</span>
         <span>
-          <input type="number" name="maxBet" min={minBet} max="10000" placeholder="Amount" value={maxBet} onChange={onSettingsChange} />
+          <input type="number" name="maxBet" min={minBet} max={MAX_BET} placeholder="Amount" value={maxBet} onChange={onSettingsChange} />
+        </span>
+      </label>
+      <label>
+        <span>Minimum buy in</span>
+        <span>
+          <input type="number" name="minBuyIn" min={MIN_BUY_IN} max={maxBuyIn} placeholder="Amount" value={minBuyIn} onChange={onSettingsChange} />
+        </span>
+      </label>
+      <label>
+        <span>Maximum buy in</span>
+        <span>
+          <input type="number" name="maxBuyIn" min={minBuyIn} max={MAX_BUY_IN} placeholder="Amount" value={maxBuyIn} onChange={onSettingsChange} />
         </span>
       </label>
     </Fragment>

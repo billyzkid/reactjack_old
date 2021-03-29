@@ -36,7 +36,9 @@ const initialState = {
     cardNumBonus: 'NCC',
     surrender: 'LS',
     minBet: 10,
-    maxBet: 1000
+    maxBet: 1000,
+    minBuyIn: 10,
+    maxBuyIn: 10000
   },
   dealer: {
     name: 'Dealer',
