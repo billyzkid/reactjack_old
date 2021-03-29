@@ -198,18 +198,19 @@ $player-exit-transition: opacity 200ms ease 0ms;
 // banner
 $banner-font: 300 1em/1.2 'Dosis', sans-serif;
 $banner-color: inherit;
+$banner-color-player: lightblue;
+$banner-color-dealer: goldenrod;
 $banner-width: 100%;
-$banner-min-height: 6.4375em;
-$banner-container-border: 2px solid white;
-$banner-item-enter-transition: opacity 1000ms ease 0ms;
-$banner-item-exit-transition: opacity 1000ms ease 0ms;
+$banner-min-height: 7.4375em;
 $banner-item-letter-spacing: 0.1em;
 $banner-item-margin: 0 1.5625em;
-$banner-item-color-player: lightblue;
-$banner-item-color-dealer: goldenrod;
 $banner-item-value-font-size: 1.1em;
 $banner-item-value-font-weight: 600;
 $banner-item-value-letter-spacing: 0.15em;
+$banner-item-enter-transition: opacity 1000ms ease 0ms;
+$banner-item-exit-transition: opacity 1000ms ease 0ms;
+$banner-divider-height: 1em;
+$banner-divider-background: url('../images/divider.png') center/contain no-repeat;
 
 // controls
 $controls-min-height: 6em;

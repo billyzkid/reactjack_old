@@ -1,8 +1,4 @@
 .banner {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   font: $banner-font;
   color: $banner-color;
   width: $banner-width;
@@ -11,21 +7,29 @@
   > div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 33.333333%;
+    min-height: 100%;
 
-    &.banner-left-container {
-      border-right: $banner-container-border;
-    }
-
-    &.banner-middle-container {
+    > div {
+      display: flex;
+      flex-direction: row;
       justify-content: center;
-    }
+      align-items: center;
+      width: 33.333333%;
 
-    &.banner-right-container {
-      border-left: $banner-container-border;
+      &:nth-child(1),
+      &:nth-child(3) {
+        justify-content: space-between;
+      }
     }
+  }
+
+  > hr {
+    height: $banner-divider-height;
+    border: 0;
+    margin: 0;
+    background: $banner-divider-background;
   }
 
   .player-chips,
@@ -35,6 +39,21 @@
   .message {
     letter-spacing: $banner-item-letter-spacing;
     margin: $banner-item-margin;
+    width: 100%;
+
+    p {
+      margin: 0;
+
+      &:nth-child(2) {
+        font-size: $banner-item-value-font-size;
+        font-weight: $banner-item-value-font-weight;
+        letter-spacing: $banner-item-value-letter-spacing;
+      }
+
+      > span {
+        display: block;
+      }
+    }
 
     &.enter {
       opacity: 0;
@@ -68,28 +87,15 @@
   }
 
   .message {
+    // line-height: 1.25;
     text-align: center;
   }
 
   .player-hand-total {
-    color: $banner-item-color-player;
+    color: $banner-color-player;
   }
 
   .dealer-hand-total {
-    color: $banner-item-color-dealer;
-  }
-
-  p {
-    margin: 0;
-
-    &:nth-child(2) {
-      font-size: $banner-item-value-font-size;
-      font-weight: $banner-item-value-font-weight;
-      letter-spacing: $banner-item-value-letter-spacing;
-    }
-
-    > span {
-      display: block;
-    }
+    color: $banner-color-dealer;
   }
 }
