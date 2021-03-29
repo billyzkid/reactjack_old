@@ -1,10 +1,11 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useStateContext } from '../hooks.js';
+import { formatMoney } from '../utils.js';
 
 const DEFAULT_NAME = '';
-const DEFAULT_BUY_IN_AMOUNT = 1000;
-const DEFAULT_BET_AMOUNT = 10;
+const DEFAULT_BUY_IN = 1000;
+const DEFAULT_BET = 10;
 
 const timeouts = {
   enter: 200,
@@ -99,19 +100,20 @@ const BuyInControl = (props) => {
 
   const buyInContainerRef = useRef(null);
   const buyInInputRef = useRef(null);
-  const [buyInAmount, setBuyInAmount] = useState(DEFAULT_BUY_IN_AMOUNT);
-  const { isBuyInControlVisible } = useStateContext();
+  const [buyIn, setBuyIn] = useState(DEFAULT_BUY_IN);
+  const { isBuyInControlVisible, settings } = useStateContext();
+  const { minBet, minBuyIn, maxBuyIn } = settings;
 
   const onEnter = useCallback(() => buyInInputRef.current.select(), []);
-  const onBuyInInputChange = useCallback((event) => setBuyInAmount(event.currentTarget.value), []);
-  const onBuyInButtonClick = useCallback(() => console.log('buy in', buyInAmount), [buyInAmount]);
+  const onBuyInInputChange = useCallback((event) => setBuyIn(event.currentTarget.value), []);
+  const onBuyInButtonClick = useCallback(() => console.log('buy in', buyIn), [buyIn]);
 
   return (
     <CSSTransition nodeRef={buyInContainerRef} in={isBuyInControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
       <div ref={buyInContainerRef} className="buy-in-container">
-        <p>The minimum bet is $10. Need more chips?</p>
+        <p>The minimum bet is {formatMoney(minBet)}. Need more chips?</p>
         <div>
-          <input ref={buyInInputRef} type="number" min="10" max="10000" placeholder="Amount" value={buyInAmount} onChange={onBuyInInputChange} />
+          <input ref={buyInInputRef} type="number" min={minBuyIn} max={maxBuyIn} placeholder="Amount" value={buyIn} onChange={onBuyInInputChange} />
           <button className="silver" onClick={onBuyInButtonClick}>Buy In</button>
         </div>
       </div>
@@ -124,17 +126,18 @@ const BetControl = (props) => {
 
   const betContainerRef = useRef(null);
   const betInputRef = useRef(null);
-  const [betAmount, setBetAmount] = useState(DEFAULT_BET_AMOUNT);
-  const { isBetControlVisible } = useStateContext();
+  const [bet, setBet] = useState(DEFAULT_BET);
+  const { isBetControlVisible, settings } = useStateContext();
+  const { minBet, maxBet } = settings;
 
   const onEnter = useCallback(() => betInputRef.current.select(), []);
-  const onBetInputChange = useCallback((event) => setBetAmount(event.currentTarget.value), []);
-  const onBetButtonClick = useCallback(() => console.log('bet', betAmount), [betAmount]);
+  const onBetInputChange = useCallback((event) => setBet(event.currentTarget.value), []);
+  const onBetButtonClick = useCallback(() => console.log('bet', bet), [bet]);
 
   return (
     <CSSTransition nodeRef={betContainerRef} in={isBetControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
       <div ref={betContainerRef} className="bet-container">
-        <input ref={betInputRef} type="number" min="10" max="1000" placeholder="Amount" value={betAmount} onChange={onBetInputChange} />
+        <input ref={betInputRef} type="number" min={minBet} max={maxBet} placeholder="Amount" value={bet} onChange={onBetInputChange} />
         <button className="silver" onClick={onBetButtonClick}>Bet</button>
       </div>
     </CSSTransition>
