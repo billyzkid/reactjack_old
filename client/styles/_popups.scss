@@ -412,8 +412,20 @@
     min-height: $settings-popup-setting-min-height;
     border-bottom: $settings-popup-setting-border-bottom;
 
-    > span {
+    > span:nth-child(1) {
       margin-right: $settings-popup-setting-label-margin-right;
+    }
+
+    > span:nth-child(2) {
+
+      &::before {
+        content: '$';
+        margin: $settings-popup-dollar-sign-margin;
+      }
+
+      > input[type=number] {
+        width: $settings-popup-bet-input-width;
+      }
     }
   }
 }

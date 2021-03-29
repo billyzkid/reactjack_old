@@ -367,7 +367,7 @@ const SettingsPopup = (props) => {
   console.log('SettingsPopup render', props);
 
   const { isSettingsPopupOpen, settings } = useStateContext();
-  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitFoursFivesTens, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender } = settings;
+  const { soundEffects, shuffleAfterEveryRound, numDecks, blackjackPayout, insurancePayout, dealerStandsOn, dealerPeeksOn, playersCanDoubleOn, playersCanDoubleAfterSplit, playersCanSplitAnyTens, playersCanSplitAces, playersCanResplitAces, playersCanHitSplitAces, maxNumSplits, cardNumBonus, surrender, minBet, maxBet } = settings;
   const dispatch = useDispatchContext();
 
   const onRequestClose = useCallback(() => dispatch({ type: 'toggleSettingsPopup', isOpen: false }), []);
@@ -450,10 +450,6 @@ const SettingsPopup = (props) => {
         <input type="checkbox" name="playersCanDoubleAfterSplit" checked={playersCanDoubleAfterSplit} onChange={onSettingsChange} />
       </label>
       <label>
-        <span>Players can split fours, fives, and tens</span>
-        <input type="checkbox" name="playersCanSplitFoursFivesTens" checked={playersCanSplitFoursFivesTens} onChange={onSettingsChange} />
-      </label>
-      <label>
         <span>Players can split any tens</span>
         <input type="checkbox" name="playersCanSplitAnyTens" checked={playersCanSplitAnyTens} onChange={onSettingsChange} />
       </label>
@@ -497,6 +493,18 @@ const SettingsPopup = (props) => {
           <option value="FS">Full Early</option>
           <option value="AS">Anytime</option>
         </select>
+      </label>
+      <label>
+        <span>Minimum bet</span>
+        <span>
+          <input type="number" name="minBet" min="1" max={maxBet} placeholder="Amount" value={minBet} onChange={onSettingsChange} />
+        </span>
+      </label>
+      <label>
+        <span>Maximum bet</span>
+        <span>
+          <input type="number" name="maxBet" min={minBet} max="10000" placeholder="Amount" value={maxBet} onChange={onSettingsChange} />
+        </span>
       </label>
     </Fragment>
   ), [onSettingsChange]);

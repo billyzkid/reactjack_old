@@ -28,14 +28,15 @@ const initialState = {
     dealerPeeksOn: 'P',
     playersCanDoubleOn: 'D2',
     playersCanDoubleAfterSplit: true,
-    playersCanSplitFoursFivesTens: true,
     playersCanSplitAnyTens: true,
     playersCanSplitAces: true,
     playersCanResplitAces: true,
     playersCanHitSplitAces: true,
     maxNumSplits: 3,
     cardNumBonus: 'NCC',
-    surrender: 'LS'
+    surrender: 'LS',
+    minBet: 10,
+    maxBet: 1000
   },
   dealer: {
     name: 'Dealer',
@@ -44,7 +45,9 @@ const initialState = {
     }
   },
   players: [],
-  message: []
+  message: [
+    'Welcome!'
+  ]
 };
 
 const reducer = (draft, action) => {
