@@ -26,24 +26,6 @@
     &.banner-right-container {
       border-left: $banner-container-border;
     }
-
-    &.enter {
-      opacity: 0;
-
-      &.enter-active {
-        opacity: 1;
-        transition: $banner-container-enter-transition;
-      }
-    }
-
-    &.exit {
-      opacity: 1;
-
-      &.exit-active {
-        opacity: 0;
-        transition: $banner-container-exit-transition;
-      }
-    }
   }
 
   .player-chips,
@@ -53,6 +35,24 @@
   .message {
     letter-spacing: $banner-item-letter-spacing;
     margin: $banner-item-margin;
+
+    &.enter {
+      opacity: 0;
+
+      &.enter-active {
+        opacity: 1;
+        transition: $banner-item-enter-transition;
+      }
+    }
+
+    &.exit {
+      opacity: 1;
+
+      &.exit-active {
+        opacity: 0;
+        transition: $banner-item-exit-transition;
+      }
+    }
   }
 
   .player-chips,

@@ -14,26 +14,38 @@ const Banner = (props) => {
   const { message, dealer, players } = useStateContext();
   const primaryPlayer = players.find((player) => player.primary);
 
-  const leftContainerRef = useRef(null);
-  const rightContainerRef = useRef(null);
-  const middleContainerRef = useRef(null);
+  const playerChipsRef = useRef(null);
+  const playerBetRef = useRef(null);
+  const messageRef = useRef(null);
+  const playerHandTotalRef = useRef(null);
+  const dealerHandTotalRef = useRef(null);
 
-  const leftContainerKey = !!primaryPlayer;
-  const rightContainerKey = !!primaryPlayer;
-  const middleContainerKey = message && message.length > 0;
+  const isPlayerChipsVisible = !!primaryPlayer;
+  const isPlayerBetVisible = !!primaryPlayer && primaryPlayer.hands.length > 0;
+  const isMessageVisible = message && message.length > 0;
+  const isPlayerHandTotalVisible = !!primaryPlayer && primaryPlayer.hands.length > 0 && primaryPlayer.hands[0].cards.length > 1;
+  const isDealerHandTotalVisible = dealer && dealer.hand.cards.length > 1 && !dealer.hand.cards[1].hidden;
 
   return (
     <div className="banner">
-      <SwitchTransition>
-        <CSSTransition key={leftContainerKey} nodeRef={leftContainerRef} timeout={timeouts}>
-          <Fragment>
-            {primaryPlayer && (
-              <div ref={leftContainerRef} className="banner-left-container">
-                <div className="player-chips">
+      <div className="banner-left-container">
+        <SwitchTransition>
+          <CSSTransition key={isPlayerChipsVisible} nodeRef={playerChipsRef} timeout={timeouts}>
+            <Fragment>
+              {isPlayerChipsVisible && (
+                <div ref={playerChipsRef} className="player-chips">
                   <p>Chips</p>
                   <p>{formatMoney(primaryPlayer.chips)}</p>
                 </div>
-                <div className="player-bet">
+              )}
+            </Fragment>
+          </CSSTransition>
+        </SwitchTransition>
+        <SwitchTransition>
+          <CSSTransition key={isPlayerBetVisible} nodeRef={playerBetRef} timeout={timeouts}>
+            <Fragment>
+              {isPlayerBetVisible && (
+                <div ref={playerBetRef} className="player-bet">
                   <p>Bet</p>
                   <p>
                     {primaryPlayer.hands.map((hand, index) => (
@@ -41,34 +53,34 @@ const Banner = (props) => {
                     ))}
                   </p>
                 </div>
-              </div>
-            )}
-          </Fragment>
-        </CSSTransition>
-      </SwitchTransition>
-      <SwitchTransition>
-        <CSSTransition key={middleContainerKey} nodeRef={middleContainerRef} timeout={timeouts}>
-          <Fragment>
-            {message && message.length > 0 && (
-              <div ref={middleContainerRef} className="banner-middle-container">
-                <div className="message">
+              )}
+            </Fragment>
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
+      <div className="banner-middle-container">
+        <SwitchTransition>
+          <CSSTransition key={isMessageVisible} nodeRef={messageRef} timeout={timeouts}>
+            <Fragment>
+              {isMessageVisible && (
+                <div ref={messageRef} className="message">
                   <p>
                     {message.map((line, index) => (
                       <span key={index}>{line}</span>
                     ))}
                   </p>
                 </div>
-              </div>
-            )}
-          </Fragment>
-        </CSSTransition>
-      </SwitchTransition>
-      <SwitchTransition>
-        <CSSTransition key={rightContainerKey} nodeRef={rightContainerRef} timeout={timeouts}>
-          <Fragment>
-            {primaryPlayer && (
-              <div ref={rightContainerRef} className="banner-right-container">
-                <div className="player-hand-total">
+              )}
+            </Fragment>
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
+      <div className="banner-right-container">
+        <SwitchTransition>
+          <CSSTransition key={isPlayerHandTotalVisible} nodeRef={playerHandTotalRef} timeout={timeouts}>
+            <Fragment>
+              {isPlayerHandTotalVisible && (
+                <div ref={playerHandTotalRef} className="player-hand-total">
                   <p>{primaryPlayer.name}</p>
                   <p>
                     {primaryPlayer.hands.map((hand, index) => (
@@ -76,15 +88,24 @@ const Banner = (props) => {
                     ))}
                   </p>
                 </div>
-                <div className="dealer-hand-total">
+              )}
+            </Fragment>
+          </CSSTransition>
+        </SwitchTransition>
+        <SwitchTransition>
+          <CSSTransition key={isDealerHandTotalVisible} nodeRef={dealerHandTotalRef} timeout={timeouts}>
+            <Fragment>
+              {isDealerHandTotalVisible && (
+                <div ref={dealerHandTotalRef} className="dealer-hand-total">
                   <p>{dealer.name}</p>
                   <p>{getHandTotal(dealer.hand)}</p>
                 </div>
-              </div>
-            )}
-          </Fragment>
-        </CSSTransition>
-      </SwitchTransition>
+              )}
+            </Fragment>
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
+
     </div>
   );
 };
