@@ -1,4 +1,4 @@
-import React, { forwardRef, createRef } from 'react';
+import React, { memo, forwardRef, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hand from './Hand.jsx';
@@ -9,7 +9,7 @@ const timeouts = {
   exit: 200
 };
 
-const Player = forwardRef((props, ref) => {
+const Player = memo(forwardRef((props, ref) => {
   console.log('Player render', props);
 
   const { player, position } = props;
@@ -54,7 +54,7 @@ const Player = forwardRef((props, ref) => {
       </TransitionGroup>
     </div>
   );
-});
+}));
 
 Player.propTypes = {
   player: PropTypes.object.isRequired

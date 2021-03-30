@@ -1,10 +1,10 @@
-import React, { forwardRef, useLayoutEffect } from 'react';
+import React, { memo, forwardRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useIsMounted } from '../hooks.js';
 
 const FLIP_TIMEOUT_MS = 750;
 
-const Card = forwardRef((props, ref) => {
+const Card = memo(forwardRef((props, ref) => {
   console.log('Card render', props);
 
   const { rank, suit, hidden } = props.card;
@@ -29,7 +29,7 @@ const Card = forwardRef((props, ref) => {
   }, [rank, suit, hidden]);
 
   return <div ref={ref} className={hidden ? 'card hidden' : `card ${rank}-of-${suit}`} />;
-});
+}));
 
 Card.propTypes = {
   card: PropTypes.object.isRequired
