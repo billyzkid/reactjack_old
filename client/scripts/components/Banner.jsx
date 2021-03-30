@@ -85,7 +85,7 @@ const Banner = (props) => {
                     <p>{primaryPlayer.name}</p>
                     <p>
                       {primaryPlayer.hands.map((hand, index) => (
-                        <span key={index}>{getHandTotal(hand)}</span>
+                        <span key={index}>{getHandTotal(hand).displayTotal}</span>
                       ))}
                     </p>
                   </div>
@@ -99,7 +99,7 @@ const Banner = (props) => {
                 {isDealerHandTotalVisible && (
                   <div ref={dealerHandTotalRef} className="dealer-hand-total">
                     <p>{dealer.name}</p>
-                    <p>{getHandTotal(dealer.hand)}</p>
+                    <p>{getHandTotal(dealer.hand).displayTotal}</p>
                   </div>
                 )}
               </Fragment>

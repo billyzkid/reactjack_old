@@ -4,6 +4,9 @@ const SOUNDS_PATH = '../sounds/';
 const HAND_DISTANCE_X = 5;
 const HAND_DISTANCE_Y = 1.25;
 
+const CARD_SUITS = [ 'spades', 'hearts', 'clubs', 'diamonds' ];
+const CARD_RANKS = [ 'ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king' ];
+
 const FOCUSABLE_SELECTORS = [
   '[contenteditable]:not([contenteditable="false"])',
   '[tabindex]',
@@ -89,7 +92,63 @@ function getHandPositions(hands) {
 }
 
 function getHandTotal(hand) {
-  return '6 or 16';
+  let total = hand.cards.reduce((total, card) => total + getCardValue(card), 0);
+  let displayTotal;
+
+  if (hasAce(hand) && total + 10 <= 21) {
+    displayTotal = `${total} or ${total + 10}`;
+    total += 10;
+  } else if (total > 0) {
+    displayTotal = `${total}`;
+  } else {
+    displayTotal = '';
+  }
+
+  return { total, displayTotal };
+}
+
+function hasAce(hand) {
+  return !!hand.cards.find((card) => card.rank === 'ace');
+}
+
+function getCardValue(card) {
+  switch (card.rank) {
+    case 'ace':
+      return 1;
+
+    case 'two':
+      return 2;
+
+    case 'three':
+      return 3;
+
+    case 'four':
+      return 4;
+
+    case 'five':
+      return 5;
+
+    case 'six':
+      return 6;
+
+    case 'seven':
+      return 7;
+
+    case 'eight':
+      return 8;
+
+    case 'nine':
+      return 9;
+
+    case 'ten':
+    case 'jack':
+    case 'queen':
+    case 'king':
+      return 10;
+
+    default:
+      throw new Error(`Invalid card rank: ${rank}`);
+  }
 }
 
 function formatMoney(value) {

@@ -76,7 +76,7 @@ const App = (props) => {
     }});
 
     // deal up card to the dealer
-    dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts', hidden: false } });
+    dispatch({ type: 'dealCardToDealer', card: { rank: 'ace', suit: 'hearts' } });
 
     // wait and then deal hole card to the dealer
     const timeoutId = setTimeout(() => dispatch({ type: 'dealCardToDealer', card: { rank: 'five', suit: 'clubs', hidden: true } }), 500);

@@ -36,7 +36,7 @@ const Player = memo(forwardRef((props, ref) => {
           </p>
           <p className="player-hand-total">
             {hands.map((hand, index) => (
-              <span key={index}>{getHandTotal(hand)}</span>
+              <span key={index}>{getHandTotal(hand).displayTotal}</span>
             ))}
           </p>
         </div>
