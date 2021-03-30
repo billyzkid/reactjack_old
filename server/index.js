@@ -8,8 +8,11 @@ export default async function startServer(dev) {
     const { default: snowpack } = await import('snowpack');
     const { default: snowpackUserConfig } = await import('../snowpack.config.js');
     const snowpackConfig = snowpack.createConfiguration(snowpackUserConfig);
-    // TODO: Replace lines 9-10 with the following in Snowpack 3.1.2 once scss bug is resolved: https://github.com/snowpackjs/snowpack/issues/3042
-    //const snowpackConfig = await snowpack.loadConfiguration('snowpack.config.js');
+
+    // TODO: Replace lines 9-10 above with the following line when using Snowpack ^3.1.2
+    // once scss bug is resolved: https://github.com/snowpackjs/snowpack/issues/3042
+    // const snowpackConfig = await snowpack.loadConfiguration('snowpack.config.js');
+
     const snowpackDevServer = await snowpack.startServer({ config: snowpackConfig });
     const socketServer = createSocketServer(snowpackDevServer.rawServer);
   } else {
