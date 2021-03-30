@@ -6,7 +6,7 @@ import { formatMoney, getHandTotal } from '../utils.js';
 const timeouts = {
   enter: 1000,
   exit: 1000
-}
+};
 
 const Banner = (props) => {
   console.log('Banner render', props);

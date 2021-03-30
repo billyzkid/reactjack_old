@@ -4,8 +4,8 @@ const SOUNDS_PATH = '../sounds/';
 const HAND_DISTANCE_X = 5;
 const HAND_DISTANCE_Y = 1.25;
 
-const CARD_SUITS = [ 'spades', 'hearts', 'clubs', 'diamonds' ];
-const CARD_RANKS = [ 'ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king' ];
+const CARD_SUITS = ['spades', 'hearts', 'clubs', 'diamonds'];
+const CARD_RANKS = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king'];
 
 const FOCUSABLE_SELECTORS = [
   '[contenteditable]:not([contenteditable="false"])',
@@ -81,8 +81,8 @@ function getHandPositions(hands) {
     const initialY = -HAND_DISTANCE_Y * (hands.length - 1) / 2;
 
     hands.forEach((hand, index) => {
-      const x = initialX + (HAND_DISTANCE_X * index);
-      const y = initialY + (HAND_DISTANCE_Y * index);
+      const x = initialX + HAND_DISTANCE_X * index;
+      const y = initialY + HAND_DISTANCE_Y * index;
 
       positions.push({ x, y });
     });

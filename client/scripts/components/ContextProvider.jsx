@@ -48,9 +48,7 @@ const initialState = {
     }
   },
   players: [],
-  message: [
-    'Welcome!'
-  ]
+  message: []
 };
 
 const reducer = (draft, action) => {

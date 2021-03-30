@@ -10,7 +10,7 @@ const DEFAULT_BET = 10;
 const timeouts = {
   enter: 200,
   exit: 200
-}
+};
 
 const Controls = (props) => {
   console.log('Controls render', props);
