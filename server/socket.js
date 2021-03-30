@@ -1,9 +1,9 @@
-import { Server as SocketServer } from 'socket.io';
+import { Server } from 'socket.io';
 
-export default function createSocketServer(httpServer) {
-  const socketServer = new SocketServer(httpServer);
+function createServer(httpServer, options) {
+  const server = new Server(httpServer, options);
 
-  socketServer.on('connect', (socket) => {
+  server.on('connect', (socket) => {
     console.log(`connecting socket ${socket.id}`);
 
     socket.emit('new user', { greeting: `Hello socket ${socket.id}!` });
@@ -13,5 +13,7 @@ export default function createSocketServer(httpServer) {
     });
   });
 
-  return socketServer;
+  return server;
 }
+
+export { createServer };

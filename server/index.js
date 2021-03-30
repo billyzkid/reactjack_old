@@ -1,18 +1,17 @@
-import snowpack from 'snowpack';
-import snowpackUserConfig from '../snowpack.config.js';
 import path from 'path';
 import express from 'express';
-import http from 'http';
-import createSocketServer from './socket.js';
+import { createServer as createHttpServer } from 'http';
+import { createServer as createSocketServer } from './socket.js';
 
 export default async function startServer(dev) {
   if (dev) {
-    const config = snowpack.createConfiguration(snowpackUserConfig);
-    const devServer = await snowpack.startServer({ config });
-    const socketServer = createSocketServer(devServer.rawServer);
+    const { default: snowpack } = await import('snowpack');
+    const snowpackConfig = await snowpack.loadConfiguration('snowpack.config.js');
+    const snowpackDevServer = await snowpack.startServer({ config: snowpackConfig });
+    const socketServer = createSocketServer(snowpackDevServer.rawServer);
   } else {
     const app = express();
-    const httpServer = http.createServer(app);
+    const httpServer = createHttpServer(app);
     const socketServer = createSocketServer(httpServer);
     const port = process.env.PORT || 4000;
 
