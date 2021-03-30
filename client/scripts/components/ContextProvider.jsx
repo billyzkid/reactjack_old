@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { useImmerReducer } from 'use-immer';
-import { playCardFlipSound, playCardSlideSound, playHandSweepSound } from '../utils.js';
+import { playCardFlipSound, playCardSlideSound, playChipsStackSound, playHandSweepSound } from '../utils.js';
 
 const initialState = {
   isInfoPopupOpen: false,
@@ -195,6 +195,18 @@ const reducer = (draft, action) => {
     case 'removePlayerHand': {
       const player = draft.players.find((player) => player.id === action.playerId);
       player.hands.splice(action.handIndex, 1);
+      return;
+    }
+
+    case 'bet': {
+      const primaryPlayer = draft.players.find((player) => player.primary);
+      const hand = { active: false, bet: action.bet, cards: [] };
+      primaryPlayer.hands.push(hand);
+
+      if (draft.settings.soundEffects) {
+        playChipsStackSound();
+      }
+
       return;
     }
 

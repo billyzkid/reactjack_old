@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { useStateContext } from '../hooks.js';
+import { useDispatchContext, useStateContext } from '../hooks.js';
 import { formatMoney } from '../utils.js';
 
 const DEFAULT_NAME = '';
@@ -129,10 +129,11 @@ const BetControl = (props) => {
   const [bet, setBet] = useState(DEFAULT_BET);
   const { isBetControlVisible, settings } = useStateContext();
   const { minBet, maxBet } = settings;
+  const dispatch = useDispatchContext();
 
   const onEnter = useCallback(() => betInputRef.current.select(), []);
   const onBetInputChange = useCallback((event) => setBet(event.currentTarget.value), []);
-  const onBetButtonClick = useCallback(() => console.log('bet', bet), [bet]);
+  const onBetButtonClick = useCallback(() => dispatch({ type: 'bet', bet }), [bet]);
 
   return (
     <CSSTransition nodeRef={betContainerRef} in={isBetControlVisible} timeout={timeouts} onEnter={onEnter} mountOnEnter unmountOnExit>
