@@ -117,7 +117,8 @@ function preloadImages() {
 
 function preloadSounds() {
   const soundFiles = [
-    `${SOUNDS_PATH}deck-shuffle.ogg`
+    `${SOUNDS_PATH}deck-shuffle.ogg`,
+    `${SOUNDS_PATH}hand-sweep.ogg`
   ];
 
   for (let i = 0; i < 4; i++) {
@@ -139,26 +140,31 @@ function preloadSounds() {
 }
 
 function playCardFlipSound() {
-  const randNum = Math.floor(Math.random() * 4);
-  const audioElement = new Audio(`${SOUNDS_PATH}card-flip-${randNum}.ogg`);
-  audioElement.play();
+  const randomNum = Math.floor(Math.random() * 4);
+  const audio = new Audio(`${SOUNDS_PATH}card-flip-${randomNum}.ogg`);
+  audio.play();
 }
 
 function playCardSlideSound() {
-  const randNum = Math.floor(Math.random() * 8);
-  const audioElement = new Audio(`${SOUNDS_PATH}card-slide-${randNum}.ogg`);
-  audioElement.play();
+  const randomNum = Math.floor(Math.random() * 8);
+  const audio = new Audio(`${SOUNDS_PATH}card-slide-${randomNum}.ogg`);
+  audio.play();
 }
 
 function playChipsStackSound() {
-  const randNum = Math.floor(Math.random() * 6);
-  const audioElement = new Audio(`${SOUNDS_PATH}chips-stack-${randNum}.ogg`);
-  audioElement.play();
+  const randomNum = Math.floor(Math.random() * 6);
+  const audio = new Audio(`${SOUNDS_PATH}chips-stack-${randomNum}.ogg`);
+  audio.play();
 }
 
 function playDeckShuffleSound() {
-  const audioElement = new Audio(`${SOUNDS_PATH}deck-shuffle.ogg`);
-  audioElement.play();
+  const audio = new Audio(`${SOUNDS_PATH}deck-shuffle.ogg`);
+  audio.play();
+}
+
+function playHandSweepSound() {
+  const audio = new Audio(`${SOUNDS_PATH}hand-sweep.ogg`);
+  audio.play();
 }
 
 export {
@@ -177,5 +183,6 @@ export {
   playCardFlipSound,
   playCardSlideSound,
   playChipsStackSound,
-  playDeckShuffleSound
+  playDeckShuffleSound,
+  playHandSweepSound
 };
