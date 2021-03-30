@@ -122,7 +122,11 @@ const reducer = (draft, action) => {
 
     case 'dealCardToDealer': {
       draft.dealer.hand.cards.push(action.card);
-      playCardSlideSound();
+
+      if (draft.settings.soundEffects) {
+        playCardSlideSound();
+      }
+
       return;
     }
 
@@ -130,13 +134,21 @@ const reducer = (draft, action) => {
       const player = draft.players.find((player) => player.id === action.playerId);
       const hand = player.hands[action.handIndex];
       hand.cards.push(action.card);
-      playCardSlideSound();
+
+      if (draft.settings.soundEffects) {
+        playCardSlideSound();
+      }
+
       return;
     }
 
     case 'sweepDealerHand': {
       draft.dealer.hand.cards.splice(0, draft.dealer.hand.cards.length);
-      playHandSweepSound();
+
+      if (draft.settings.soundEffects) {
+        playHandSweepSound();
+      }
+
       return;
     }
 
@@ -144,14 +156,22 @@ const reducer = (draft, action) => {
       const player = draft.players.find((player) => player.id === action.playerId);
       const hand = player.hands[action.handIndex];
       hand.cards.splice(0, hand.cards.length);
-      playHandSweepSound();
+
+      if (draft.settings.soundEffects) {
+        playHandSweepSound();
+      }
+
       return;
     }
 
     case 'flipHoleCard': {
       const holeCard = draft.dealer.hand.cards[1];
       holeCard.hidden = !holeCard.hidden;
-      playCardFlipSound();
+
+      if (draft.settings.soundEffects) {
+        playCardFlipSound();
+      }
+
       return;
     }
 
