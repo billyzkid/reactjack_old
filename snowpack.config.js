@@ -17,7 +17,8 @@ export default {
   },
   devOptions: {
     port: 3000,
-    open: 'chrome'
+    open: 'default',
+    hmr: true
   },
   buildOptions: {
     //watch: true,
