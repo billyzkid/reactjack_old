@@ -2,12 +2,8 @@ import snowpack from 'snowpack';
 import snowpackUserConfig from '../snowpack.config.js';
 
 async function build() {
-  const config = snowpack.createConfiguration(snowpackUserConfig);
-  const buildResult = await snowpack.build({ config });
-
-  if (!config.buildOptions.watch) {
-    process.exit();
-  }
+  const snowpackConfig = snowpack.createConfiguration(snowpackUserConfig);
+  const snowpackBuildResult = await snowpack.build({ config: snowpackConfig });
 }
 
 build();
