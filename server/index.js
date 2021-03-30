@@ -9,7 +9,7 @@ export default async function startServer(dev) {
   if (dev) {
     const config = snowpack.createConfiguration(snowpackUserConfig);
     const devServer = await snowpack.startServer({ config });
-    const socketServer = createSocketServer(devServer.server); // See PR required to make this work: https://github.com/snowpackjs/snowpack/pull/2778
+    const socketServer = createSocketServer(devServer.rawServer);
   } else {
     const app = express();
     const httpServer = http.createServer(app);

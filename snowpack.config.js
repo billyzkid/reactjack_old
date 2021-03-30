@@ -3,7 +3,9 @@ export default {
     client: { url: '/' }
   },
   plugins: [
-    [ '@snowpack/plugin-sass', '@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv' ]
+    '@snowpack/plugin-sass',
+    '@snowpack/plugin-react-refresh',
+    '@snowpack/plugin-dotenv'
   ],
   routes: [
   ],
@@ -14,7 +16,8 @@ export default {
   packageOptions: {
   },
   devOptions: {
-    port: 3000
+    port: 3000,
+    open: 'chrome'
   },
   buildOptions: {
     //watch: true,
