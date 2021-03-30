@@ -237,7 +237,7 @@ test('getHandTotal is calculated correctly for 4 cards', () => {
   assert.is(result.displayTotal, '25');
 });
 
-test('getHandTotal is calculated correctly for 1 ace', () => {
+test('getHandTotal is calculated correctly for an ace', () => {
   const hand = { active: false, bet: 10, cards: [
     { rank: 'ace', suit: 'spades' }
   ]};
@@ -247,7 +247,7 @@ test('getHandTotal is calculated correctly for 1 ace', () => {
   assert.is(result.displayTotal, '1 or 11');
 });
 
-test('getHandTotal is calculated correctly for 1 card plus an ace', () => {
+test('getHandTotal is calculated correctly for an ace plus 1 card', () => {
   const hand = { active: false, bet: 10, cards: [
     { rank: 'ace', suit: 'spades' },
     { rank: 'six', suit: 'hearts' }
@@ -258,7 +258,7 @@ test('getHandTotal is calculated correctly for 1 card plus an ace', () => {
   assert.is(result.displayTotal, '7 or 17');
 });
 
-test('getHandTotal is calculated correctly for 2 cards plus an ace', () => {
+test('getHandTotal is calculated correctly for an ace plus 2 cards', () => {
   const hand = { active: false, bet: 10, cards: [
     { rank: 'ace', suit: 'spades' },
     { rank: 'six', suit: 'hearts' },
@@ -268,6 +268,19 @@ test('getHandTotal is calculated correctly for 2 cards plus an ace', () => {
 
   assert.is(result.total, 17);
   assert.is(result.displayTotal, '17');
+});
+
+test('getHandTotal is calculated correctly for an ace plus 3 cards', () => {
+  const hand = { active: false, bet: 10, cards: [
+    { rank: 'ace', suit: 'spades' },
+    { rank: 'six', suit: 'hearts' },
+    { rank: 'ten', suit: 'diamonds' },
+    { rank: 'five', suit: 'clubs' },
+  ]};
+  const result = utils.getHandTotal(hand);
+
+  assert.is(result.total, 22);
+  assert.is(result.displayTotal, '22');
 });
 
 test('getHandTotal is calculated correctly for blackjack', () => {

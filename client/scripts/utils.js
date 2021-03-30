@@ -95,6 +95,7 @@ function getHandTotal(hand) {
   let total = hand.cards.reduce((total, card) => total + getCardValue(card), 0);
   let displayTotal;
 
+  // if the hand is soft
   if (hasAce(hand) && total + 10 <= 21) {
     displayTotal = `${total} or ${total + 10}`;
     total += 10;
@@ -193,7 +194,7 @@ function preloadSounds() {
   }
 
   soundFiles.forEach((soundFile) => {
-    const link = Object.assign(document.createElement('link'), { rel: 'preload', href: soundFile, as: 'audio' });
+    const link = Object.assign(document.createElement('link'), { rel: 'preload', href: soundFile, as: 'audio' }); // preload as "audio" is not yet supported in Chrome
     document.head.appendChild(link);
   });
 }
