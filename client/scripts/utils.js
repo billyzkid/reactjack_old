@@ -1,3 +1,6 @@
+const IMAGES_PATH = '../images/';
+const SOUNDS_PATH = '../sounds/';
+
 const HAND_DISTANCE_X = 5;
 const HAND_DISTANCE_Y = 1.25;
 
@@ -97,4 +100,82 @@ function formatMoney(value) {
   }
 }
 
-export { getFocusableChildren, isTabFocusable, setAriaHidden, setAriaVisible, getNumberOrString, getClassNames, getPlayerPositions, getHandPositions, getHandTotal, formatMoney };
+function preloadImages() {
+  const imageFiles = [
+    `${IMAGES_PATH}cards/back.png`
+  ];
+
+  for (let i = 0; i < 54; i++) {
+    imageFiles.push(`${IMAGES_PATH}cards/front-${i}.png`);
+  }
+
+  imageFiles.forEach((imageFile) => {
+    const link = Object.assign(document.createElement('link'), { rel: 'preload', href: imageFile, as: 'image' });
+    document.head.appendChild(link);
+  });
+}
+
+function preloadSounds() {
+  const soundFiles = [
+    `${SOUNDS_PATH}deck-shuffle.ogg`
+  ];
+
+  for (let i = 0; i < 4; i++) {
+    soundFiles.push(`${SOUNDS_PATH}card-flip-${i}.ogg`);
+  }
+
+  for (let i = 0; i < 8; i++) {
+    soundFiles.push(`${SOUNDS_PATH}card-slide-${i}.ogg`);
+  }
+
+  for (let i = 0; i < 6; i++) {
+    soundFiles.push(`${SOUNDS_PATH}chips-stack-${i}.ogg`);
+  }
+
+  soundFiles.forEach((soundFile) => {
+    const link = Object.assign(document.createElement('link'), { rel: 'preload', href: soundFile, as: 'audio' });
+    document.head.appendChild(link);
+  });
+}
+
+function playCardFlipSound() {
+  const randNum = Math.floor(Math.random() * 4);
+  const audioElement = new Audio(`${SOUNDS_PATH}card-flip-${randNum}.ogg`);
+  audioElement.play();
+}
+
+function playCardSlideSound() {
+  const randNum = Math.floor(Math.random() * 8);
+  const audioElement = new Audio(`${SOUNDS_PATH}card-slide-${randNum}.ogg`);
+  audioElement.play();
+}
+
+function playChipsStackSound() {
+  const randNum = Math.floor(Math.random() * 6);
+  const audioElement = new Audio(`${SOUNDS_PATH}chips-stack-${randNum}.ogg`);
+  audioElement.play();
+}
+
+function playDeckShuffleSound() {
+  const audioElement = new Audio(`${SOUNDS_PATH}deck-shuffle.ogg`);
+  audioElement.play();
+}
+
+export {
+  getFocusableChildren,
+  isTabFocusable,
+  setAriaHidden,
+  setAriaVisible,
+  getNumberOrString,
+  getClassNames,
+  getPlayerPositions,
+  getHandPositions,
+  getHandTotal,
+  formatMoney,
+  preloadImages,
+  preloadSounds,
+  playCardFlipSound,
+  playCardSlideSound,
+  playChipsStackSound,
+  playDeckShuffleSound
+};

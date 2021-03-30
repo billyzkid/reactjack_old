@@ -2,7 +2,11 @@ import React, { StrictMode } from 'react';
 import { render } from 'react-dom';
 import ContextProvider from './components/ContextProvider.jsx';
 import App from './components/App.jsx';
+import { preloadImages, preloadSounds } from './utils.js';
 import '../styles/index.scss';
+
+preloadImages();
+preloadSounds();
 
 render(
   <StrictMode>

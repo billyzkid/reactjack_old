@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { useImmerReducer } from 'use-immer';
+import { playCardFlipSound } from '../utils.js';
 
 const initialState = {
   isInfoPopupOpen: false,
@@ -146,6 +147,7 @@ const reducer = (draft, action) => {
     case 'flipHoleCard': {
       const holeCard = draft.dealer.hand.cards[1];
       holeCard.hidden = !holeCard.hidden;
+      playCardFlipSound();
       return;
     }
 
